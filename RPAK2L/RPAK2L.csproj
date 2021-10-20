@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Models\" />
+        <AvaloniaResource Include="Assets/**" />
+        <Folder Include="obj\Debug" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.10.6" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
+        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\bezdna-proto\bezdna-proto.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <UpToDateCheckInput Remove="**\*.axaml" />
+      <UpToDateCheckInput Remove="**\*.paml" />
+    </ItemGroup>
+</Project>

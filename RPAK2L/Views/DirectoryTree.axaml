@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RPAK2L.Views.DirectoryTree"
+        Icon="/Assets/Icon.ico"
+        MinWidth="600"
+        MinHeight="450"
+        MaxHeight="850"
+        TransparencyLevelHint="Blur"
+        ExtendClientAreaToDecorationsHint="False"
+        xmlns:views="clr-namespace:RPAK2L.ViewModels.FileView.Views"
+        xmlns:models="clr-namespace:RPAK2L.ViewModels.FileView.Types"
+        Background="#16161680"
+        Title="RPAK2L">
+    
+    <Design.DataContext>
+        <views:DirectoryTreeViewModel/>
+    </Design.DataContext>
+    
+    <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*">
+        
+        <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Stretch" MaxHeight="30" Height="30" Grid.Row="0">
+            <Border Background="#EE000000">
+                <Button VerticalAlignment="Stretch" Click="FileOpen_OnClick">
+                    <TextBlock VerticalAlignment="Stretch" Text="Open File"></TextBlock>
+                </Button>
+            </Border>
+            <Border Grid.Column="1" Background="#EE000000">
+                <ComboBox VerticalAlignment="Stretch" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
+            </Border>
+        </Grid>
+        
+        <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,*" MinHeight="400">
+            <Border Grid.Column="0" Background="#DF202020" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                <TreeView Initialized="DirTree_OnInitialized" VerticalAlignment="Stretch" MinWidth="200" BorderThickness="3" SelectionChanged="DirView_OnSelectionChanged" Items="{Binding Types}">
+                    <TreeView.DataTemplates>
+                        <TreeDataTemplate DataType="models:FileTypes">
+                            <Grid VerticalAlignment="Stretch" ColumnDefinitions="*,Auto" HorizontalAlignment="Stretch">
+                                <TextBlock Grid.Column="0" Foreground="White" Text="{Binding Name}" />
+                                <Border Grid.Column="1" MaxWidth="40" Width="40" BorderBrush="Gray" BorderThickness="1,0,0,0">
+                                    <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Right" Foreground="Black" Text="wip" />
+                                </Border>
+                            </Grid>
+                        </TreeDataTemplate>
+                        <DataTemplate DataType="models:File">
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>    
+                    </TreeView.DataTemplates>
+                </TreeView>
+            </Border>
+            <Grid Grid.Column="1" RowDefinitions="*,Auto">
+                <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                    <TreeView SelectionChanged="FileView_OnSelectionChanged" MinWidth="200" BorderThickness="3" Items="{Binding Files}">
+                        <TreeView.DataTemplates>
+                            <TreeDataTemplate DataType="models:PakFileInfo">
+                                <Grid VerticalAlignment="Stretch" ColumnDefinitions="*" HorizontalAlignment="Stretch">
+                                    <TextBlock Grid.Column="0" Foreground="White" Text="{Binding Name}" />
+                                </Grid>
+                            </TreeDataTemplate>
+                            <DataTemplate DataType="models:File">
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>    
+                        </TreeView.DataTemplates>
+                    </TreeView>
+                </Border>
+                <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="1" Height="200" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                    <Grid RowDefinitions="*,Auto">
+                        <Grid Grid.Row="0" RowDefinitions="Auto,Auto,Auto">
+                            <TextBlock Grid.Row="0" FontSize="24" Text="{Binding InfoName}" Initialized="NameLabel_OnInitialized"></TextBlock>
+                            <TextBlock Grid.Row="1" FontSize="12" Text="{Binding InfoBytes}" Initialized="ByteLabel_OnInitialized"></TextBlock>
+                            <TextBlock Grid.Row="2" FontSize="12" Text="{Binding InfoOffset}" Initialized="OffsetLabel_OnInitialized"></TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto,Auto">
+                            <Button Grid.Column="0" Initialized="ExportButton_OnInitialized" Click="ExportButton_OnClick"><TextBlock Text="Export"></TextBlock></Button>
+                            <Button Grid.Column="1" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"></TextBlock></Button>
+                            <Button Grid.Column="2" Initialized="DeleteButton_OnInitialized" Click="DeleteButton_OnClick"><TextBlock Text="Delete"></TextBlock></Button>
+                            <Button Grid.Column="3" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"></TextBlock></Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
