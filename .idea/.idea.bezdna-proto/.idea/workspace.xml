@@ -4,20 +4,13 @@
     <projectFile>RPAK2L/RPAK2L.csproj</projectFile>
     <projectFile profileName="bezdna-proto">bezdna-proto.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC4U.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC5U.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC7U.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_DXT1.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC4U.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +56,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ide-eval-resetter-2.3.4.jar" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -141,7 +138,7 @@
       <workItem from="1637129291519" duration="976000" />
       <workItem from="1637130317425" duration="922000" />
       <workItem from="1637131862109" duration="520000" />
-      <workItem from="1637172601158" duration="471000" />
+      <workItem from="1637172601158" duration="1031000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -164,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634693658156</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="we do a little more header stuff">
+      <created>1637173115047</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637173115047</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +193,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="making a ui" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="we do a little more header stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="we do a little more header stuff" />
   </component>
 </project>

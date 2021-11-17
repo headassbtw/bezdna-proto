@@ -28,7 +28,7 @@
                 </Button>
             </Border>
             <Border Grid.Column="1" Background="#EE000000">
-                <ComboBox VerticalAlignment="Stretch" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
+                <ComboBox VerticalAlignment="Stretch" Initialized="RPakItemControl_Initialized" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
             </Border>
         </Grid>
         

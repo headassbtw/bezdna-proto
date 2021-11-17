@@ -298,19 +298,11 @@ namespace RPAK2L.Views
         private Backend.PakInterface pakBackend;
         private void FileOpen_OnClick(object? sender, RoutedEventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.AllowMultiple = false;
+            OpenFolderDialog dialog = new OpenFolderDialog();
             dialog.Directory = (LastSelectedDirectory == null)
                 ? System.IO.Directory.GetCurrentDirectory()
                 : LastSelectedDirectory;
-            dialog.Title = "Game Executable";
-            List<FileDialogFilter> filters = new List<FileDialogFilter>();
-            FileDialogFilter filter = new FileDialogFilter();
-            filter.Name = "Game Executable (*.exe)";
-            filter.Extensions.Add("exe");
-            filters.Add(filter);
-            
-            dialog.Filters = filters;
+            dialog.Title = "Game Folder";
             vm = DataContext as DirectoryTreeViewModel;
             //vm = Program.VM;
             
@@ -321,15 +313,8 @@ namespace RPAK2L.Views
                 task.Wait();
                 if (task.IsCompletedSuccessfully && task.Result.FirstOrDefault() != null)
                 {
-                    string path = task.Result.FirstOrDefault().Substring(0, task.Result.FirstOrDefault().LastIndexOfAny(new[] {'\\', '/'})+1);
-                    LastSelectedDirectory = path;
-                    var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
-
-                    foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))
-                    {
-                        vm.RPakChoices.Add(pak);
-                    }
-
+                    string path = task.Result;
+                    FillInRpaks(path);
 
                     //Load();
                 }
@@ -341,6 +326,28 @@ namespace RPAK2L.Views
             });
             fileOpenThread.Start();
         }
+
+        private void FillInRpaks(string path)
+        {
+            LastSelectedDirectory = path;
+            var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
+
+            foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))
+            {
+                vm.RPakChoices.Add(pak);
+            }
+        }
+        
+        private void RPakItemControl_Initialized(object? sender, EventArgs e)
+        {
+            iniInstance.Load();
+            string dir = iniInstance.GetValue("GameDirectory", "","null");
+            if (dir != "null")
+            {
+                FillInRpaks(dir);
+            }
+        }
+
 
         private void DirTree_OnInitialized(object? sender, EventArgs e)
         {
@@ -361,5 +368,7 @@ namespace RPAK2L.Views
             string selected = ((string) e.AddedItems[0]);
             Load(selected);
         }
+
+        
     }
 }
