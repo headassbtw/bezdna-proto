@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using Avalonia.Controls;
 using ReactiveUI;
 using RPAK2L.ViewModels.FileView.Types;
+using RPAK2L.ViewModels.SubMenuViewModels;
 using RPAK2L.Views;
+using RPAK2L.Views.SubMenus;
 using File = RPAK2L.ViewModels.FileView.Types.File;
 
 namespace RPAK2L.ViewModels.FileView.Views
 {
     public class DirectoryTreeViewModel : ReactiveObject
     {
+        public Window ParentWindow;
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; }
         public ObservableCollection<string> RPakChoices { get; }
@@ -48,8 +52,22 @@ namespace RPAK2L.ViewModels.FileView.Views
         }
 
 
-        public DirectoryTreeViewModel(string path = null)
+        public void OpenSettingsMenu()
         {
+            var sm = new SettingsMenu();
+            sm.DataContext = new SettingsMenuViewModel();
+            sm.ShowDialog(ParentWindow);
+        }
+        public void OpenAboutMenu()
+        {
+            var sm = new AboutMenu();
+            sm.DataContext = new AboutMenuViewModel();
+            sm.ShowDialog(ParentWindow);
+        }
+        
+        public DirectoryTreeViewModel(Window context)
+        {
+            ParentWindow = context;
             Files = new ObservableCollection<PakFileInfo>();
             Types = new ObservableCollection<FileTypes>();
             RPakChoices = new ObservableCollection<string>();

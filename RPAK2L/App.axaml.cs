@@ -18,10 +18,8 @@ namespace RPAK2L
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new DirectoryTree()
-                {
-                    DataContext = new DirectoryTreeViewModel(),
-                };
+                desktop.MainWindow = new DirectoryTree();
+                desktop.MainWindow.DataContext = new DirectoryTreeViewModel(desktop.MainWindow);
             }
 
             base.OnFrameworkInitializationCompleted();

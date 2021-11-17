@@ -42,12 +42,17 @@
       <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
       <Compile Include="ViewModels\FileView\Views\DirectoryTreeViewModel.cs" />
       <Compile Include="ViewModels\MainWindowViewModel.cs" />
+      <Compile Include="ViewModels\SubMenuViewModels\AboutMenuViewModel.cs" />
+      <Compile Include="ViewModels\SubMenuViewModels\SettingsMenuViewModel.cs" />
       <Compile Include="ViewModels\ViewModelBase.cs" />
       <Compile Include="Views\DirectoryTree.axaml.cs" />
       <Compile Include="Views\MainWindow.axaml.cs" />
+      <Compile Include="Views\SubMenus\AboutMenu.axaml.cs" />
+      <Compile Include="Views\SubMenus\SettingsMenu.axaml.cs" />
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Remove="**\**" />
+      <EmbeddedResource Include="Images\Icon_full.png" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="**\**" />
@@ -57,6 +62,8 @@
       <AvaloniaResource Include="App.axaml" />
       <AvaloniaResource Include="Views\DirectoryTree.axaml" />
       <AvaloniaResource Include="Views\MainWindow.axaml" />
+      <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
+      <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
       <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />

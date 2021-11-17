@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterOwner"
+        xmlns:subMenuViewModels="clr-namespace:RPAK2L.ViewModels.SubMenuViewModels"
+        Width="600"
+        Height="260"
+        CanResize="False"
+        x:Class="RPAK2L.Views.SubMenus.AboutMenu"
+        Title="About">
+        <Design.DataContext>
+                <subMenuViewModels:AboutMenuViewModel/>
+        </Design.DataContext>
+    <Grid RowDefinitions="*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Grid Grid.Column="0" VerticalAlignment="Center" RowDefinitions="Auto,Auto,Auto">
+                <TextBlock Grid.Row="0" FontSize="72">RPAK2L</TextBlock>
+                <TextBlock Grid.Row="1" FontSize="18">Respawn game RPAK tool</TextBlock>
+                <TextBlock Grid.Row="2" FontSize="24">Made by headassbtw</TextBlock>
+            </Grid>
+            <Image Grid.Column="1" Width="200" Height="200" Source="resm:RPAK2L.Images.Icon_full.png"></Image>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Grid.Row="1">
+            <Button Click="GithubButton_OnClick">Github</Button>
+        </Grid>
+    </Grid>
+</Window>

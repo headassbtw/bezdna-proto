@@ -7,9 +7,11 @@
         Icon="/Assets/Icon.ico"
         MinWidth="600"
         MinHeight="450"
-        MaxHeight="850"
         TransparencyLevelHint="Blur"
+        
         ExtendClientAreaToDecorationsHint="False"
+        
+        WindowStartupLocation="CenterScreen"
         xmlns:views="clr-namespace:RPAK2L.ViewModels.FileView.Views"
         xmlns:models="clr-namespace:RPAK2L.ViewModels.FileView.Types"
         Background="#16161680"
@@ -18,8 +20,21 @@
     <Design.DataContext>
         <views:DirectoryTreeViewModel/>
     </Design.DataContext>
-    
-    <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open File..."/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Options">
+                <MenuItem Header="Settings" Command="{Binding OpenSettingsMenu}"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                    <MenuItem Header="About" Command="{Binding OpenAboutMenu}"/>
+            </MenuItem>
+        </Menu>
+        <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*">
         
         <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Stretch" MaxHeight="30" Height="30" Grid.Row="0">
             <Border Background="#EE000000">
@@ -72,15 +87,18 @@
                             <TextBlock Grid.Row="1" FontSize="12" Text="{Binding InfoBytes}" Initialized="ByteLabel_OnInitialized"></TextBlock>
                             <TextBlock Grid.Row="2" FontSize="12" Text="{Binding InfoOffset}" Initialized="OffsetLabel_OnInitialized"></TextBlock>
                         </Grid>
-                        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto,Auto">
+                        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
                             <Button Grid.Column="0" Initialized="ExportButton_OnInitialized" Click="ExportButton_OnClick"><TextBlock Text="Export"></TextBlock></Button>
                             <Button Grid.Column="1" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"></TextBlock></Button>
                             <Button Grid.Column="2" Initialized="DeleteButton_OnInitialized" Click="DeleteButton_OnClick"><TextBlock Text="Delete"></TextBlock></Button>
                             <Button Grid.Column="3" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"></TextBlock></Button>
+                            <Button Grid.Column="4" Click="SettingsMenu_OnClick"><TextBlock Text="Settings"></TextBlock></Button>
                         </Grid>
                     </Grid>
                 </Border>
             </Grid>
         </Grid>
     </Grid>
+    </DockPanel>
+    
 </Window>

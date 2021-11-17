@@ -17,6 +17,8 @@ using ImageMagick.Formats;
 using RPAK2L.Backend;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.FileView.Views;
+using RPAK2L.ViewModels.SubMenuViewModels;
+using RPAK2L.Views.SubMenus;
 using File = System.IO.File;
 using Path = System.IO.Path;
 
@@ -356,9 +358,17 @@ namespace RPAK2L.Views
             Console.WriteLine((DataContext as DirectoryTreeViewModel));
             vm = ((DirectoryTreeViewModel) DataContext);
         }
+
+        private void SettingsMenu_OnClick(object? sender, RoutedEventArgs e)
+        {
+            var sm = new SettingsMenu();
+            sm.DataContext = new SettingsMenuViewModel();
+            sm.ShowDialog(this);
+        }
         
         private void AddButton_OnClick(object? sender, RoutedEventArgs e)
         {
+            
             throw new NotImplementedException("ASS");
         }
 

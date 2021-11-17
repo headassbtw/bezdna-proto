@@ -9,7 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Assets/Icon_full.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Images/Icon_full.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
     </list>
@@ -138,7 +150,10 @@
       <workItem from="1637129291519" duration="976000" />
       <workItem from="1637130317425" duration="922000" />
       <workItem from="1637131862109" duration="520000" />
-      <workItem from="1637172601158" duration="1031000" />
+      <workItem from="1637172601158" duration="1344000" />
+      <workItem from="1637180239781" duration="2283000" />
+      <workItem from="1637183123020" duration="3075000" />
+      <workItem from="1637186684247" duration="2135000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -168,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637173115047</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class">
+      <created>1637173760310</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637173760310</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +216,7 @@
     <MESSAGE value="making a ui" />
     <MESSAGE value="a" />
     <MESSAGE value="we do a little more header stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="we do a little more header stuff" />
+    <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
+    <option name="LAST_COMMIT_MESSAGE" value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
   </component>
 </project>
