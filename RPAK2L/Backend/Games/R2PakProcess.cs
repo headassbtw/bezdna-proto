@@ -30,6 +30,7 @@ namespace RPAK2L.Backend.Games
                 {
                     case "txtr":
                         var t = new Texture(Pak, file);
+                        if (t.Name.Contains("col"))
                         PakInfos.Add(new PakFileInfo(file)
                         {
                             Pak = Pak,

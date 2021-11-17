@@ -180,25 +180,56 @@ namespace RPAK2L.Views
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
+                    Console.WriteLine("Exporting Texture...");
                     var tex = CurrentFileToExport.SpecificTypeFile as Texture;
                     Console.WriteLine(tex.StarpakNum);
+                        Console.WriteLine(tex.Algorithm.ToUpper());
                     Console.WriteLine(tex.BaseFile.StarpakOffset);
                     string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name);
                     Directory.CreateDirectory(ex);
                     
+                    byte[] dds_header = new byte[128];
+                    System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+                    using (Stream resFilestream = a.GetManifestResourceStream($"RPAK2L.Headers.DDS_{tex.Algorithm.ToUpper()}.bin"))
+                    {
+                        if (resFilestream != null)
+                        {
+                            Console.WriteLine($"Reading embedded DDS header for compression of {tex.Algorithm.ToUpper()}");
+                            byte[] ba = new byte[resFilestream.Length];
+                            resFilestream.Read(ba, 0, ba.Length);
+                            dds_header = ba;
+                        }
+                        else
+                        {
+                            Console.WriteLine("No header found!");
+                            throw new NullReferenceException();
+                        }
+                    }
+                    
+                    
+                    
                     foreach (var text in tex.TextureDatas)
                     {
-                        byte[] buf = new byte[text.size];
+                        
+                        if(text.height > 512)
+                        {
+                            Console.WriteLine($"ExportingMipMap ({text.height}x)");
+                            byte[] buf = new byte[text.size];
                         var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
+                        Console.WriteLine("Opening pc_stream.starpak stream");
                         FileStream spr = new FileStream(
-                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", "pc_all.starpak"),
+                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", "pc_stream.starpak"),
                             FileMode.Open);
 
-                        
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
+                        fs.Write(dds_header);
+                        fs.Write(buf);
+                        fs.Close();
                         
-                        var im = new MagickImage();
+                        
+                        
+                        /*var im = new MagickImage();
                         im.Read(buf);
                         Console.WriteLine(tex.Algorithm);
                         Console.WriteLine(Enum.Parse(typeof(DdsCompression), tex.Algorithm));
@@ -209,8 +240,12 @@ namespace RPAK2L.Views
                         im.Format = MagickFormat.Dds;
                         im.Settings.SetDefines(ddsDefines);
 
-                        im.Write(fs);
-
+                        im.Write(fs);*/
+                        }
+                        else
+                        {
+                            Console.WriteLine("Texture is smaller than 512x, not exporting");
+                        }
                     }
                     
                     
@@ -227,10 +262,6 @@ namespace RPAK2L.Views
                 default:
                     break;
             }
-            
-            
-            
-            throw new NotImplementedException();
         }
         private void ReplaceButton_OnClick(object? sender, RoutedEventArgs e)
         {
@@ -252,10 +283,6 @@ namespace RPAK2L.Views
                     vm.Types.Add(dtb);
                     vm.Types.Add(msc);
                     
-                    
-                    
-                    
-                    LastSelectedDirectory = fullRPakPath;
                     vm.Types = new ObservableCollection<FileTypes>();
 
 
@@ -330,6 +357,7 @@ namespace RPAK2L.Views
                 if (task.IsCompletedSuccessfully && task.Result.FirstOrDefault() != null)
                 {
                     string path = task.Result.FirstOrDefault().Substring(0, task.Result.FirstOrDefault().LastIndexOfAny(new[] {'\\', '/'})+1);
+                    LastSelectedDirectory = path;
                     var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
 
                     foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))

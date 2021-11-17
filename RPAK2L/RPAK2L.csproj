@@ -11,10 +11,10 @@
         <Folder Include="obj\Debug" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.6" />
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.6" />
+        <PackageReference Include="Avalonia" Version="0.10.5" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.5" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.5" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.5" />
         <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
     </ItemGroup>
     <ItemGroup>
@@ -23,5 +23,39 @@
     <ItemGroup>
       <UpToDateCheckInput Remove="**\*.axaml" />
       <UpToDateCheckInput Remove="**\*.paml" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="**\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="**\**" />
+      <Compile Include="App.axaml.cs" />
+      <Compile Include="Backend\Common.cs" />
+      <Compile Include="Backend\Enum.cs" />
+      <Compile Include="Backend\Games\R2PakProcess.cs" />
+      <Compile Include="Ini.cs" />
+      <Compile Include="Models\Misc.cs" />
+      <Compile Include="Program.cs" />
+      <Compile Include="ViewLocator.cs" />
+      <Compile Include="ViewModels\FileView\Types\File.cs" />
+      <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
+      <Compile Include="ViewModels\FileView\Views\DirectoryTreeViewModel.cs" />
+      <Compile Include="ViewModels\MainWindowViewModel.cs" />
+      <Compile Include="ViewModels\ViewModelBase.cs" />
+      <Compile Include="Views\DirectoryTree.axaml.cs" />
+      <Compile Include="Views\MainWindow.axaml.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="**\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="**\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include=".gitignore" />
+      <AvaloniaResource Include="App.axaml" />
+      <AvaloniaResource Include="Views\DirectoryTree.axaml" />
+      <AvaloniaResource Include="Views\MainWindow.axaml" />
+      <EmbeddedResource Include="Headers\DDS_DXT1.bin" />
     </ItemGroup>
 </Project>

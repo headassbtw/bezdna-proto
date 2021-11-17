@@ -5,14 +5,22 @@
     <projectFile profileName="bezdna-proto">bezdna-proto.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="19997" />
+    <option name="totalTimeSeconds" value="21857" />
+    <option name="gitIntegration" value="true" />
+    <option name="naggedAbout" value="1" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -20,7 +28,7 @@
         <entry key="$PROJECT_DIR$/bezdna-proto" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/bezdna-proto" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
@@ -33,7 +41,6 @@
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/bezdna-proto/Apex/FileEntryInternal.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zkDfdk5OBpdvTD2rzdMteDdwIk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -50,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ide-eval-resetter-2.3.4.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.RPAK2L">
@@ -121,6 +128,12 @@
       <workItem from="1634700586719" duration="199000" />
       <workItem from="1634700800816" duration="30000" />
       <workItem from="1634700849309" duration="5290000" />
+      <workItem from="1635384097490" duration="41000" />
+      <workItem from="1636430740257" duration="677000" />
+      <workItem from="1637129201783" duration="60000" />
+      <workItem from="1637129291519" duration="976000" />
+      <workItem from="1637130317425" duration="922000" />
+      <workItem from="1637131862109" duration="520000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -162,6 +175,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
