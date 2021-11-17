@@ -183,34 +183,14 @@ namespace RPAK2L.Views
                     Console.WriteLine("Exporting Texture...");
                     var tex = CurrentFileToExport.SpecificTypeFile as Texture;
                     Console.WriteLine(tex.StarpakNum);
-                        Console.WriteLine(tex.Algorithm.ToUpper());
+                    var compression = tex.Algorithm.ToUpper();
+                        Console.WriteLine(compression);
                     Console.WriteLine(tex.BaseFile.StarpakOffset);
                     string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name);
                     Directory.CreateDirectory(ex);
                     
-                    byte[] dds_header = new byte[128];
-                    System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-                    using (Stream resFilestream = a.GetManifestResourceStream($"RPAK2L.Headers.DDS_{tex.Algorithm.ToUpper()}.bin"))
-                    {
-                        if (resFilestream != null)
-                        {
-                            Console.WriteLine($"Reading embedded DDS header for compression of {tex.Algorithm.ToUpper()}");
-                            byte[] ba = new byte[resFilestream.Length];
-                            resFilestream.Read(ba, 0, ba.Length);
-                            dds_header = ba;
-                        }
-                        else
-                        {
-                            Console.WriteLine("No header found!");
-                            throw new NullReferenceException();
-                        }
-                    }
-                    
-                    
-                    
                     foreach (var text in tex.TextureDatas)
                     {
-                        
                         if(text.height > 512)
                         {
                             Console.WriteLine($"ExportingMipMap ({text.height}x)");
@@ -223,24 +203,9 @@ namespace RPAK2L.Views
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
-                        fs.Write(dds_header);
+                        fs.Write(Headers.HeaderInterface.Get(tex.Height, compression));
                         fs.Write(buf);
                         fs.Close();
-                        
-                        
-                        
-                        /*var im = new MagickImage();
-                        im.Read(buf);
-                        Console.WriteLine(tex.Algorithm);
-                        Console.WriteLine(Enum.Parse(typeof(DdsCompression), tex.Algorithm));
-                        DdsWriteDefines ddsDefines = new DdsWriteDefines();
-                        ddsDefines.Compression = DdsCompression.Dxt1;
-                        ddsDefines.Mipmaps = 0;
-
-                        im.Format = MagickFormat.Dds;
-                        im.Settings.SetDefines(ddsDefines);
-
-                        im.Write(fs);*/
                         }
                         else
                         {

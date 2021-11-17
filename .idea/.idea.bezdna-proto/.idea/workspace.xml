@@ -6,9 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC4U.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC5U.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC7U.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_DXT1.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC4U.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
     </list>
@@ -31,16 +39,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f12e041db1442449426965265946e5343c00/1A/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/bezdna-proto/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zkDfdk5OBpdvTD2rzdMteDdwIk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -134,6 +141,7 @@
       <workItem from="1637129291519" duration="976000" />
       <workItem from="1637130317425" duration="922000" />
       <workItem from="1637131862109" duration="520000" />
+      <workItem from="1637172601158" duration="471000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>

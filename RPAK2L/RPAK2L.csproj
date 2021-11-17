@@ -36,6 +36,7 @@
       <Compile Include="Ini.cs" />
       <Compile Include="Models\Misc.cs" />
       <Compile Include="Program.cs" />
+      <Compile Include="Headers/HeaderInterface.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
       <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
@@ -56,6 +57,9 @@
       <AvaloniaResource Include="App.axaml" />
       <AvaloniaResource Include="Views\DirectoryTree.axaml" />
       <AvaloniaResource Include="Views\MainWindow.axaml" />
-      <EmbeddedResource Include="Headers\DDS_DXT1.bin" />
+      <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
+      <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
+      <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
+      <EmbeddedResource Include="Headers/2048/DDS_BC7U.bin" />
     </ItemGroup>
 </Project>

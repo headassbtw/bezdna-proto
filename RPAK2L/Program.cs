@@ -32,7 +32,7 @@ namespace RPAK2L
             
             
             
-
+            Headers.HeaderInterface.Init();
             BuildAvaloniaApp()
                 .StartWithClassicDesktopLifetime(args);
         }
