@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
+using RPAK2L.Headers;
 using RPAK2L.ViewModels.FileView.Views;
 
 namespace RPAK2L
 {
     class Program
     {
+        public static Window AppMainWindow;
+        public static HeaderInterface Headers;
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
@@ -20,6 +24,7 @@ namespace RPAK2L
         // yet and stuff might break.
         public static void Main(string[] args)
         {
+            Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())
             {
                 #pragma warning disable CA1416 //this is under a function that only runs on windows
@@ -32,7 +37,7 @@ namespace RPAK2L
             
             
             
-            Headers.HeaderInterface.Init();
+            
             BuildAvaloniaApp()
                 .StartWithClassicDesktopLifetime(args);
         }

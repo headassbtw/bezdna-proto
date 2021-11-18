@@ -9,17 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Assets/Icon_full.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Images/Icon_full.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
@@ -153,7 +150,7 @@
       <workItem from="1637172601158" duration="1344000" />
       <workItem from="1637180239781" duration="2283000" />
       <workItem from="1637183123020" duration="3075000" />
-      <workItem from="1637186684247" duration="2135000" />
+      <workItem from="1637186684247" duration="6642000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -190,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637173760310</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml">
+      <created>1637188960786</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637188960786</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +221,7 @@
     <MESSAGE value="a" />
     <MESSAGE value="we do a little more header stuff" />
     <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
-    <option name="LAST_COMMIT_MESSAGE" value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
+    <MESSAGE value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
   </component>
 </project>

@@ -36,13 +36,25 @@ namespace RPAK2L.Views
             this.AttachDevTools();
 #endif
             
+            
+            this.Activated += (sender, args) =>
+            {
+                if (_firstTimeShown)
+                {
+                    Program.Headers.Init();
+                    _firstTimeShown = false;
+                }
+            };
         }
-        
+
+        private bool _firstTimeShown = true;
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
             //DataContext = new DirectoryTreeViewModel();
             vm = DataContext as DirectoryTreeViewModel;
+            Console.WriteLine("InitComponent");
+            
         }
         
         private void DirView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
@@ -51,8 +63,8 @@ namespace RPAK2L.Views
             vm = ((DirectoryTreeViewModel) DataContext);
             Console.WriteLine($"Selected {selected.Name}");
             vm.Files.Clear();
-            foreach(var thign in selected.Files)
-                vm.Files.Add(thign);
+            vm.SetPakFiles(selected.Files);
+            vm.AddPakFiles();
         }
 
         private Ini iniInstance = new Ini(System.IO.Path.Combine(Environment.CurrentDirectory, "settings.ini"));
@@ -168,6 +180,7 @@ namespace RPAK2L.Views
         }
         private void AddButton_OnInitialized(object? sender, EventArgs e)
         {
+            Console.WriteLine("AddButtonInit");
             AddButton = sender as Button;
             AddButton.IsEnabled = false;
         }
@@ -205,7 +218,7 @@ namespace RPAK2L.Views
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
-                        fs.Write(Headers.HeaderInterface.Get(tex.Height, compression));
+                        fs.Write(Program.Headers.Get(tex.Height, compression));
                         fs.Write(buf);
                         fs.Close();
                         }
@@ -342,6 +355,7 @@ namespace RPAK2L.Views
         
         private void RPakItemControl_Initialized(object? sender, EventArgs e)
         {
+            Console.WriteLine("RPakSelectorInit");
             iniInstance.Load();
             string dir = iniInstance.GetValue("GameDirectory", "","null");
             if (dir != "null")
@@ -353,7 +367,7 @@ namespace RPAK2L.Views
 
         private void DirTree_OnInitialized(object? sender, EventArgs e)
         {
-            
+            Console.WriteLine("DirTreeInit");
             Console.WriteLine("ASS");
             Console.WriteLine((DataContext as DirectoryTreeViewModel));
             vm = ((DirectoryTreeViewModel) DataContext);

@@ -15,6 +15,7 @@
         xmlns:views="clr-namespace:RPAK2L.ViewModels.FileView.Views"
         xmlns:models="clr-namespace:RPAK2L.ViewModels.FileView.Types"
         Background="#16161680"
+        
         Title="RPAK2L">
     
     <Design.DataContext>

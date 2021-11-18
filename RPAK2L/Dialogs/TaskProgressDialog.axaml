@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dc="clr-namespace:RPAK2L.Dialogs"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RPAK2L.Dialogs.TaskProgressDialog"
+        Title="TaskProgressDialog">
+        <Design.DataContext>
+                <dc:ProgressableTask/>
+        </Design.DataContext>
+        <Grid HorizontalAlignment="Center" RowDefinitions="*,Auto">
+                <ProgressBar Maximum="4" Minimum="0" ShowProgressText="True" Initialized="ProgressBar_Init" Value="{Binding Percentage}"></ProgressBar>
+        </Grid>
+</Window>

@@ -33,6 +33,8 @@
       <Compile Include="Backend\Common.cs" />
       <Compile Include="Backend\Enum.cs" />
       <Compile Include="Backend\Games\R2PakProcess.cs" />
+      <Compile Include="Dialogs\ProgressableTask.cs" />
+      <Compile Include="Dialogs\TaskProgressDialog.axaml.cs" />
       <Compile Include="Ini.cs" />
       <Compile Include="Models\Misc.cs" />
       <Compile Include="Program.cs" />
@@ -64,6 +66,7 @@
       <AvaloniaResource Include="Views\MainWindow.axaml" />
       <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
+      <AvaloniaResource Include="Dialogs\TaskProgressDialog.axaml" />
       <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />

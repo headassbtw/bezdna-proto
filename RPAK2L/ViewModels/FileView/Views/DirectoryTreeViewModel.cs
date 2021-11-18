@@ -51,7 +51,27 @@ namespace RPAK2L.ViewModels.FileView.Views
             }
         }
 
+        private int Counter { get; set; }
+        private ObservableCollection<PakFileInfo> _pakFiles;
 
+        public void SetPakFiles(ObservableCollection<PakFileInfo> pakFiles)
+        {
+            _pakFiles = pakFiles;
+        }
+        public void AddPakFiles(int count = 20)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                AddPakFile(_pakFiles[i]);
+            }
+        }
+
+        private void AddPakFile(PakFileInfo info)
+        {
+            Files.Add(info);
+        }
+        
+        
         public void OpenSettingsMenu()
         {
             var sm = new SettingsMenu();
@@ -64,6 +84,11 @@ namespace RPAK2L.ViewModels.FileView.Views
             sm.DataContext = new AboutMenuViewModel();
             sm.ShowDialog(ParentWindow);
         }
+        
+        
+        
+        
+        
         
         public DirectoryTreeViewModel(Window context)
         {

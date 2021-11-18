@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -20,9 +21,11 @@ namespace RPAK2L
             {
                 desktop.MainWindow = new DirectoryTree();
                 desktop.MainWindow.DataContext = new DirectoryTreeViewModel(desktop.MainWindow);
+                Program.AppMainWindow = desktop.MainWindow;
             }
 
             base.OnFrameworkInitializationCompleted();
+            Console.WriteLine("FrameworkInitComp");
         }
     }
 }
