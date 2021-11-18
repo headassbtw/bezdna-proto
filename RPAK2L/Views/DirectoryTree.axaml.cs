@@ -103,6 +103,8 @@ namespace RPAK2L.Views
                 iniInstance.Save();
             }
         }
+
+        private string PakName;
         private PakFileInfo CurrentFileToExport;
         private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
@@ -230,9 +232,9 @@ namespace RPAK2L.Views
                             byte[] buf = new byte[text.size];
                         var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
                         Console.WriteLine("Opening starpak stream");
-                        var starpaktype = text.streaming ? "stream" : "all";
+                        var pak = text.streaming ? "pc_stream.starpak" : $"{PakName}.rpak";
                         FileStream spr = new FileStream(
-                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", $"pc_{starpaktype}.starpak"),
+                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
                             FileMode.Open);
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
@@ -408,6 +410,11 @@ namespace RPAK2L.Views
         {
             string selected = ((string) e.AddedItems[0]);
             Console.WriteLine($"Selected RPAK {selected}");
+            string tmp = selected.Replace('\\', '/');
+            tmp = tmp.Substring(tmp.LastIndexOf('/')+1);
+            tmp = tmp.Substring(0, tmp.LastIndexOf('.'));
+            Console.WriteLine(tmp);
+            PakName = tmp;
             Load(selected);
         }
 

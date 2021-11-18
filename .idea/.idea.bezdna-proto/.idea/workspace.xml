@@ -10,10 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="BRO IT FUCKING WORKS, HOLY SHIT">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="34112" />
+    <option name="totalTimeSeconds" value="35031" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -51,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/Views/DirectoryTree.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f12e041db1442449426965265946e5343c00/1A/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -190,7 +189,7 @@
       <workItem from="1637183123020" duration="3075000" />
       <workItem from="1637186684247" duration="6642000" />
       <workItem from="1637209983632" duration="223000" />
-      <workItem from="1637215825029" duration="2001000" />
+      <workItem from="1637215825029" duration="2963000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -241,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637210070776</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="BRO IT FUCKING WORKS, HOLY SHIT">
+      <created>1637217851709</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637217851709</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +276,7 @@
     <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
     <MESSAGE value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
     <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
-    <option name="LAST_COMMIT_MESSAGE" value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
+    <MESSAGE value="BRO IT FUCKING WORKS, HOLY SHIT" />
+    <option name="LAST_COMMIT_MESSAGE" value="BRO IT FUCKING WORKS, HOLY SHIT" />
   </component>
 </project>
