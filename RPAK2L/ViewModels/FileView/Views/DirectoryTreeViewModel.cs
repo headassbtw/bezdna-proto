@@ -17,8 +17,9 @@ namespace RPAK2L.ViewModels.FileView.Views
     {
         public Window ParentWindow;
         public ObservableCollection<FileTypes> Types { get; set; }
-        public ObservableCollection<PakFileInfo> Files { get; }
-        public ObservableCollection<string> RPakChoices { get; }
+        public ObservableCollection<PakFileInfo> Files { get; set; }
+        public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
+        public ObservableCollection<string> RPakChoices { get; set; }
 
         public Models.Inf FileInfo { get; set; }
         public string InfoName
@@ -56,19 +57,50 @@ namespace RPAK2L.ViewModels.FileView.Views
 
         public void SetPakFiles(ObservableCollection<PakFileInfo> pakFiles)
         {
+            
+            Counter = 0;
             _pakFiles = pakFiles;
         }
         public void AddPakFiles(int count = 20)
         {
+            if(count > _pakFiles.Count)
+                count = _pakFiles.Count;
             for (int i = 0; i < count; i++)
             {
-                AddPakFile(_pakFiles[i]);
+                AddPakFile(_pakFiles[Counter]);
+                Counter++;
             }
+            MakeAllVisible();
         }
 
         private void AddPakFile(PakFileInfo info)
         {
             Files.Add(info);
+        }
+        private string _searchFilter = "";
+
+        private void MakeAllVisible()
+        {
+            VisibleFiles.Clear();
+            foreach(var pakfile in Files)
+                VisibleFiles.Add(pakfile);
+        }
+        
+        public string SearchBoxFilter
+        {
+            get => _searchFilter;
+            set
+            {
+                Console.WriteLine(value);
+                this.RaiseAndSetIfChanged(ref _searchFilter, value);
+                var filtered = Files.Where(x => x.Name.ToLower().Contains(value.ToLower())).ToList();
+                Console.WriteLine($"{filtered.Count} Items match search parameters");
+                VisibleFiles.Clear();
+                foreach (var whythefuckcantobservablesjustactivatewhenineedthemto in filtered)
+                {
+                    VisibleFiles.Add(whythefuckcantobservablesjustactivatewhenineedthemto);
+                }
+            }
         }
         
         
@@ -92,8 +124,10 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
+            Counter = 0;
             ParentWindow = context;
             Files = new ObservableCollection<PakFileInfo>();
+            VisibleFiles = new ObservableCollection<PakFileInfo>();
             Types = new ObservableCollection<FileTypes>();
             RPakChoices = new ObservableCollection<string>();
         }

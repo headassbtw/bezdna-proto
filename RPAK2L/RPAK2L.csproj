@@ -11,14 +11,12 @@
         <Folder Include="obj\Debug" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Wasmtime" Version="0.27.0-preview1" />
         <PackageReference Include="Avalonia" Version="0.10.5" />
         <PackageReference Include="Avalonia.Desktop" Version="0.10.5" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.5" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.5" />
         <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\bezdna-proto\bezdna-proto.csproj" />
     </ItemGroup>
     <ItemGroup>
       <UpToDateCheckInput Remove="**\*.axaml" />
@@ -33,12 +31,32 @@
       <Compile Include="Backend\Common.cs" />
       <Compile Include="Backend\Enum.cs" />
       <Compile Include="Backend\Games\R2PakProcess.cs" />
+      <Compile Include="Backend\GenericProgressDialog.cs" />
+      <Compile Include="Bezdna\Apex\FileEntryInternal.cs" />
+      <Compile Include="Bezdna\Apex\FileTypes\Material.cs" />
+      <Compile Include="Bezdna\Apex\FileTypes\RUI.cs" />
+      <Compile Include="Bezdna\Apex\FileTypes\Texture.cs" />
+      <Compile Include="Bezdna\Apex\RPakFile.cs" />
+      <Compile Include="Bezdna\Apex\RPakHeader.cs" />
+      <Compile Include="Bezdna\Extensions.cs" />
+      <Compile Include="Bezdna\Program.cs" />
+      <Compile Include="Bezdna\Titanfall2\DataChunk.cs" />
+      <Compile Include="Bezdna\Titanfall2\FileEntryInternal.cs" />
+      <Compile Include="Bezdna\Titanfall2\FileTypes\DataTables.cs" />
+      <Compile Include="Bezdna\Titanfall2\FileTypes\Material.cs" />
+      <Compile Include="Bezdna\Titanfall2\FileTypes\Shader.cs" />
+      <Compile Include="Bezdna\Titanfall2\FileTypes\Texture.cs" />
+      <Compile Include="Bezdna\Titanfall2\RPakFile.cs" />
+      <Compile Include="Bezdna\Titanfall2\RPakHeader.cs" />
+      <Compile Include="Bezdna\Titanfall2\SectionDescriptor.cs" />
+      <Compile Include="Bezdna\Utils.cs" />
       <Compile Include="Dialogs\ProgressableTask.cs" />
       <Compile Include="Dialogs\TaskProgressDialog.axaml.cs" />
       <Compile Include="Ini.cs" />
       <Compile Include="Models\Misc.cs" />
       <Compile Include="Program.cs" />
       <Compile Include="Headers/HeaderInterface.cs" />
+      <Compile Include="Properties\Resources.Designer.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
       <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
@@ -55,9 +73,15 @@
     <ItemGroup>
       <EmbeddedResource Remove="**\**" />
       <EmbeddedResource Include="Images\Icon_full.png" />
+      <EmbeddedResource Include="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <None Remove="**\**" />
+      <None Include="Bezdna\Resources\decomp.wasm" />
+      <None Include="Properties\launchSettings.json" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />
@@ -71,5 +95,10 @@
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC7U.bin" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\bezdna-proto\bin\Debug\net5.0\Wasmtime.Dotnet.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>

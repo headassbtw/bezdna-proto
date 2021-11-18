@@ -10,6 +10,7 @@
                 <dc:ProgressableTask/>
         </Design.DataContext>
         <Grid HorizontalAlignment="Center" RowDefinitions="*,Auto">
-                <ProgressBar Maximum="4" Minimum="0" ShowProgressText="True" Initialized="ProgressBar_Init" Value="{Binding Percentage}"></ProgressBar>
+                <ProgressBar Maximum="{Binding TotalItems}" Minimum="0" ShowProgressText="True" Initialized="ProgressBar_Init" Value="{Binding ProcessedItems}"></ProgressBar>
+                <TextBlock Text="{Binding ProcessedItems}"></TextBlock>
         </Grid>
 </Window>

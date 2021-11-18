@@ -5,7 +5,7 @@ namespace bezdna_proto
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main_Bez(string[] args)
         {
             //var f = new Titanfall2.RPakFile(new FileStream(@"D:\OriginGays\Titanfall2\r2\paks\Win64\common(01).rpak", FileMode.Open, FileAccess.Read));
             var fstream = new FileStream(args[0], FileMode.Open, FileAccess.Read);

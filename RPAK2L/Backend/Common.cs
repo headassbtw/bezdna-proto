@@ -3,6 +3,7 @@ using System.IO;
 using bezdna_proto;
 using bezdna_proto.Titanfall2;
 using RPAK2L.Backend.Games;
+using RPAK2L.Dialogs;
 
 namespace RPAK2L.Backend
 {
@@ -30,6 +31,7 @@ namespace RPAK2L.Backend
             {
                 case 7:
                     Game = Game.R2;
+                    Console.WriteLine("Loading RPak for R2");
                     R2Pak = new R2Pak(PakReadStream);
                     return;
                 case 8:

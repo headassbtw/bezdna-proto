@@ -68,18 +68,16 @@
             </Border>
             <Grid Grid.Column="1" RowDefinitions="*,Auto">
                 <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
-                    <TreeView SelectionChanged="FileView_OnSelectionChanged" MinWidth="200" BorderThickness="3" Items="{Binding Files}">
-                        <TreeView.DataTemplates>
-                            <TreeDataTemplate DataType="models:PakFileInfo">
-                                <Grid VerticalAlignment="Stretch" ColumnDefinitions="*" HorizontalAlignment="Stretch">
-                                    <TextBlock Grid.Column="0" Foreground="White" Text="{Binding Name}" />
-                                </Grid>
-                            </TreeDataTemplate>
-                            <DataTemplate DataType="models:File">
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>    
-                        </TreeView.DataTemplates>
-                    </TreeView>
+                    <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
+                        <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search"></TextBox>
+                        <ListBox Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
                 </Border>
                 <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="1" Height="200" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
                     <Grid RowDefinitions="*,Auto">

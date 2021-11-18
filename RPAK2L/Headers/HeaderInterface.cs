@@ -49,7 +49,7 @@ namespace RPAK2L.Headers
                             if(!Compressions.ContainsKey(Compression))
                                 Compressions.Add(Compression, ba);
                             IncrementProgress();
-                            Thread.Sleep(1000);
+                            Thread.Sleep(10);
                         }
                         else
                         {
@@ -62,7 +62,7 @@ namespace RPAK2L.Headers
         }
         public byte[] Get(int res, string compression)
         {
-            return DdsHeaders[res][compression];
+            return DdsHeaders.TryGetValue(res , out Dictionary<string,byte[]> Compressions) ? Compressions.TryGetValue(compression, out byte[] ba) ? ba : null : null;
         }
     }
 }

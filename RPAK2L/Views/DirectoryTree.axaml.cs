@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
@@ -41,7 +42,24 @@ namespace RPAK2L.Views
             {
                 if (_firstTimeShown)
                 {
+                    vm = DataContext as DirectoryTreeViewModel;
                     Program.Headers.Init();
+                    iniInstance.Load();
+                    string dir = iniInstance.GetValue("GameDirectory", "","null");
+                    if (dir != "null")
+                    {
+                        FillInRpaks(dir);
+                    }
+                    /*var listBox = this.FindControl<TreeView>("PakFiles");
+                    listBox.GetObservable(ListBox.ScrollProperty)
+                        .OfType<ScrollViewer>()
+                        .Take(1)
+                        .Subscribe(xv =>
+                    {
+                        Console.WriteLine("A");
+                    });*/
+
+
                     _firstTimeShown = false;
                 }
             };
@@ -52,7 +70,7 @@ namespace RPAK2L.Views
         {
             AvaloniaXamlLoader.Load(this);
             //DataContext = new DirectoryTreeViewModel();
-            vm = DataContext as DirectoryTreeViewModel;
+            
             Console.WriteLine("InitComponent");
             
         }
@@ -64,7 +82,7 @@ namespace RPAK2L.Views
             Console.WriteLine($"Selected {selected.Name}");
             vm.Files.Clear();
             vm.SetPakFiles(selected.Files);
-            vm.AddPakFiles();
+            vm.AddPakFiles(selected.Files.Count);
         }
 
         private Ini iniInstance = new Ini(System.IO.Path.Combine(Environment.CurrentDirectory, "settings.ini"));
@@ -92,31 +110,30 @@ namespace RPAK2L.Views
             vm = ((DirectoryTreeViewModel) DataContext);
             Console.WriteLine($"Selected {selected.Name}");
             var inf = new Models.Inf();
-            /*
+            
             switch (selected.File.ShortName)
             {
                 case "txtr":
-                    tex.Files.Add(file);
+                    inf.Size = "";
+                    foreach (var mip in ((Texture)selected.SpecificTypeFile).TextureDatas)
+                    {
+                        inf.Size += mip.width + "x" + mip.height + "|" + (mip.streaming ? "Streaming" : "Static") + '|' + mip.seek.ToString("X").PadLeft(16, '0')  + '\n';
+                    }
                     break;
                 case "matl":
-                    mat.Files.Add(file);
                     break;
                 case "shdr":
-                    sha.Files.Add(file);
                     break;
                 case "dtbl":
-                    dtb.Files.Add(file);
                     break;
                 default:
-                    Console.WriteLine("unhandled file extension, throwing in misc...");
-                    msc.Files.Add(file);
                     break;
-            }*/
+            }
             
 
             
             inf.Name = selected.Name;
-            inf.Size = $"{selected.File.Count} Bytes";
+            
             vm.FileInfo = inf;
             AddButton.IsEnabled = false;
             DeleteButton.IsEnabled = true;
@@ -206,14 +223,15 @@ namespace RPAK2L.Views
                     
                     foreach (var text in tex.TextureDatas)
                     {
-                        if(text.height > 512)
+                        //if(text.height == 2048)
                         {
                             Console.WriteLine($"ExportingMipMap ({text.height}x)");
                             byte[] buf = new byte[text.size];
                         var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
-                        Console.WriteLine("Opening pc_stream.starpak stream");
+                        Console.WriteLine("Opening starpak stream");
+                        var starpaktype = text.streaming ? "stream" : "all";
                         FileStream spr = new FileStream(
-                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", "pc_stream.starpak"),
+                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", $"pc_{starpaktype}.starpak"),
                             FileMode.Open);
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
@@ -222,10 +240,10 @@ namespace RPAK2L.Views
                         fs.Write(buf);
                         fs.Close();
                         }
-                        else
+                        /*else
                         {
                             Console.WriteLine("Texture is smaller than 512x, not exporting");
-                        }
+                        }*/
                     }
                     
                     
@@ -248,69 +266,72 @@ namespace RPAK2L.Views
             throw new NotImplementedException();
         }
 
-
+        private int _lifetime;
         private void Load(string fullRPakPath)
         {
+            _lifetime++;
+            Console.WriteLine($"Load called from lifetime {_lifetime}");
              FileTypes tex = new FileTypes() {Name = "Textures"};
-                    FileTypes mat = new FileTypes() {Name = "Materials"};
-                    FileTypes sha = new FileTypes() {Name = "Shaders"};
-                    FileTypes dtb = new FileTypes() {Name = "DataTables"};
-                    FileTypes msc = new FileTypes() {Name = "Misc"};
-                    vm.Types.Clear();
-                    vm.Types.Add(tex);
-                    vm.Types.Add(mat);
-                    vm.Types.Add(sha);
-                    vm.Types.Add(dtb);
-                    vm.Types.Add(msc);
+                FileTypes mat = new FileTypes() {Name = "Materials"};
+                FileTypes sha = new FileTypes() {Name = "Shaders"};
+                FileTypes dtb = new FileTypes() {Name = "DataTables"};
+                FileTypes msc = new FileTypes() {Name = "Misc"};
+                vm.Types.Clear();
+                vm.Types.Add(tex);
+                vm.Types.Add(mat);
+                vm.Types.Add(sha);
+                vm.Types.Add(dtb);
+                vm.Types.Add(msc);
+                
+                //vm.Types = new ObservableCollection<FileTypes>();
+                
+                Console.WriteLine("t1");
+                var pakBackend = new PakInterface(fullRPakPath);
+                Console.WriteLine("t2");
+
+                Console.WriteLine("Starpaks:");
+                foreach (string starpak in pakBackend.R2Pak.Pak.StarPaks)
+                {
+                    Console.WriteLine(starpak);
+                }
+
+                Console.WriteLine("Begginning Load...");
+
+                for(int i = 0; i < pakBackend.R2Pak.PakInfos.Count; i++)
+                {
                     
-                    vm.Types = new ObservableCollection<FileTypes>();
-
-
-                    pakBackend = new PakInterface(fullRPakPath);
-
-
-                    Console.WriteLine("Starpaks:");
-                    foreach (string starpak in pakBackend.R2Pak.Pak.StarPaks)
-                    {
-                        Console.WriteLine(starpak);
-                    }
-
-                    Console.WriteLine("Begginning Load...");
-
-                    for(int i = 0; i < pakBackend.R2Pak.PakInfos.Count; i++)
+                    var file = pakBackend.R2Pak.PakInfos[i];
+                    //Thread LoadThread = new Thread(async =>
                     {
                         
-                        var file = pakBackend.R2Pak.PakInfos[i];
-                        Thread LoadThread = new Thread(async =>
+                        Console.WriteLine($"Adding {file.File.StarpakOffset}");
+                        switch (file.File.ShortName)
                         {
-                            
-                            Console.WriteLine($"Adding {file.File.StarpakOffset}");
-                            switch (file.File.ShortName)
-                            {
-                                case "txtr":
-                                    tex.Files.Add(file);
-                                    return;
-                                case "matl":
-                                    mat.Files.Add(file);
-                                    return;
-                                case "shdr":
-                                    sha.Files.Add(file);
-                                    return;
-                                case "dtbl":
-                                    dtb.Files.Add(file);
-                                    return;
-                                default:
-                                    Console.WriteLine("unhandled file extension, throwing in misc...");
-                                    msc.Files.Add(file);
-                                    return;
-                            }
-                        });
-                        LoadThread.Name = $"{file.File.StarpakOffset} Load Thread";
-                        LoadThread.Start();
-                    }
+                            case "txtr":
+                                tex.Files.Add(file);
+                                break;
+                            case "matl":
+                                mat.Files.Add(file);
+                                break;
+                            case "shdr":
+                                sha.Files.Add(file);
+                                break;
+                            case "dtbl":
+                                dtb.Files.Add(file);
+                                break;
+                            default:
+                                Console.WriteLine("unhandled file extension, throwing in misc...");
+                                msc.Files.Add(file);
+                                break;
+                        }
+                    }//);
+                    //LoadThread.Name = $"{file.File.StarpakOffset} Load Thread";
+                    //LoadThread.Start();
+                }
+                Console.WriteLine("Finished loading");
         }
         
-        private Backend.PakInterface pakBackend;
+        //private Backend.PakInterface pakBackend;
         private void FileOpen_OnClick(object? sender, RoutedEventArgs e)
         {
             OpenFolderDialog dialog = new OpenFolderDialog();
@@ -344,6 +365,8 @@ namespace RPAK2L.Views
 
         private void FillInRpaks(string path)
         {
+            if (vm == null)
+                return;
             LastSelectedDirectory = path;
             var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
 
@@ -356,12 +379,7 @@ namespace RPAK2L.Views
         private void RPakItemControl_Initialized(object? sender, EventArgs e)
         {
             Console.WriteLine("RPakSelectorInit");
-            iniInstance.Load();
-            string dir = iniInstance.GetValue("GameDirectory", "","null");
-            if (dir != "null")
-            {
-                FillInRpaks(dir);
-            }
+            
         }
 
 
@@ -390,6 +408,7 @@ namespace RPAK2L.Views
         private void RPakItemControl_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             string selected = ((string) e.AddedItems[0]);
+            Console.WriteLine($"Selected RPAK {selected}");
             Load(selected);
         }
 

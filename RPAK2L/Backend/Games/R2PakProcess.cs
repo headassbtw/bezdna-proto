@@ -1,25 +1,31 @@
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Threading;
 using bezdna_proto;
 using bezdna_proto.Titanfall2;
 using bezdna_proto.Titanfall2.FileTypes;
 using DynamicData;
+using RPAK2L.Dialogs;
 using RPAK2L.ViewModels.FileView.Types;
 
 namespace RPAK2L.Backend.Games
 {
-    public class R2Pak
+    public class R2Pak : ProgressableTask
     {
         public bezdna_proto.Titanfall2.RPakFile Pak;
         public ObservableCollection<PakFileInfo> PakInfos;
         public ObservableCollection<FileEntryInternal> Files;
+        private bool _finished = false;
         public R2Pak(FileStream PakStream)
         {
+            
             PakStream.Position = 0;
             Pak = new RPakFile(PakStream);
-
+            Init(Pak.FilesInternal.Length);
+            Console.WriteLine("arg");
             PakInfos = new ObservableCollection<PakFileInfo>();
-            
+            TotalItems = Pak.FilesInternal.Length;
             foreach (FileEntryInternal file in Pak.FilesInternal)
             {
                 string extension = file.ShortName;
@@ -30,7 +36,6 @@ namespace RPAK2L.Backend.Games
                 {
                     case "txtr":
                         var t = new Texture(Pak, file);
-                        if (t.Name.Contains("col"))
                         PakInfos.Add(new PakFileInfo(file)
                         {
                             Pak = Pak,
@@ -73,11 +78,20 @@ namespace RPAK2L.Backend.Games
                         });
                         break;
                 }
-                
+                IncrementProgress();
                 
                 
             }
-            
+
+            _finished = true;
+        }
+
+        public override void Run()
+        {
+            while (!_finished)
+            {
+                Thread.Sleep(10);
+            }
         }
     }
 }

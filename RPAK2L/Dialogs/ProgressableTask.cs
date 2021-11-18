@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using ReactiveUI;
 
 namespace RPAK2L.Dialogs
@@ -20,17 +21,17 @@ namespace RPAK2L.Dialogs
     public abstract class ProgressableTask : ReactiveObject
     {
         private TaskProgressDialog _dialog;
-        public int ProcessedItems;
-        private int _totalItems;
-        private double _percentage;
-        public double Percentage
+        private int _processed;
+
+        public int ProcessedItems
         {
-            get => _percentage;
+            get => _processed;
             set
             {
-                this.RaiseAndSetIfChanged(ref _percentage, value);
+                this.RaiseAndSetIfChanged(ref _processed, value);
             }
         }
+        private int _totalItems;
 
         public int TotalItems
         {
@@ -45,17 +46,23 @@ namespace RPAK2L.Dialogs
 
         public ProgressableTask()
         {
-            IncrementProgress = () =>
-            {
-                ProcessedItems++;
-                if (ProcessedItems != 0 && TotalItems != 0)
-                    Percentage = ProcessedItems / TotalItems;
-            };
+            
             Started += StartedHit;
         }
 
+        public void Init(int totalItems)
+        {
+            TotalItems = totalItems;
+            Init();
+        }
         public void Init()
         {
+            ProcessedItems = 0;
+            IncrementProgress = () =>
+            {
+                Console.WriteLine($"{ProcessedItems}/{TotalItems}");
+                ProcessedItems++;
+            };
             ShowWindow();
             
         }
@@ -65,13 +72,27 @@ namespace RPAK2L.Dialogs
         {
             ShowWindow();
         }
-
+        bool _finished = false;
         private void ShowWindow()
         {
             _dialog = new TaskProgressDialog();
             _dialog.DataContext = this;
-            _dialog.ShowDialog(Program.AppMainWindow);
-            _dialog.Activated += async (sender, args) => {Run(); };
+            var diag = _dialog.ShowDialog(Program.AppMainWindow);
+            _dialog.Activated += (sender, args) =>
+            {
+                ThreadPool.QueueUserWorkItem(async =>
+                {
+                    Run();
+                    Console.WriteLine("Task finished");
+                    _finished = true;
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        _dialog.Close();
+                    });
+                });
+            };
+            
+            
         }
     }
 }

@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
+using RPAK2L.Backend;
+using RPAK2L.Dialogs;
 
 // this is utterly retarded... (C) VALVe
 using Wasmtime;
 
 namespace bezdna_proto
 {
-    public static class Utils
+    public class Utils
     {
         public const int HEADER_SIZE7 = 88;
         public const int HEADER_SIZE8 = 0x80;
@@ -27,6 +30,8 @@ namespace bezdna_proto
 
             return file[5] + (file[6] << 8);
         }
+
+        private static GenericProgressDialog progressDialog;
 
         public static int GetRPakVersion(FileStream file)
         {
@@ -73,10 +78,13 @@ namespace bezdna_proto
 
         public static byte[] Decompress(FileStream file, ulong expectedDSize, int headerSize)
         {
+            progressDialog = new GenericProgressDialog();
+            progressDialog.Init((int)file.Length);
+            
             file.Seek(0, SeekOrigin.Begin);
             byte[] bytes = new byte[file.Length];
             file.Read(bytes);
-
+            
             using var engine = new Engine();
             using var module = Module.FromBytes(engine, "decomp", Properties.Resources.decomp);
             //using var module = Module.FromFile(engine, @"D:\Projects\wasi-sdk-12.0\decomp.wasm");
@@ -91,13 +99,15 @@ namespace bezdna_proto
             const int parameters = Memory.PageSize * 2;
             const int startOffset = parameters + 0x100;
             int offset = startOffset;
+            
             for (var i = 0; i < bytes.Length; i++)
             {
                 // I can feel the retardation
                 Memory.WriteByte(offset, bytes[i]);
                 offset++;
+                progressDialog.IncrementProgress();
             }
-
+            progressDialog.Finish();
             var dSize = instance.get_decompressed_size(parameters, startOffset, -1, bytes.Length, 0, headerSize);
 
             if ((ulong)dSize != expectedDSize)

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using RPAK2L;
+using RPAK2L.Dialogs;
 
 namespace bezdna_proto.Titanfall2
 {
