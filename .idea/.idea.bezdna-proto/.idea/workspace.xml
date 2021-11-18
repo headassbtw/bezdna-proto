@@ -11,40 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Backend/GenericProgressDialog.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Common.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Common.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/FileEntryInternal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/FileEntryInternal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/FileTypes/Material.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/FileTypes/Material.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/FileTypes/RUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/FileTypes/RUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/FileTypes/Texture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/FileTypes/Texture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/RPakFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/RPakFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Apex/RPakHeader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Apex/RPakHeader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Properties/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Properties/Resources.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Properties/Resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Properties/Resources.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Resources/decomp.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Resources/decomp.wasm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/DataChunk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/DataChunk.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/FileEntryInternal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/FileTypes/DataTables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/FileTypes/Material.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/Material.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/FileTypes/Shader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/Shader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/FileTypes/Texture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/Texture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/RPakFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/RPakHeader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Titanfall2/SectionDescriptor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="32360" />
+    <option name="totalTimeSeconds" value="34112" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -76,15 +46,11 @@
     <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f12e041db1442449426965265946e5343c00/1A/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -223,6 +189,8 @@
       <workItem from="1637180239781" duration="2283000" />
       <workItem from="1637183123020" duration="3075000" />
       <workItem from="1637186684247" duration="6642000" />
+      <workItem from="1637209983632" duration="223000" />
+      <workItem from="1637215825029" duration="2001000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -266,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637188960786</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT">
+      <created>1637210070776</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637210070776</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,25 +269,7 @@
     <MESSAGE value="we do a little more header stuff" />
     <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
     <MESSAGE value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs</url>
-          <line>87</line>
-          <properties documentPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" initialLine="79" containingFunctionPresentation="method 'Decompress'">
-            <startOffsets>
-              <option value="2874" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2906" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
+    <option name="LAST_COMMIT_MESSAGE" value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
   </component>
 </project>

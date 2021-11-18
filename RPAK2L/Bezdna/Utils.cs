@@ -78,9 +78,7 @@ namespace bezdna_proto
 
         public static byte[] Decompress(FileStream file, ulong expectedDSize, int headerSize)
         {
-            progressDialog = new GenericProgressDialog();
-            progressDialog.Init((int)file.Length);
-            
+
             file.Seek(0, SeekOrigin.Begin);
             byte[] bytes = new byte[file.Length];
             file.Read(bytes);
@@ -105,9 +103,7 @@ namespace bezdna_proto
                 // I can feel the retardation
                 Memory.WriteByte(offset, bytes[i]);
                 offset++;
-                progressDialog.IncrementProgress();
             }
-            progressDialog.Finish();
             var dSize = instance.get_decompressed_size(parameters, startOffset, -1, bytes.Length, 0, headerSize);
 
             if ((ulong)dSize != expectedDSize)

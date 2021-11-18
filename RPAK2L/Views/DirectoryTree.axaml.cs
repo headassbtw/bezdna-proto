@@ -44,6 +44,7 @@ namespace RPAK2L.Views
                 {
                     vm = DataContext as DirectoryTreeViewModel;
                     Program.Headers.Init();
+                    
                     iniInstance.Load();
                     string dir = iniInstance.GetValue("GameDirectory", "","null");
                     if (dir != "null")
@@ -225,7 +226,7 @@ namespace RPAK2L.Views
                     {
                         //if(text.height == 2048)
                         {
-                            Console.WriteLine($"ExportingMipMap ({text.height}x)");
+                            Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
                             byte[] buf = new byte[text.size];
                         var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
                         Console.WriteLine("Opening starpak stream");
@@ -236,7 +237,7 @@ namespace RPAK2L.Views
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
-                        fs.Write(Program.Headers.Get(tex.Height, compression));
+                        fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
                         fs.Write(buf);
                         fs.Close();
                         }
@@ -393,9 +394,7 @@ namespace RPAK2L.Views
 
         private void SettingsMenu_OnClick(object? sender, RoutedEventArgs e)
         {
-            var sm = new SettingsMenu();
-            sm.DataContext = new SettingsMenuViewModel();
-            sm.ShowDialog(this);
+            Program.Headers.GetCustomRes(4096, 2048, "DXT1");
         }
         
         private void AddButton_OnClick(object? sender, RoutedEventArgs e)
