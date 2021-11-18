@@ -23,7 +23,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Linux
-        path: ${{ steps.build-linux.outputs.artifactpath }}
+        path: ${{ steps.Build.outputs.artifactpath }}
   build-windows:
     runs-on: ubuntu-latest
     steps:
@@ -40,4 +40,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Windows
-        path: ${{ steps.build-windows.outputs.artifactpath }}
+        path: ${{ steps.Build.outputs.artifactpath }}
