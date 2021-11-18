@@ -10,17 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="BRO IT FUCKING WORKS, HOLY SHIT">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
-    </list>
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,7 +185,7 @@
       <workItem from="1637186684247" duration="6642000" />
       <workItem from="1637209983632" duration="223000" />
       <workItem from="1637215825029" duration="2963000" />
-      <workItem from="1637224355861" duration="1447000" />
+      <workItem from="1637224355861" duration="1474000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -253,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637217851709</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="we do a little error box making">
+      <created>1637225858988</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637225858988</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +280,7 @@
     <MESSAGE value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
     <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
     <MESSAGE value="BRO IT FUCKING WORKS, HOLY SHIT" />
-    <option name="LAST_COMMIT_MESSAGE" value="BRO IT FUCKING WORKS, HOLY SHIT" />
+    <MESSAGE value="we do a little error box making" />
+    <option name="LAST_COMMIT_MESSAGE" value="we do a little error box making" />
   </component>
 </project>
