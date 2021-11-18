@@ -38,6 +38,9 @@ namespace RPAK2L.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
+            
+            
+            
             this.Title = "RPAK2L";
             #if DEBUG
             this.Title += " | Debug";
@@ -46,7 +49,13 @@ namespace RPAK2L.Views
             #endif
             string infover = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()
                 .InformationalVersion;
-            this.Title += " | Build " + infover.Substring(infover.IndexOf('+')+1);
+            this.Title += " | Build ";
+            #if CI
+            Title += "CI- ";
+            #else
+            Title += "LC-";
+            #endif
+            Title += infover.Substring(infover.IndexOf('+')+1);
             this.Activated += (sender, args) =>
             {
                 if (_firstTimeShown)

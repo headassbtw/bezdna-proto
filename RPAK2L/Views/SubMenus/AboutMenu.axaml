@@ -22,7 +22,7 @@
             <Image Grid.Column="1" Width="200" Height="200" Source="resm:RPAK2L.Images.Icon_full.png"></Image>
         </Grid>
         <Grid HorizontalAlignment="Right" Grid.Row="1">
-            <Button Click="GithubButton_OnClick">Github</Button>
+            <Button Click="GithubButton_OnClick">I will shit on your xbox</Button>
         </Grid>
     </Grid>
 </Window>

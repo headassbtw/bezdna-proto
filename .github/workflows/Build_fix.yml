@@ -19,11 +19,11 @@ jobs:
       run: dotnet restore
     - name: Build
       id: Build
-      run: dotnet build RPAK2L --no-restore -c Linux
+      run: dotnet build RPAK2L --no-restore -c Debug -r linux-x64
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: Linux
+        name: Linux_x64_Debug
         path: ${{ steps.Build.outputs.artifactpath }}
   build-windows:
     runs-on: ubuntu-latest
@@ -37,9 +37,9 @@ jobs:
       run: dotnet restore
     - name: Build
       id: Build
-      run: dotnet build RPAK2L --no-restore -c Windows
+      run: dotnet build RPAK2L --no-restore -c Debug -r win-x64
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: Windows
+        name: Windows_x64_Debug
         path: ${{ steps.Build.outputs.artifactpath }}
