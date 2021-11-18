@@ -20,7 +20,7 @@
         </ScrollViewer>
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
             <TextBlock></TextBlock>
-            <Button Grid.Column="1">Apply</Button>
+            <Button Grid.Column="1" Command="{Binding ApplyCommand}">Apply</Button>
         </Grid>
     </Grid>
 </Window>

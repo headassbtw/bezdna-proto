@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reactive;
+using Avalonia;
 using Avalonia.Controls;
 using ReactiveUI;
 using RPAK2L.ViewModels.FileView.Types;
@@ -16,11 +18,23 @@ namespace RPAK2L.ViewModels.FileView.Views
     public class DirectoryTreeViewModel : ReactiveObject
     {
         public Window ParentWindow;
+        public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; set; }
         public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
         public ObservableCollection<string> RPakChoices { get; set; }
 
+        public bool DebugMenu_IsVisible
+        {
+            get
+            {
+                #if DEBUG || EXTREME_DEBUG
+                return true;
+                #else
+                return false;
+                #endif
+            }
+        }
         public Models.Inf FileInfo { get; set; }
         public string InfoName
         {
@@ -107,8 +121,9 @@ namespace RPAK2L.ViewModels.FileView.Views
         public void OpenSettingsMenu()
         {
             var sm = new SettingsMenu();
-            sm.DataContext = new SettingsMenuViewModel();
+            
             sm.ShowDialog(ParentWindow);
+            sm.DataContext = new SettingsMenuViewModel(sm);
         }
         public void OpenAboutMenu()
         {
@@ -124,6 +139,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
+            ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
             Counter = 0;
             ParentWindow = context;
             Files = new ObservableCollection<PakFileInfo>();

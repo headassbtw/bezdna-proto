@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
@@ -37,8 +38,15 @@ namespace RPAK2L.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
-            
-            
+            this.Title = "RPAK2L";
+            #if DEBUG
+            this.Title += " | Debug";
+            #elif EXTREME_DEBUG
+            this.Title += " | Extreme Debug";
+            #endif
+            string infover = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                .InformationalVersion;
+            this.Title += " | Build " + infover.Substring(infover.IndexOf('+')+1);
             this.Activated += (sender, args) =>
             {
                 if (_firstTimeShown)
@@ -405,7 +413,7 @@ namespace RPAK2L.Views
             vm = ((DirectoryTreeViewModel) DataContext);
         }
 
-        private void SettingsMenu_OnClick(object? sender, RoutedEventArgs e)
+        private void TestMenu_OnClick(object? sender, RoutedEventArgs e)
         {
             this.WarningDialog("Oh god oh fuck oh god oh fuck");
         }

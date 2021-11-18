@@ -10,8 +10,10 @@
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <NeutralLanguage>en-US</NeutralLanguage>
-        <Configurations>Debug;Release;Windows;Linux</Configurations>
+        <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+        <Configurations>Debug;Release;Windows;Linux;Extreme_Debug</Configurations>
         <Platforms>x64</Platforms>
+        <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>bin/Debug/</OutputPath>
@@ -30,6 +32,10 @@
       <OutputPath>bin/Windows/</OutputPath>
       <PlatformTarget>x64</PlatformTarget>
       <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Extreme_Debug|x64' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>portable</DebugType>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Models\" />
@@ -55,6 +61,7 @@
       <Compile Remove="**\**" />
       <Compile Include="App.axaml.cs" />
       <Compile Include="Backend\Common.cs" />
+      <Compile Include="Backend\DirectoryChooseDialog.cs" />
       <Compile Include="Backend\Enum.cs" />
       <Compile Include="Backend\Games\R2PakProcess.cs" />
       <Compile Include="Backend\GenericProgressDialog.cs" />
