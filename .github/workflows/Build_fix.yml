@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: dotnet build RPAK2L --no-restore -r linux-x64
   build-windows:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -30,4 +30,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build RPAK2L --no-restore -r win-x64
+      run: dotnet build RPAK2L --no-restore
