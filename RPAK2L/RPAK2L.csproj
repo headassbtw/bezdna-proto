@@ -4,6 +4,32 @@
         <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+        <IsPackable>false</IsPackable>
+        <Title>RPak Tool</Title>
+        <Description>Titanfall 2 RPAK file manipulation tool </Description>
+        <RepositoryType>git</RepositoryType>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Configurations>Debug;Release;Windows;Linux</Configurations>
+        <Platforms>x64</Platforms>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>bin/Debug/</OutputPath>
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>bin/Release/</OutputPath>
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Linux' ">
+        <OutputPath>bin/Linux/</OutputPath>
+        <PlatformTarget>x64</PlatformTarget>
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Windows' ">
+      <OutputPath>bin/Windows/</OutputPath>
+      <PlatformTarget>x64</PlatformTarget>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Models\" />
