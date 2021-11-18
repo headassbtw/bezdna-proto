@@ -16,6 +16,7 @@ using DynamicData.Binding;
 using ImageMagick;
 using ImageMagick.Formats;
 using RPAK2L.Backend;
+using RPAK2L.Dialogs;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.FileView.Views;
 using RPAK2L.ViewModels.SubMenuViewModels;
@@ -217,6 +218,12 @@ namespace RPAK2L.Views
                 case "txtr":
                     Console.WriteLine("Exporting Texture...");
                     var tex = CurrentFileToExport.SpecificTypeFile as Texture;
+                    if (tex.TextureDatas.Where(t => !t.streaming).ToList().Count > 0)
+                    {
+                        this.WarningDialog("Unable to access this texture (not implemented)");
+                        break;
+                    }
+                        
                     Console.WriteLine(tex.StarpakNum);
                     var compression = tex.Algorithm.ToUpper();
                         Console.WriteLine(compression);
@@ -226,16 +233,16 @@ namespace RPAK2L.Views
                     
                     foreach (var text in tex.TextureDatas)
                     {
-                        //if(text.height == 2048)
+                        if(compression == "DXT1" || compression.StartsWith("BC"))
                         {
                             Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
                             byte[] buf = new byte[text.size];
-                        var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
-                        Console.WriteLine("Opening starpak stream");
-                        var pak = text.streaming ? "pc_stream.starpak" : $"{PakName}.rpak";
-                        FileStream spr = new FileStream(
-                            Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
-                            FileMode.Open);
+                            var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
+                            Console.WriteLine("Opening starpak stream");
+                            var pak = text.streaming ? "pc_stream.starpak" : $"{PakName}.rpak";
+                            FileStream spr = new FileStream(
+                                Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
+                                FileMode.Open);
 
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
@@ -243,24 +250,28 @@ namespace RPAK2L.Views
                         fs.Write(buf);
                         fs.Close();
                         }
-                        /*else
+                        else
                         {
-                            Console.WriteLine("Texture is smaller than 512x, not exporting");
-                        }*/
+                            this.WarningDialog("Unsupported Compression Algoritm");
+                        }
                     }
                     
                     
                     break;
                 case "matl":
                     var mat = CurrentFileToExport.SpecificTypeFile as Material;
+                    this.WarningDialog("Materials coming soon");
                     break;
                 case "shdr":
                     var sha = CurrentFileToExport.SpecificTypeFile as Shader;
+                    this.WarningDialog("Shaders not implemented");
                     break;
                 case "dtbl":
                     var dtb = CurrentFileToExport.SpecificTypeFile as DataTables;
+                    this.WarningDialog("DataTables not implemented");
                     break;
                 default:
+                    this.WarningDialog("Unknown file type");
                     break;
             }
         }
@@ -396,7 +407,7 @@ namespace RPAK2L.Views
 
         private void SettingsMenu_OnClick(object? sender, RoutedEventArgs e)
         {
-            Program.Headers.GetCustomRes(4096, 2048, "DXT1");
+            this.WarningDialog("Oh god oh fuck oh god oh fuck");
         }
         
         private void AddButton_OnClick(object? sender, RoutedEventArgs e)

@@ -91,7 +91,7 @@
                             <Button Grid.Column="1" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"></TextBlock></Button>
                             <Button Grid.Column="2" Initialized="DeleteButton_OnInitialized" Click="DeleteButton_OnClick"><TextBlock Text="Delete"></TextBlock></Button>
                             <Button Grid.Column="3" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"></TextBlock></Button>
-                            <Button Grid.Column="4" Click="SettingsMenu_OnClick"><TextBlock Text="Settings"></TextBlock></Button>
+                            <Button Grid.Column="4" Click="SettingsMenu_OnClick"><TextBlock Text="Test"></TextBlock></Button>
                         </Grid>
                     </Grid>
                 </Border>

@@ -52,6 +52,8 @@
       <Compile Include="Bezdna\Utils.cs" />
       <Compile Include="Dialogs\ProgressableTask.cs" />
       <Compile Include="Dialogs\TaskProgressDialog.axaml.cs" />
+      <Compile Include="Dialogs\WarningDataContext.cs" />
+      <Compile Include="Dialogs\WarningDialog.axaml.cs" />
       <Compile Include="Ini.cs" />
       <Compile Include="Models\Misc.cs" />
       <Compile Include="Program.cs" />
@@ -91,6 +93,7 @@
       <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
       <AvaloniaResource Include="Dialogs\TaskProgressDialog.axaml" />
+      <AvaloniaResource Include="Dialogs\WarningDialog.axaml" />
       <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
