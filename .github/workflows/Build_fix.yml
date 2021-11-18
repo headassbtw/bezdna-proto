@@ -18,9 +18,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
+      id: Build
       run: dotnet build RPAK2L --no-restore -c Linux
     - name: Upload Artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: Linux
         path: ${{ steps.Build.outputs.artifactpath }}
@@ -35,9 +36,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
+      id: Build
       run: dotnet build RPAK2L --no-restore -c Windows
     - name: Upload Artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: Windows
         path: ${{ steps.Build.outputs.artifactpath }}
