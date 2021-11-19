@@ -17,14 +17,14 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: build-linux
-      id: build-linux
+    - name: Build
+      id: Build
       run: dotnet build RPAK2L --no-restore -c Debug -r linux-x64
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
         name: Linux_x64_Debug
-        path: ${{ steps.build-linux.outputs.artifactpath }}
+        path: ${{ steps.Build.outputs.artifactpath }}
   build-windows:
     runs-on: ubuntu-latest
     steps:
@@ -35,11 +35,11 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: build-windows
-      id: build-windows
+    - name: Build
+      id: Build
       run: dotnet build RPAK2L --no-restore -c Debug -r win-x64
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
         name: Windows_x64_Debug
-        path: ${{ steps.build-windows.outputs.artifactpath }}
+        path: ${{ steps.Build.outputs.artifactpath }}

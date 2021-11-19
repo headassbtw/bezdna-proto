@@ -10,13 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto.sln" beforeDir="false" afterPath="$PROJECT_DIR$/bezdna-proto.sln" afterDir="false" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="consider your pants shitted">
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="35763" />
+    <option name="totalTimeSeconds" value="36835" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -282,7 +277,56 @@
       <option name="project" value="LOCAL" />
       <updated>1637225858988</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="consider your pants shitted">
+      <created>1637283210905</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283210905</updated>
+    </task>
+    <task id="LOCAL-00011" summary="consider your pants shitted">
+      <created>1637283394976</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283394976</updated>
+    </task>
+    <task id="LOCAL-00012" summary="consider your pants shitted">
+      <created>1637283522049</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283522049</updated>
+    </task>
+    <task id="LOCAL-00013" summary="consider your pants shitted">
+      <created>1637283653351</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283653351</updated>
+    </task>
+    <task id="LOCAL-00014" summary="consider your pants shitted">
+      <created>1637283818134</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283818134</updated>
+    </task>
+    <task id="LOCAL-00015" summary="consider your pants shitted">
+      <created>1637283987021</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637283987021</updated>
+    </task>
+    <task id="LOCAL-00016" summary="consider your pants shitted">
+      <created>1637284094337</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1637284094337</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +357,7 @@
     <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
     <MESSAGE value="BRO IT FUCKING WORKS, HOLY SHIT" />
     <MESSAGE value="we do a little error box making" />
-    <option name="LAST_COMMIT_MESSAGE" value="we do a little error box making" />
+    <MESSAGE value="consider your pants shitted" />
+    <option name="LAST_COMMIT_MESSAGE" value="consider your pants shitted" />
   </component>
 </project>

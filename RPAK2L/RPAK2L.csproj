@@ -120,6 +120,8 @@
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
       <AvaloniaResource Include="Dialogs\TaskProgressDialog.axaml" />
       <AvaloniaResource Include="Dialogs\WarningDialog.axaml" />
+      <Content Include="Directory.Build.props" />
+      <Content Include="Directory.Build.targets" />
       <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
