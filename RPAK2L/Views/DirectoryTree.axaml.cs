@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -29,6 +30,8 @@ namespace RPAK2L.Views
 {
     public class DirectoryTree : Window
     {
+        private TreeView _filesTree;
+        private ListBox _pakitemsList;
         private DirectoryTreeViewModel vm;
         public DirectoryTree()
         {
@@ -51,7 +54,7 @@ namespace RPAK2L.Views
                 .InformationalVersion;
             this.Title += " | Build ";
             #if CI
-            Title += "CI- ";
+            Title += "CI-";
             #else
             Title += "LC-";
             #endif
@@ -126,12 +129,13 @@ namespace RPAK2L.Views
         private PakFileInfo CurrentFileToExport;
         private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
+            if(e.AddedItems.Count <= 0) return;
             PakFileInfo selected = ((PakFileInfo) e.AddedItems[0]);
             CurrentFileToExport = selected;
             vm = ((DirectoryTreeViewModel) DataContext);
             Console.WriteLine($"Selected {selected.Name}");
             var inf = new Models.Inf();
-            
+
             switch (selected.File.ShortName)
             {
                 case "txtr":
@@ -170,36 +174,15 @@ namespace RPAK2L.Views
             vm.InfoName = inf.Name;
             vm.InfoBytes = inf.Size;
             vm.InfoOffset = inf.Offset;
-            
-            NameBlock.Text = inf.Name;
-            ByteBlock.Text = inf.Size;
-            OffsetBlock.Text = inf.Offset;
 
         }
 
         private bool _init;
-        private TextBlock NameBlock;
-        private TextBlock ByteBlock;
-        private TextBlock OffsetBlock;
 
         private Button ExportButton;
         private Button ReplaceButton;
         private Button DeleteButton;
         private Button AddButton;
-
-        private void NameLabel_OnInitialized(object? sender, EventArgs e)
-        {
-            NameBlock = sender as TextBlock;
-        }
-
-        private void ByteLabel_OnInitialized(object? sender, EventArgs e)
-        {
-            ByteBlock = sender as TextBlock;
-        }
-        private void OffsetLabel_OnInitialized(object? sender, EventArgs e)
-        {
-            OffsetBlock = sender as TextBlock;
-        }
 
         private void DeleteButton_OnInitialized(object? sender, EventArgs e)
         {
@@ -226,7 +209,7 @@ namespace RPAK2L.Views
         
         private void DeleteButton_OnClick(object? sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.WarningDialog("Feature not implemented");
         }
         private void ExportButton_OnClick(object? sender, RoutedEventArgs e)
         {
@@ -235,19 +218,21 @@ namespace RPAK2L.Views
                 case "txtr":
                     Console.WriteLine("Exporting Texture...");
                     var tex = CurrentFileToExport.SpecificTypeFile as Texture;
-                    if (tex.TextureDatas.Where(t => !t.streaming).ToList().Count > 0)
+                    if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
                     {
                         this.WarningDialog("Unable to access this texture (not implemented)");
                         break;
                     }
-                        
+
+                    string pak = CurrentFileToExport.Pak.StarPaks[0]
+                        .Substring(CurrentFileToExport.Pak.StarPaks[0].LastIndexOf('\\')+1);
+                    
                     Console.WriteLine(tex.StarpakNum);
                     var compression = tex.Algorithm.ToUpper();
                         Console.WriteLine(compression);
                     Console.WriteLine(tex.BaseFile.StarpakOffset);
                     string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name);
                     Directory.CreateDirectory(ex);
-                    
                     foreach (var text in tex.TextureDatas)
                     {
                         if(compression == "DXT1" || compression.StartsWith("BC"))
@@ -256,7 +241,7 @@ namespace RPAK2L.Views
                             byte[] buf = new byte[text.size];
                             var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
                             Console.WriteLine("Opening starpak stream");
-                            var pak = text.streaming ? "pc_stream.starpak" : $"{PakName}.rpak";
+                            //var pak = text.streaming ? "pc_all.starpak" : $"{PakName}.rpak";
                             FileStream spr = new FileStream(
                                 Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
                                 FileMode.Open);
@@ -294,7 +279,7 @@ namespace RPAK2L.Views
         }
         private void ReplaceButton_OnClick(object? sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.WarningDialog("Feature not implemented");
         }
 
         private int _lifetime;
@@ -320,9 +305,11 @@ namespace RPAK2L.Views
                 var pakBackend = new PakInterface(fullRPakPath);
                 Console.WriteLine("t2");
 
+                vm.CurrentStarpak = "";
                 Console.WriteLine("Starpaks:");
                 foreach (string starpak in pakBackend.R2Pak.Pak.StarPaks)
                 {
+                    vm.CurrentStarpak += starpak + "  ";
                     Console.WriteLine(starpak);
                 }
 
@@ -362,36 +349,27 @@ namespace RPAK2L.Views
                 Console.WriteLine("Finished loading");
         }
         
-        //private Backend.PakInterface pakBackend;
         private void FileOpen_OnClick(object? sender, RoutedEventArgs e)
         {
-            OpenFolderDialog dialog = new OpenFolderDialog();
-            dialog.Directory = (LastSelectedDirectory == null)
-                ? System.IO.Directory.GetCurrentDirectory()
-                : LastSelectedDirectory;
-            dialog.Title = "Game Folder";
-            vm = DataContext as DirectoryTreeViewModel;
-            //vm = Program.VM;
+            vm.SearchBoxFilter = "";
+            _filesTree.UnselectAll();
+            _pakitemsList.UnselectAll();
+            
+            vm.VisibleFiles.Clear();
+            vm.Types.Clear();
+            vm.Files.Clear();
+            
+            AddButton.IsEnabled = false;
+            DeleteButton.IsEnabled = false;
+            ExportButton.IsEnabled = false;
+            ReplaceButton.IsEnabled = false;
+            vm.InfoName = "";
+            vm.InfoBytes = "";
+            vm.InfoOffset = "";
             
             
-            Thread fileOpenThread = new Thread(async =>
-            {
-                var task = dialog.ShowAsync(this);
-                task.Wait();
-                if (task.IsCompletedSuccessfully && task.Result.FirstOrDefault() != null)
-                {
-                    string path = task.Result;
-                    FillInRpaks(path);
-
-                    //Load();
-                }
-                else
-                {
-                    //error or sumn
-                }
-
-            });
-            fileOpenThread.Start();
+            
+            FillInRpaks(iniInstance.GetValue("GamePath"));
         }
 
         private void FillInRpaks(string path)
@@ -400,7 +378,7 @@ namespace RPAK2L.Views
                 return;
             LastSelectedDirectory = path;
             var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
-
+            vm.RPakChoices.Clear();
             foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))
             {
                 vm.RPakChoices.Add(pak);
@@ -410,14 +388,13 @@ namespace RPAK2L.Views
         private void RPakItemControl_Initialized(object? sender, EventArgs e)
         {
             Console.WriteLine("RPakSelectorInit");
-            
         }
 
 
         private void DirTree_OnInitialized(object? sender, EventArgs e)
         {
+            _filesTree = sender as TreeView;
             Console.WriteLine("DirTreeInit");
-            Console.WriteLine("ASS");
             Console.WriteLine((DataContext as DirectoryTreeViewModel));
             vm = ((DirectoryTreeViewModel) DataContext);
         }
@@ -430,7 +407,7 @@ namespace RPAK2L.Views
         private void AddButton_OnClick(object? sender, RoutedEventArgs e)
         {
             
-            throw new NotImplementedException("ASS");
+            this.WarningDialog("Feature not implemented");
         }
 
 
@@ -446,6 +423,10 @@ namespace RPAK2L.Views
             Load(selected);
         }
 
-        
+
+        private void PakItems_OnInit(object? sender, EventArgs e)
+        {
+            _pakitemsList = sender as ListBox;
+        }
     }
 }

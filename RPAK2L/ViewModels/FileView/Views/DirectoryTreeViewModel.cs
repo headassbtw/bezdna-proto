@@ -36,35 +36,46 @@ namespace RPAK2L.ViewModels.FileView.Views
             }
         }
         public Models.Inf FileInfo { get; set; }
+
+        private string _pakfileName;
+        private string _pakfileBytes;
+        private string _pakfileOffset;
+        private string _currentStarpak;
         public string InfoName
         {
-            get => FileInfo.Name;
+            get => _pakfileName;
             set
             {
-                var fileInfoName = FileInfo.Name;
-                this.RaiseAndSetIfChanged(ref fileInfoName, value);
+                this.RaiseAndSetIfChanged(ref _pakfileName, value);
             }
         }
 
         public string InfoBytes
         {
-            get => FileInfo.Size;
+            get => _pakfileBytes;
             set
             {
-                var fileInfoSize = FileInfo.Size;
-                this.RaiseAndSetIfChanged(ref fileInfoSize, value);
+                this.RaiseAndSetIfChanged(ref _pakfileBytes, value);
             }
         }
 
         public string InfoOffset
         {
-            get => FileInfo.Offset;
+            get => _pakfileOffset;
             set
             {
-                var fileInfoOffset = FileInfo.Offset;
-                this.RaiseAndSetIfChanged(ref fileInfoOffset, value);
+                this.RaiseAndSetIfChanged(ref _pakfileOffset, value);
             }
         }
+        public string CurrentStarpak
+        {
+            get => _currentStarpak;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _currentStarpak, value);
+            }
+        }
+
 
         private int Counter { get; set; }
         private ObservableCollection<PakFileInfo> _pakFiles;
