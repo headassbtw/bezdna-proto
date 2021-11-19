@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
@@ -24,6 +25,27 @@ namespace RPAK2L
         // yet and stuff might break.
         public static void Main(string[] args)
         {
+            FileStream ostrm;
+            StreamWriter writer;
+            TextWriter oldOut = Console.Out;
+            try
+            {
+                ostrm = new FileStream("./Console.log", FileMode.Create, FileAccess.ReadWrite);
+                writer = new StreamWriter(ostrm);
+                //Console.SetOut(writer);
+                Console.WriteLine("Logger redirect initialized");
+
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Logger redirect file could not be opened:");
+                Console.WriteLine(exc.Message);
+            }
+            
+            
+            
+            
+            
             Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())
             {
@@ -40,6 +62,7 @@ namespace RPAK2L
             
             BuildAvaloniaApp()
                 .StartWithClassicDesktopLifetime(args);
+            Console.WriteLine("Exiting");
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.

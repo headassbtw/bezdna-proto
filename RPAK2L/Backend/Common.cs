@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using bezdna_proto;
 using bezdna_proto.Titanfall2;
@@ -17,9 +18,12 @@ namespace RPAK2L.Backend
 
         public PakInterface(string PakFile)
         {
+            Stopwatch sw = Stopwatch.StartNew();
             PakReadStream = new FileStream(PakFile, FileMode.Open, FileAccess.Read);
             byte[] header = new byte[4];
             PakReadStream.Read(header, 0, 4);
+            sw.Stop();
+            Console.WriteLine($"Finished reading rpak file in {sw.ElapsedMilliseconds}ms");
             if (!Utils.ValidRPakHeader(header))
             {
                 throw new InvalidOperationException("Invalid RPak file");

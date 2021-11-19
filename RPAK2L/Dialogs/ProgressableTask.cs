@@ -3,6 +3,7 @@ using System.Threading;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using ReactiveUI;
+using RPAK2L.ViewModels.FileView.Views;
 
 namespace RPAK2L.Dialogs
 {

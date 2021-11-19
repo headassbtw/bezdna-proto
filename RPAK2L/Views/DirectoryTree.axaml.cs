@@ -19,6 +19,7 @@ using ImageMagick;
 using ImageMagick.Formats;
 using RPAK2L.Backend;
 using RPAK2L.Dialogs;
+using RPAK2L.Tools;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.FileView.Views;
 using RPAK2L.ViewModels.SubMenuViewModels;
@@ -83,7 +84,8 @@ namespace RPAK2L.Views
             Console.WriteLine("InitComponent");
             
         }
-        
+
+        private List<PakFileInfo> _textures;
         private void DirView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             FileTypes selected = ((FileTypes) e.AddedItems[0]);
@@ -114,10 +116,10 @@ namespace RPAK2L.Views
 
         private string PakName;
         private PakFileInfo CurrentFileToExport;
-        private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs ev)
         {
-            if(e.AddedItems.Count <= 0) return;
-            PakFileInfo selected = ((PakFileInfo) e.AddedItems[0]);
+            if(ev.AddedItems.Count <= 0) return;
+            PakFileInfo selected = ((PakFileInfo) ev.AddedItems[0]);
             CurrentFileToExport = selected;
             vm = ((DirectoryTreeViewModel) DataContext);
             Console.WriteLine($"Selected {selected.Name}");
@@ -133,6 +135,29 @@ namespace RPAK2L.Views
                     }
                     break;
                 case "matl":
+                    inf.Size = "Maps: \n";
+                    var material = selected.SpecificTypeFile as Material;
+                    for (var i = 0; i < material.TextureReferences.Length; i++)
+                    {
+                        var e = material.TextureReferences[i];
+                        var refName = "";
+                        if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
+                            refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
+                        else
+                            refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
+                        inf.Size += refName;
+                        var a = _textures
+                            .FirstOrDefault(f => 
+                                (f.SpecificTypeFile as Texture)
+                                .GUID == e);
+                        if (a != null)
+                        {
+                            Texture tex = a.SpecificTypeFile as Texture;
+                            if(tex != null) inf.Size += " | " + tex.Width + "x" + tex.Height;
+                            
+                        }
+                        inf.Size += '\n';
+                    }
                     break;
                 case "shdr":
                     break;
@@ -198,64 +223,28 @@ namespace RPAK2L.Views
         {
             this.WarningDialog("Feature not implemented");
         }
-        private void ExportButton_OnClick(object? sender, RoutedEventArgs e)
+        private void ExportButton_OnClick(object? sender, RoutedEventArgs ev)
         {
             bool ExportStreaming = true;
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
-                    Console.WriteLine("Exporting Texture...");
-                    var tex = CurrentFileToExport.SpecificTypeFile as Texture;
-                    if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
-                    {
-                        #if DEBUG || EXTREME_DEBUG
-                        if(ExportStreaming)
-                            this.WarningDialog("This feature does not officially work, but i've enabled it in debug builds, for testing");
-                        #elif Release
-                        this.WarningDialog("Unable to access this texture (not implemented)");
-                        break;
-                        #endif
-                    }
-
-                    string pak = CurrentFileToExport.Pak.StarPaks[0]
-                        .Substring(CurrentFileToExport.Pak.StarPaks[0].LastIndexOf('\\')+1);
-                    
-                    Console.WriteLine(tex.StarpakNum);
-                    var compression = tex.Algorithm.ToUpper();
-                        Console.WriteLine(compression);
-                    Console.WriteLine(tex.BaseFile.StarpakOffset);
-                    string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name).Replace('\\',Path.DirectorySeparatorChar).Replace('/',Path.DirectorySeparatorChar);
-                    Directory.CreateDirectory(ex);
-                    foreach (var text in tex.TextureDatas)
-                    {
-                        if (text.streaming && ExportStreaming)
-                        {
-                            if(compression == "DXT1" || compression.StartsWith("BC"))
-                            {
-                                Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
-                                byte[] buf = new byte[text.size];
-                                var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
-                                Console.WriteLine("Opening starpak stream");
-                                //var pak = text.streaming ? "pc_all.starpak" : $"{PakName}.rpak";
-                                FileStream spr = new FileStream(
-                                    Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
-                                    FileMode.Open);
-
-                                spr.Seek(text.seek, SeekOrigin.Begin);
-                                spr.Read(buf);
-                                fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
-                                fs.Write(buf);
-                                fs.Close();
-                            }
-                            else
-                            {
-                                this.WarningDialog("Unsupported Compression Algoritm");
-                            }
-                        }
-                    }
+                    Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, "Textures");
                     break;
                 case "matl":
-                    var mat = CurrentFileToExport.SpecificTypeFile as Material;
+                    var material = CurrentFileToExport.SpecificTypeFile as Material;
+                    for (var i = 0; i < material.TextureReferences.Length; i++)
+                    {
+                        var e = material.TextureReferences[i];
+                        var refName = "";
+                        if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
+                            refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
+                        else
+                            refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
+                        var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
+                        Exporters.TextureData(tex, LastSelectedDirectory, "Materials",false,true);
+                    }
+                    
                     this.WarningDialog("Materials coming soon");
                     break;
                 case "shdr":
@@ -276,28 +265,45 @@ namespace RPAK2L.Views
             this.WarningDialog("Feature not implemented");
         }
 
+        private PakInterface pakBackend;
         private int _lifetime;
         private void Load(string fullRPakPath)
         {
+            vm.IsLoading = true;
             _lifetime++;
             Console.WriteLine($"Load called from lifetime {_lifetime}");
-             FileTypes tex = new FileTypes() {Name = "Textures"};
-                FileTypes mat = new FileTypes() {Name = "Materials"};
-                FileTypes sha = new FileTypes() {Name = "Shaders"};
-                FileTypes dtb = new FileTypes() {Name = "DataTables"};
-                FileTypes msc = new FileTypes() {Name = "Misc"};
-                vm.Types.Clear();
-                vm.Types.Add(tex);
-                vm.Types.Add(mat);
-                vm.Types.Add(sha);
-                vm.Types.Add(dtb);
-                vm.Types.Add(msc);
+             
                 
                 //vm.Types = new ObservableCollection<FileTypes>();
+
+                ThreadPool.QueueUserWorkItem(sync =>
+                {
+                    vm.Types.Clear();
+                    Console.WriteLine("t1");
+                    pakBackend = new PakInterface(fullRPakPath);
+                    FinishLoad();
+                });
                 
-                Console.WriteLine("t1");
-                var pakBackend = new PakInterface(fullRPakPath);
-                Console.WriteLine("t2");
+                
+                
+                
+        }
+
+
+        private void FinishLoad()
+        {
+            FileTypes tex = new FileTypes() {Name = "Textures"};
+            FileTypes mat = new FileTypes() {Name = "Materials"};
+            FileTypes sha = new FileTypes() {Name = "Shaders"};
+            FileTypes dtb = new FileTypes() {Name = "DataTables"};
+            FileTypes msc = new FileTypes() {Name = "Misc"};
+            
+            vm.Types.Add(tex);
+            vm.Types.Add(mat);
+            vm.Types.Add(sha);
+            vm.Types.Add(dtb);
+            vm.Types.Add(msc);
+            Console.WriteLine("t2");
 
                 vm.CurrentStarpak = "";
                 Console.WriteLine("Starpaks:");
@@ -307,8 +313,6 @@ namespace RPAK2L.Views
                     Console.WriteLine(starpak);
                 }
 
-                Console.WriteLine("Begginning Load...");
-
                 for(int i = 0; i < pakBackend.R2Pak.PakInfos.Count; i++)
                 {
                     
@@ -316,7 +320,7 @@ namespace RPAK2L.Views
                     //Thread LoadThread = new Thread(async =>
                     {
                         
-                        Console.WriteLine($"Adding {file.File.StarpakOffset}");
+                        //Console.WriteLine($"Adding {file.File.StarpakOffset}");
                         switch (file.File.ShortName)
                         {
                             case "txtr":
@@ -332,15 +336,23 @@ namespace RPAK2L.Views
                                 dtb.Files.Add(file);
                                 break;
                             default:
-                                Console.WriteLine("unhandled file extension, throwing in misc...");
+                                //Console.WriteLine("unhandled file extension, throwing in misc...");
                                 msc.Files.Add(file);
                                 break;
                         }
+                        _textures = new List<PakFileInfo>();
+                        _textures.Clear();
+                        foreach (var texs in tex.Files)
+                        {
+                            _textures.Add(texs);
+                        }
+
                     }//);
                     //LoadThread.Name = $"{file.File.StarpakOffset} Load Thread";
                     //LoadThread.Start();
                 }
                 Console.WriteLine("Finished loading");
+                vm.IsLoading = false;
         }
         
         private void FileOpen_OnClick(object? sender, RoutedEventArgs e)

@@ -17,6 +17,10 @@ namespace RPAK2L.ViewModels.FileView.Views
 {
     public class DirectoryTreeViewModel : ReactiveObject
     {
+        public static bool __isLoading = false;
+        public static string progleft;
+        public static string progmid;
+        public static string progright;
         public Window ParentWindow;
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
@@ -41,6 +45,40 @@ namespace RPAK2L.ViewModels.FileView.Views
         private string _pakfileBytes;
         private string _pakfileOffset;
         private string _currentStarpak;
+
+        public string ProgTextLeft
+        {
+            get => progleft;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref progleft, value);
+            }
+        }
+        public string ProgTextMid
+        {
+            get => progmid;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref progmid, value);
+            }
+        }
+        public string ProgTextRight
+        {
+            get => progright;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref progright, value);
+            }
+        }
+        
+        public bool IsLoading
+        {
+            get => __isLoading;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref __isLoading, value);
+            }
+        }
         public string InfoName
         {
             get => _pakfileName;

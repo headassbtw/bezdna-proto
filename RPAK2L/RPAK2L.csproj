@@ -89,6 +89,7 @@
       <Compile Include="Program.cs" />
       <Compile Include="Headers/HeaderInterface.cs" />
       <Compile Include="Properties\Resources.Designer.cs" />
+      <Compile Include="Tools\Exporters.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
       <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
