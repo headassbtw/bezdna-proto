@@ -12,7 +12,7 @@ namespace RPAK2L.Tools
     {
         public static void TextureData(PakFileInfo file, string LastSelectedDirectory, string exportSub = "", bool ExportStatic = true, bool material = false)
         {
-            Console.WriteLine("Exporting Texture...");
+            Logger.Log.Info("Exporting Texture...");
             if(file == null) return;
             var tex = file.SpecificTypeFile as Texture;
             if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
@@ -49,10 +49,10 @@ namespace RPAK2L.Tools
                 {
                     if(compression == "DXT1" || compression.StartsWith("BC"))
                     {
-                        Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
+                        Logger.Log.Debug($"ExportingMipMap ({text.width}x{text.height})");
                         byte[] buf = new byte[text.size];
                         var fs = File.Create(Path.Combine(ex, (material ? textype : text.height) + ".dds"));
-                        Console.WriteLine("Opening starpak stream");
+                        Logger.Log.Debug("Opening starpak stream");
                         FileStream spr = new FileStream(
                             Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
                             FileMode.Open);

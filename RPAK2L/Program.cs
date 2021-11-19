@@ -1,19 +1,40 @@
 ﻿using System;
 using System.IO;
+using System.Reactive;
 using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
+using ReactiveUI;
+using RPAK2L.ErrorReporter;
 using RPAK2L.Headers;
 using RPAK2L.ViewModels.FileView.Views;
+using RPAK2L.Views.SubMenus;
 
 namespace RPAK2L
 {
+    
+    
+    class ICrashLifetime : 
+        IControlledApplicationLifetime,
+        IApplicationLifetime
+    {
+        public Window MainWindow;
+        public void Shutdown(int exitCode = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public event EventHandler<ControlledApplicationLifetimeStartupEventArgs>? Startup;
+        public event EventHandler<ControlledApplicationLifetimeExitEventArgs>? Exit;
+    }
+    
     class Program
     {
         public static Window AppMainWindow;
         public static HeaderInterface Headers;
+        private static AppBuilder _builderInstance;
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
 
@@ -25,27 +46,7 @@ namespace RPAK2L
         // yet and stuff might break.
         public static void Main(string[] args)
         {
-            FileStream ostrm;
-            StreamWriter writer;
-            TextWriter oldOut = Console.Out;
-            try
-            {
-                ostrm = new FileStream("./Console.log", FileMode.Create, FileAccess.ReadWrite);
-                writer = new StreamWriter(ostrm);
-                //Console.SetOut(writer);
-                Console.WriteLine("Logger redirect initialized");
-
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine("Logger redirect file could not be opened:");
-                Console.WriteLine(exc.Message);
-            }
-            
-            
-            
-            
-            
+            Logger.Log = new Logger("./Console.log");
             Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())
             {
@@ -56,13 +57,23 @@ namespace RPAK2L
                 var handle = GetConsoleWindow();
                 ShowWindow(handle, 0);
             }
-            
-            
-            
-            
-            BuildAvaloniaApp()
-                .StartWithClassicDesktopLifetime(args);
-            Console.WriteLine("Exiting");
+            try
+            {
+                RxApp.DefaultExceptionHandler = new DontCrashPlease();
+                _builderInstance = BuildAvaloniaApp();
+                
+                _builderInstance.StartWithClassicDesktopLifetime(args);
+            }
+            catch (Exception exc)
+            {
+                AppMainWindow.Close();
+
+                Logger.Log.Error("Fatal Error:");
+                Logger.Log.Error(exc);
+                AppMainWindow = new AboutMenu();
+            }
+            Logger.Log.Info("Exiting");
+            Logger.Log.Close();
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.

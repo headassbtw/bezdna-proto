@@ -157,7 +157,7 @@ namespace RPAK2L.ViewModels.FileView.Views
                 Console.WriteLine(value);
                 this.RaiseAndSetIfChanged(ref _searchFilter, value);
                 var filtered = Files.Where(x => x.Name.ToLower().Contains(value.ToLower())).ToList();
-                Console.WriteLine($"{filtered.Count} Items match search parameters");
+                Logger.Log.Info($"{filtered.Count} Items match search parameters");
                 VisibleFiles.Clear();
                 foreach (var whythefuckcantobservablesjustactivatewhenineedthemto in filtered)
                 {

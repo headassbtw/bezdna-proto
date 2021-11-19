@@ -81,7 +81,7 @@ namespace RPAK2L.Views
             AvaloniaXamlLoader.Load(this);
             //DataContext = new DirectoryTreeViewModel();
             
-            Console.WriteLine("InitComponent");
+            Logger.Log.Debug("InitComponent");
             
         }
 
@@ -90,7 +90,7 @@ namespace RPAK2L.Views
         {
             FileTypes selected = ((FileTypes) e.AddedItems[0]);
             vm = ((DirectoryTreeViewModel) DataContext);
-            Console.WriteLine($"Selected {selected.Name}");
+            Logger.Log.Info($"DirTree selected {selected.Name}");
             vm.Files.Clear();
             vm.SetPakFiles(selected.Files);
             vm.AddPakFiles(selected.Files.Count);
@@ -122,7 +122,7 @@ namespace RPAK2L.Views
             PakFileInfo selected = ((PakFileInfo) ev.AddedItems[0]);
             CurrentFileToExport = selected;
             vm = ((DirectoryTreeViewModel) DataContext);
-            Console.WriteLine($"Selected {selected.Name}");
+            Logger.Log.Info($"Selected {selected.Name}");
             var inf = new Models.Inf();
 
             switch (selected.File.ShortName)
@@ -213,7 +213,7 @@ namespace RPAK2L.Views
         }
         private void AddButton_OnInitialized(object? sender, EventArgs e)
         {
-            Console.WriteLine("AddButtonInit");
+            Logger.Log.Debug("AddButtonInit");
             AddButton = sender as Button;
             AddButton.IsEnabled = false;
         }
@@ -271,7 +271,7 @@ namespace RPAK2L.Views
         {
             vm.IsLoading = true;
             _lifetime++;
-            Console.WriteLine($"Load called from lifetime {_lifetime}");
+            Logger.Log.Debug($"Load called from lifetime {_lifetime}");
              
                 
                 //vm.Types = new ObservableCollection<FileTypes>();
@@ -279,7 +279,6 @@ namespace RPAK2L.Views
                 ThreadPool.QueueUserWorkItem(sync =>
                 {
                     vm.Types.Clear();
-                    Console.WriteLine("t1");
                     pakBackend = new PakInterface(fullRPakPath);
                     FinishLoad();
                 });
@@ -303,14 +302,13 @@ namespace RPAK2L.Views
             vm.Types.Add(sha);
             vm.Types.Add(dtb);
             vm.Types.Add(msc);
-            Console.WriteLine("t2");
 
                 vm.CurrentStarpak = "";
-                Console.WriteLine("Starpaks:");
+                Logger.Log.Debug("Starpaks:");
                 foreach (string starpak in pakBackend.R2Pak.Pak.StarPaks)
                 {
                     vm.CurrentStarpak += starpak + "  ";
-                    Console.WriteLine(starpak);
+                    Logger.Log.Debug(starpak);
                 }
 
                 for(int i = 0; i < pakBackend.R2Pak.PakInfos.Count; i++)
@@ -351,7 +349,7 @@ namespace RPAK2L.Views
                     //LoadThread.Name = $"{file.File.StarpakOffset} Load Thread";
                     //LoadThread.Start();
                 }
-                Console.WriteLine("Finished loading");
+                Logger.Log.Info("Finished loading");
                 vm.IsLoading = false;
         }
         
@@ -382,8 +380,14 @@ namespace RPAK2L.Views
         {
             if (vm == null)
                 return;
+            string dir = Path.Combine(path, "r2", "paks", "Win64");
+            if (!Directory.Exists(dir))
+            {
+                this.WarningDialog("Paks folder is missing or invalid");
+                return;
+            }
             LastSelectedDirectory = path;
-            var allpaks = Directory.GetFiles(Path.Combine(path, "r2","paks","Win64"));
+            var allpaks = Directory.GetFiles(dir);
             vm.RPakChoices.Clear();
             foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))
             {
@@ -393,15 +397,14 @@ namespace RPAK2L.Views
         
         private void RPakItemControl_Initialized(object? sender, EventArgs e)
         {
-            Console.WriteLine("RPakSelectorInit");
+            Logger.Log.Debug("RPakSelectorInit");
         }
 
 
         private void DirTree_OnInitialized(object? sender, EventArgs e)
         {
             _filesTree = sender as TreeView;
-            Console.WriteLine("DirTreeInit");
-            Console.WriteLine((DataContext as DirectoryTreeViewModel));
+            Logger.Log.Debug("DirTreeInit");
             vm = ((DirectoryTreeViewModel) DataContext);
         }
 
@@ -420,7 +423,7 @@ namespace RPAK2L.Views
         private void RPakItemControl_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             string selected = ((string) e.AddedItems[0]);
-            Console.WriteLine($"Selected RPAK {selected}");
+            Logger.Log.Debug($"Selected RPAK {selected}");
             string tmp = selected.Replace('\\', '/');
             tmp = tmp.Substring(tmp.LastIndexOf('/')+1);
             tmp = tmp.Substring(0, tmp.LastIndexOf('.'));
@@ -433,6 +436,11 @@ namespace RPAK2L.Views
         private void PakItems_OnInit(object? sender, EventArgs e)
         {
             _pakitemsList = sender as ListBox;
+        }
+
+        private void DebugThrowError_OnClick(object? sender, RoutedEventArgs e)
+        {
+            throw new Exception("User-Thrown Exception");
         }
     }
 }

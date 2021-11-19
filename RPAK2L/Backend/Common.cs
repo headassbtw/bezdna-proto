@@ -23,7 +23,7 @@ namespace RPAK2L.Backend
             byte[] header = new byte[4];
             PakReadStream.Read(header, 0, 4);
             sw.Stop();
-            Console.WriteLine($"Finished reading rpak file in {sw.ElapsedMilliseconds}ms");
+            Logger.Log.Info($"Finished reading rpak file in {sw.ElapsedMilliseconds}ms");
             if (!Utils.ValidRPakHeader(header))
             {
                 throw new InvalidOperationException("Invalid RPak file");
@@ -35,7 +35,7 @@ namespace RPAK2L.Backend
             {
                 case 7:
                     Game = Game.R2;
-                    Console.WriteLine("Loading RPak for R2");
+                    Logger.Log.Debug("Loading RPak for R2");
                     R2Pak = new R2Pak(PakReadStream);
                     return;
                 case 8:

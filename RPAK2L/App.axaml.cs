@@ -23,9 +23,16 @@ namespace RPAK2L
                 desktop.MainWindow.DataContext = new DirectoryTreeViewModel(desktop.MainWindow);
                 Program.AppMainWindow = desktop.MainWindow;
             }
+            if (ApplicationLifetime is ICrashLifetime crashLifetime)
+            {
+                
+                crashLifetime.MainWindow = new DirectoryTree();
+                crashLifetime.MainWindow.DataContext = new DirectoryTreeViewModel(crashLifetime.MainWindow);
+                Program.AppMainWindow = crashLifetime.MainWindow;
+            }
 
             base.OnFrameworkInitializationCompleted();
-            Console.WriteLine("FrameworkInitComp");
+            Logger.Log.Debug("FrameworkInitComp");
         }
     }
 }

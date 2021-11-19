@@ -33,7 +33,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             get => _gamePath;
             set
             {
-                Console.WriteLine("Game Directory updated: " + value);
+                Logger.Log.Info("Game Directory updated: " + value);
                 this.RaiseAndSetIfChanged(ref _gamePath, value);
             }
         }
@@ -43,7 +43,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             get => _exportPath;
             set
             {
-                Console.WriteLine("Export Directory updated: " + value);
+                Logger.Log.Info("Export Directory updated: " + value);
                 this.RaiseAndSetIfChanged(ref _exportPath, value);
             }
         }
@@ -108,7 +108,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             text.Subscribe(value =>
             {
                 if(String.IsNullOrEmpty(value)) return;
-                Console.WriteLine($"Binding \"{binding}\" changed in box to {value}");
+                Logger.Log.Info($"Binding \"{binding}\" changed in box to {value}");
                 val = value;
             });
             ApplyFired += (sender, args) =>

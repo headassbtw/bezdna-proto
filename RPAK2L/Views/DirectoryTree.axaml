@@ -31,6 +31,7 @@
                     <Separator IsVisible="{Binding DebugMenu_IsVisible}"/>
                     <MenuItem Header="Debug" IsVisible="{Binding DebugMenu_IsVisible}">
                         <MenuItem Header="Test" Click="TestMenu_OnClick"/>
+                        <MenuItem Header="Throw Exception" Click="DebugThrowError_OnClick"/>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Paks">
@@ -80,7 +81,15 @@
                             <ListBox Initialized="PakItems_OnInit" Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" />
+                                        <ContextMenu>
+                                            <MenuItem Header="On Jah"></MenuItem>
+                                            <TextBlock Text="{Binding Name}">
+                                            
+                                            
+                                            </TextBlock>
+                                        </ContextMenu>
+                                       
+                                        
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -116,7 +125,7 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95"> Loading </TextBlock>
             <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto">
                 <TextBlock Grid.Column="0" Text="{Binding ProgTextLeft}"/>
-                <TextBlock Grid.Column="1" Text="{Binding ProgTextMid}"/>
+                <ProgressBar Grid.Column="1" IsIndeterminate="True"/>
                 <TextBlock Grid.Column="2" Text="{Binding ProgTextRight}"/>
             </Grid>
         </Grid>

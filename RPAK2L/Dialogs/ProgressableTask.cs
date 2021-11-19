@@ -61,7 +61,7 @@ namespace RPAK2L.Dialogs
             ProcessedItems = 0;
             IncrementProgress = () =>
             {
-                Console.WriteLine($"{ProcessedItems}/{TotalItems}");
+                Logger.Log.Debug($"{ProcessedItems}/{TotalItems}");
                 ProcessedItems++;
             };
             ShowWindow();
@@ -84,7 +84,7 @@ namespace RPAK2L.Dialogs
                 ThreadPool.QueueUserWorkItem(async =>
                 {
                     Run();
-                    Console.WriteLine("Task finished");
+                    Logger.Log.Debug("Task finished");
                     _finished = true;
                     Dispatcher.UIThread.Post(() =>
                     {

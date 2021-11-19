@@ -20,8 +20,8 @@ namespace RPAK2L.Headers
             TotalItems = _resolutions.Length * _compressions.Length;
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
             
-            #if DEBUG
-            Console.WriteLine("Embedded Resources:");
+            #if DEBUG || EXTREME_DEBUG
+            Logger.Log.Debug("Embedded Resources:");
             foreach (string res in a.GetManifestResourceNames())
             {
                 Console.WriteLine(res);
@@ -43,7 +43,7 @@ namespace RPAK2L.Headers
                     {
                         if (resFilestream != null)
                         {
-                            Console.WriteLine($"Reading embedded DDS header for {resolution} {Compression}");
+                            Logger.Log.Debug($"Reading embedded DDS header for {resolution} {Compression}");
                             byte[] ba = new byte[resFilestream.Length];
                             resFilestream.Read(ba, 0, ba.Length);
                             resFilestream.Close();
@@ -54,7 +54,7 @@ namespace RPAK2L.Headers
                         }
                         else
                         {
-                            Console.WriteLine($"No header found for \"RPAK2L.Headers.{resolution}.DDS_{Compression}.bin\"!");
+                            Logger.Log.Error($"No header found for \"RPAK2L.Headers.{resolution}.DDS_{Compression}.bin\"!");
                         }
 
                     }

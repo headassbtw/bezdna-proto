@@ -30,7 +30,6 @@ namespace RPAK2L.Backend.Games
                 
                 Pak = new RPakFile(PakStream);
                 //Dispatcher.UIThread.Post(() => {Init(Pak.FilesInternal.Length);});
-                Console.WriteLine("arg");
                 PakInfos = new ObservableCollection<PakFileInfo>();
                 TotalItems = Pak.FilesInternal.Length;
                 int item = 0;
@@ -93,7 +92,7 @@ namespace RPAK2L.Backend.Games
                     Console.WriteLine(item / Pak.FilesInternal.Length);
                 }
                 sw.Stop();
-                Console.WriteLine($"Loaded rpak in {sw.ElapsedMilliseconds}ms");
+                Logger.Log.Info($"Loaded rpak in {sw.ElapsedMilliseconds}ms");
                 _finished = true;
             });
             while (!_finished)
