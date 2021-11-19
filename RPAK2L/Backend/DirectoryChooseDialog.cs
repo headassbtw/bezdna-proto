@@ -16,17 +16,23 @@ namespace RPAK2L.Backend
         {
             var diag = new OpenFolderDialog();
             diag.Title = windowTitle;
-            var task = await diag.ShowAsync(parentWindow);
-            bool boolin = mustIncludeSubDir is string[] sd;
-            if (Directory.Exists(task))
+            string task = await diag.ShowAsync(parentWindow);
+            
+            if (task == null) return null; //the user canceled the dialog
+            else if (Directory.Exists(task))
             {
-                if (boolin && Directory.Exists(Path.Combine(task, Path.Combine(mustIncludeSubDir))))
-                    return task;
-                else
+                bool boolin = (mustIncludeSubDir != null && mustIncludeSubDir.Length > 0);
+                bool bigboolin = mustIncludeSubDir != null && Directory.Exists(Path.Combine(task, Path.Combine(mustIncludeSubDir)));
+                if(boolin)
                 {
-                    parentWindow.WarningDialog($"Folder is invalid, must contain \"{Path.Combine(mustIncludeSubDir)}\".");
-                    return null;
+                    if (bigboolin) return task;
+                    else
+                    {
+                        parentWindow.WarningDialog($"Folder is invalid, must contain \"{Path.Combine(mustIncludeSubDir)}\".");
+                        return null;
+                    }
                 }
+                else return task;
             }
             else
             {

@@ -15,8 +15,8 @@
     </Design.DataContext>
     <Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
         <ScrollViewer Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="0">
-            <ListBox HorizontalAlignment="Stretch" Items="{Binding SettingsItems}"></ListBox>
-            <!-- settings will go here, gonna find a way to make it populate through code instead of manually binding them, it's a pain -->
+            <ListBox HorizontalAlignment="Stretch" Items="{Binding SettingsItems}">
+            </ListBox>
         </ScrollViewer>
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
             <TextBlock></TextBlock>

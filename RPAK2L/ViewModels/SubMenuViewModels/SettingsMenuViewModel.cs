@@ -60,7 +60,21 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             };
         }
 
-
+        CheckBox BoolSetting(bool binding, string title, string iniKey)
+        {
+            //TODO: bool settings
+            Grid g = new Grid();
+            g.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
+            g.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
+            g.MinWidth = 680;
+            g.MaxWidth = 7274;
+            var checkBox = new CheckBox
+            {
+                Content = title,
+                IsChecked = binding
+            };
+            return checkBox;
+        }
         (Button,TextBox) StringSetting(string binding, string title, string iniKey)
         {
             var boxBinding = new Binding(binding);
@@ -69,7 +83,6 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             g.MaxWidth = 7274; //HOW THE FUCK DO I MAKE THIS BITCH EXPAND
             g.RowDefinitions = RowDefinitions.Parse("Auto,Auto");
             g.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
-            g.ShowGridLines = true;
             TextBlock header = new TextBlock();
             header.Text = title;
             Grid.SetRow(header,0);

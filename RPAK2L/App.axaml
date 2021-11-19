@@ -5,8 +5,11 @@
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
-
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
+        <Style Selector="ListBoxItem:selected">
+            <Setter Property="Background" Value="#FF0000"></Setter>
+        </Style>
+        
     </Application.Styles>
 </Application>

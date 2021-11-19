@@ -68,19 +68,6 @@ namespace RPAK2L.Views
                     
                     iniInstance.Load();
                     string dir = iniInstance.GetValue("GameDirectory", "","null");
-                    if (dir != "null")
-                    {
-                        FillInRpaks(dir);
-                    }
-                    /*var listBox = this.FindControl<TreeView>("PakFiles");
-                    listBox.GetObservable(ListBox.ScrollProperty)
-                        .OfType<ScrollViewer>()
-                        .Take(1)
-                        .Subscribe(xv =>
-                    {
-                        Console.WriteLine("A");
-                    });*/
-
 
                     _firstTimeShown = false;
                 }
@@ -213,6 +200,7 @@ namespace RPAK2L.Views
         }
         private void ExportButton_OnClick(object? sender, RoutedEventArgs e)
         {
+            bool ExportStreaming = true;
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
@@ -220,8 +208,13 @@ namespace RPAK2L.Views
                     var tex = CurrentFileToExport.SpecificTypeFile as Texture;
                     if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
                     {
+                        #if DEBUG || EXTREME_DEBUG
+                        if(ExportStreaming)
+                            this.WarningDialog("This feature does not officially work, but i've enabled it in debug builds, for testing");
+                        #elif Release
                         this.WarningDialog("Unable to access this texture (not implemented)");
                         break;
+                        #endif
                     }
 
                     string pak = CurrentFileToExport.Pak.StarPaks[0]
@@ -231,34 +224,35 @@ namespace RPAK2L.Views
                     var compression = tex.Algorithm.ToUpper();
                         Console.WriteLine(compression);
                     Console.WriteLine(tex.BaseFile.StarpakOffset);
-                    string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name);
+                    string ex = Path.Combine(Environment.CurrentDirectory, "Export", tex.Name).Replace('\\',Path.DirectorySeparatorChar).Replace('/',Path.DirectorySeparatorChar);
                     Directory.CreateDirectory(ex);
                     foreach (var text in tex.TextureDatas)
                     {
-                        if(compression == "DXT1" || compression.StartsWith("BC"))
+                        if (text.streaming && ExportStreaming)
                         {
-                            Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
-                            byte[] buf = new byte[text.size];
-                            var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
-                            Console.WriteLine("Opening starpak stream");
-                            //var pak = text.streaming ? "pc_all.starpak" : $"{PakName}.rpak";
-                            FileStream spr = new FileStream(
-                                Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
-                                FileMode.Open);
+                            if(compression == "DXT1" || compression.StartsWith("BC"))
+                            {
+                                Console.WriteLine($"ExportingMipMap ({text.width}x{text.height})");
+                                byte[] buf = new byte[text.size];
+                                var fs = File.Create(Path.Combine(ex, text.height + ".dds"));
+                                Console.WriteLine("Opening starpak stream");
+                                //var pak = text.streaming ? "pc_all.starpak" : $"{PakName}.rpak";
+                                FileStream spr = new FileStream(
+                                    Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
+                                    FileMode.Open);
 
-                        spr.Seek(text.seek, SeekOrigin.Begin);
-                        spr.Read(buf);
-                        fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
-                        fs.Write(buf);
-                        fs.Close();
-                        }
-                        else
-                        {
-                            this.WarningDialog("Unsupported Compression Algoritm");
+                                spr.Seek(text.seek, SeekOrigin.Begin);
+                                spr.Read(buf);
+                                fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
+                                fs.Write(buf);
+                                fs.Close();
+                            }
+                            else
+                            {
+                                this.WarningDialog("Unsupported Compression Algoritm");
+                            }
                         }
                     }
-                    
-                    
                     break;
                 case "matl":
                     var mat = CurrentFileToExport.SpecificTypeFile as Material;

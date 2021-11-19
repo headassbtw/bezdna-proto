@@ -10,11 +10,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="consider your pants shitted">
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="stability fixes, now reads from the starpak that the rpak says it uses">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="41320" />
+    <option name="totalTimeSeconds" value="46687" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -50,8 +54,11 @@
     <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/Views/DirectoryTree.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/Views/DirectoryTree.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -336,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637284139972</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="stability fixes, now reads from the starpak that the rpak says it uses">
+      <created>1637288904803</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1637288904803</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,6 +382,7 @@
     <MESSAGE value="BRO IT FUCKING WORKS, HOLY SHIT" />
     <MESSAGE value="we do a little error box making" />
     <MESSAGE value="consider your pants shitted" />
-    <option name="LAST_COMMIT_MESSAGE" value="consider your pants shitted" />
+    <MESSAGE value="stability fixes, now reads from the starpak that the rpak says it uses" />
+    <option name="LAST_COMMIT_MESSAGE" value="stability fixes, now reads from the starpak that the rpak says it uses" />
   </component>
 </project>
