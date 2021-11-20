@@ -422,6 +422,7 @@ namespace RPAK2L.Views
 
         private void RPakItemControl_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
+            
             string selected = ((string) e.AddedItems[0]);
             Logger.Log.Debug($"Selected RPAK {selected}");
             string tmp = selected.Replace('\\', '/');

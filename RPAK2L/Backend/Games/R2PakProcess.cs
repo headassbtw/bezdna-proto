@@ -14,12 +14,13 @@ using RPAK2L.ViewModels.FileView.Types;
 
 namespace RPAK2L.Backend.Games
 {
-    public class R2Pak : ProgressableTask
+    public class R2Pak
     {
         public bezdna_proto.Titanfall2.RPakFile Pak;
         public ObservableCollection<PakFileInfo> PakInfos;
         public ObservableCollection<FileEntryInternal> Files;
         private bool _finished = false;
+        private ProgressableTask _task;
         public R2Pak(FileStream PakStream)
         {
             
@@ -31,7 +32,7 @@ namespace RPAK2L.Backend.Games
                 Pak = new RPakFile(PakStream);
                 //Dispatcher.UIThread.Post(() => {Init(Pak.FilesInternal.Length);});
                 PakInfos = new ObservableCollection<PakFileInfo>();
-                TotalItems = Pak.FilesInternal.Length;
+                _task = new ProgressableTask(0, Pak.FilesInternal.Length);
                 int item = 0;
                 foreach (FileEntryInternal file in Pak.FilesInternal)
                 {
@@ -86,26 +87,19 @@ namespace RPAK2L.Backend.Games
                             break;
                     }
                     //Dispatcher.UIThread.Post(() => {IncrementProgress();});
-
+                    _task.IncrementBar();
                     item++;
                     Console.CursorLeft = 0;
                     Console.WriteLine(item / Pak.FilesInternal.Length);
                 }
                 sw.Stop();
                 Logger.Log.Info($"Loaded rpak in {sw.ElapsedMilliseconds}ms");
+                _task.Finish();
                 _finished = true;
             });
             while (!_finished)
             {
                 Thread.Sleep(5);
-            }
-        }
-
-        public override void Run()
-        {
-            while (!_finished)
-            {
-                Thread.Sleep(10);
             }
         }
     }

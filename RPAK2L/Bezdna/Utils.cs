@@ -31,7 +31,7 @@ namespace bezdna_proto
             return file[5] + (file[6] << 8);
         }
 
-        private static GenericProgressDialog progressDialog;
+        private static ProgressableTask _task;
 
         public static int GetRPakVersion(FileStream file)
         {

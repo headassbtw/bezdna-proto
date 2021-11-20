@@ -121,12 +121,13 @@
         </Grid>
     </DockPanel>
     <Grid IsVisible="{Binding IsLoading}" Background="#88000000">
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" RowDefinitions="Auto,Auto">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95"> Loading </TextBlock>
-            <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,Auto">
-                <TextBlock Grid.Column="0" Text="{Binding ProgTextLeft}"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" RowDefinitions="Auto,Auto,Auto">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding LoadText}"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding ProgTextMid}"/>
+            <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto">
+                <TextBlock Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
                 <ProgressBar Grid.Column="1" IsIndeterminate="True"/>
-                <TextBlock Grid.Column="2" Text="{Binding ProgTextRight}"/>
+                <TextBlock Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
             </Grid>
         </Grid>
     </Grid>

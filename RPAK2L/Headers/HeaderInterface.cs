@@ -8,16 +8,17 @@ using RPAK2L.Dialogs;
 
 namespace RPAK2L.Headers
 {
-    public class HeaderInterface : ProgressableTask
+    public class HeaderInterface
     {
         public Dictionary<int,Dictionary<string,byte[]>> DdsHeaders;
 
         private int[] _resolutions = new int[]{2048};
         private string[] _compressions = new string[]{"DXT1","BC4U","BC5U","BC7U"};
-
-        public override void Run()
+        private ProgressableTask _task;
+        public void Init()
         {
-            TotalItems = _resolutions.Length * _compressions.Length;
+            _task = new ProgressableTask(0, _resolutions.Length * _compressions.Length);
+            _task.Init();
             System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
             
             #if DEBUG || EXTREME_DEBUG
@@ -49,7 +50,7 @@ namespace RPAK2L.Headers
                             resFilestream.Close();
                             if(!Compressions.ContainsKey(Compression))
                                 Compressions.Add(Compression, ba);
-                            IncrementProgress();
+                            _task.IncrementBar();
                             Thread.Sleep(10);
                         }
                         else
@@ -60,6 +61,7 @@ namespace RPAK2L.Headers
                     }
                 }
             }
+            _task.Finish();
         }
 
         public byte[] GetCustomRes(uint width, uint height, string compression)

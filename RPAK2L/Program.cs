@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reactive;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
@@ -46,7 +48,22 @@ namespace RPAK2L
         // yet and stuff might break.
         public static void Main(string[] args)
         {
-            Logger.Log = new Logger("./Console.log");
+            Directory.CreateDirectory("./Logs");
+            bool foundAvailableLog = false;
+            string logPath = "";
+            int tmp = 0;
+            while (!foundAvailableLog)
+            {
+                string suffix = (tmp > 0) ? $"_{tmp.ToString().PadLeft(2,'0')}" : "";
+                string path = Path.Combine(Environment.CurrentDirectory, "Logs",$"log_{DateTime.Now.ToString("yyyy.MM.dd.HH")}{suffix}.log");
+                if (!File.Exists(path))
+                {
+                    logPath = path;
+                    foundAvailableLog = true;
+                }
+                tmp++;
+            }
+            Logger.Log = new Logger(logPath);
             Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())
             {
@@ -70,10 +87,19 @@ namespace RPAK2L
 
                 Logger.Log.Error("Fatal Error:");
                 Logger.Log.Error(exc);
-                AppMainWindow = new AboutMenu();
+                string reporterPath = Path.Combine(Environment.CurrentDirectory, "ErrorReporter");
+                Process reporterProcess = new Process();
+                reporterProcess.StartInfo.Arguments = $"-path {logPath} -p {Assembly.GetExecutingAssembly().GetName().Name}";
+                if(OperatingSystem.IsLinux())
+                    reporterProcess.StartInfo.FileName = reporterPath;
+                if(OperatingSystem.IsWindows())
+                    reporterProcess.StartInfo.FileName = reporterPath + ".exe";
+                Logger.Log.Info($"Calling {reporterPath} with args: [{reporterProcess.StartInfo.Arguments}]");
+                Logger.Log.Info("Exiting");
+                Logger.Log.Close();
+                reporterProcess.Start();
+                reporterProcess.WaitForExit();
             }
-            Logger.Log.Info("Exiting");
-            Logger.Log.Close();
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.

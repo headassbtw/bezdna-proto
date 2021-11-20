@@ -7,93 +7,35 @@ using RPAK2L.ViewModels.FileView.Views;
 
 namespace RPAK2L.Dialogs
 {
-    public class ProgressableTaskStartedEventArgs : EventArgs
-    {
-        public ProgressableTaskStartedEventArgs(int items)
-        {
-            TotalItems = items;
-        }
-        public int TotalItems;
-    }
     /// <summary>
     /// an action or task that would be useful to have a progress bar for, such as file operations that take a while
     /// designed to be inherited
     /// </summary>
-    public abstract class ProgressableTask : ReactiveObject
+    public class ProgressableTask
     {
-        private TaskProgressDialog _dialog;
-        private int _processed;
 
-        public int ProcessedItems
+        public int CurrentItems;
+        public int TotalItems;
+        public ProgressableTask(int current, int total)
         {
-            get => _processed;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _processed, value);
-            }
-        }
-        private int _totalItems;
-
-        public int TotalItems
-        {
-            get => _totalItems;
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _totalItems, value);
-            }
-        }
-        public Action IncrementProgress;
-        public EventHandler<ProgressableTaskStartedEventArgs> Started;
-
-        public ProgressableTask()
-        {
-            
-            Started += StartedHit;
+            CurrentItems = current;
+            TotalItems = total;
         }
 
-        public void Init(int totalItems)
-        {
-            TotalItems = totalItems;
-            Init();
-        }
         public void Init()
         {
-            ProcessedItems = 0;
-            IncrementProgress = () =>
-            {
-                Logger.Log.Debug($"{ProcessedItems}/{TotalItems}");
-                ProcessedItems++;
-            };
-            ShowWindow();
-            
+            DirectoryTreeViewModel.__isLoading = true;
+            DirectoryTreeViewModel.ProgTextRight = TotalItems.ToString();
         }
 
-        public abstract void Run();
-        private void StartedHit(object? sender, ProgressableTaskStartedEventArgs e)
+        public void Finish()
         {
-            ShowWindow();
+            DirectoryTreeViewModel.__isLoading = false;
         }
-        bool _finished = false;
-        private void ShowWindow()
+        public void IncrementBar()
         {
-            _dialog = new TaskProgressDialog();
-            _dialog.DataContext = this;
-            var diag = _dialog.ShowDialog(Program.AppMainWindow);
-            _dialog.Activated += (sender, args) =>
-            {
-                ThreadPool.QueueUserWorkItem(async =>
-                {
-                    Run();
-                    Logger.Log.Debug("Task finished");
-                    _finished = true;
-                    Dispatcher.UIThread.Post(() =>
-                    {
-                        _dialog.Close();
-                    });
-                });
-            };
-            
-            
+            CurrentItems++;
+            DirectoryTreeViewModel.ProgTextLeft = CurrentItems.ToString();
         }
     }
 }

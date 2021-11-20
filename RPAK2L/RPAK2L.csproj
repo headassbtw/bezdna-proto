@@ -23,10 +23,14 @@
     <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
         <DefineConstants>LINUX</DefineConstants>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+        <DefineConstants>WINDOWS</DefineConstants>
+    </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>bin/Debug/</OutputPath>
       <PlatformTarget>x64</PlatformTarget>
         <NoStandardLibraries>true</NoStandardLibraries>
+        <DebugType>pdbonly</DebugType>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <OutputPath>bin/Release/</OutputPath>
@@ -35,7 +39,7 @@
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Extreme_Debug|x64' ">
       <DebugSymbols>true</DebugSymbols>
-      <DebugType>portable</DebugType>
+      <DebugType>pdbonly</DebugType>
         <NoStandardLibraries>true</NoStandardLibraries>
     </PropertyGroup>
     <ItemGroup>
@@ -44,12 +48,21 @@
         <Folder Include="obj\Debug" />
     </ItemGroup>
     <ItemGroup>
+        <!--
         <PackageReference Include="Live.Avalonia" Version="1.3.1" />
-        <PackageReference Include="Wasmtime" Version="0.27.0-preview1" />
         <PackageReference Include="Avalonia" Version="0.10.5" />
         <PackageReference Include="Avalonia.Desktop" Version="0.10.5" />
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.5" />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.5" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.5" />-->
+        <PackageReference Include="costura.fody" Version="5.7.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="fody" Version="6.6.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Wasmtime" Version="0.27.0-preview1" />
         <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
     </ItemGroup>
     <ItemGroup>
@@ -66,7 +79,6 @@
       <Compile Include="Backend\DirectoryChooseDialog.cs" />
       <Compile Include="Backend\Enum.cs" />
       <Compile Include="Backend\Games\R2PakProcess.cs" />
-      <Compile Include="Backend\GenericProgressDialog.cs" />
       <Compile Include="Bezdna\Apex\FileEntryInternal.cs" />
       <Compile Include="Bezdna\Apex\FileTypes\Material.cs" />
       <Compile Include="Bezdna\Apex\FileTypes\RUI.cs" />
@@ -86,7 +98,6 @@
       <Compile Include="Bezdna\Titanfall2\SectionDescriptor.cs" />
       <Compile Include="Bezdna\Utils.cs" />
       <Compile Include="Dialogs\ProgressableTask.cs" />
-      <Compile Include="Dialogs\TaskProgressDialog.axaml.cs" />
       <Compile Include="Dialogs\WarningDataContext.cs" />
       <Compile Include="Dialogs\WarningDialog.axaml.cs" />
       <Compile Include="ErrorReporter\ReactiveErrorHandlerOverride.cs" />
@@ -121,6 +132,7 @@
     <ItemGroup>
       <None Remove="**\**" />
       <None Include="Bezdna\Resources\decomp.wasm" />
+      <None Include="FodyWeavers.xml" />
       <None Include="Properties\launchSettings.json" />
     </ItemGroup>
     <ItemGroup>
@@ -130,10 +142,10 @@
       <AvaloniaResource Include="Views\MainWindow.axaml" />
       <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
-      <AvaloniaResource Include="Dialogs\TaskProgressDialog.axaml" />
       <AvaloniaResource Include="Dialogs\WarningDialog.axaml" />
       <Content Include="Directory.Build.props" />
       <Content Include="Directory.Build.targets" />
+      <Content Include="FodyWeavers.xsd" />
       <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
       <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
@@ -143,5 +155,8 @@
       <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\bezdna-proto\bin\Debug\net5.0\Wasmtime.Dotnet.dll</HintPath>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ErrorReporter\ErrorReporter.csproj" />
     </ItemGroup>
 </Project>

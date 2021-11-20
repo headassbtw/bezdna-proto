@@ -21,6 +21,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         public static string progleft;
         public static string progmid;
         public static string progright;
+        public static string loadtext = "Loading...";
         public Window ParentWindow;
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
@@ -46,28 +47,37 @@ namespace RPAK2L.ViewModels.FileView.Views
         private string _pakfileOffset;
         private string _currentStarpak;
 
-        public string ProgTextLeft
+        private static DirectoryTreeViewModel _instance;
+        public static string LoadText
+        {
+            get => loadtext;
+            set
+            {
+                _instance.RaiseAndSetIfChanged(ref loadtext, value);
+            }
+        }
+        public static string ProgTextLeft
         {
             get => progleft;
             set
             {
-                this.RaiseAndSetIfChanged(ref progleft, value);
+                _instance.RaiseAndSetIfChanged(ref progleft, value);
             }
         }
-        public string ProgTextMid
+        public static string ProgTextMid
         {
             get => progmid;
             set
             {
-                this.RaiseAndSetIfChanged(ref progmid, value);
+                _instance.RaiseAndSetIfChanged(ref progmid, value);
             }
         }
-        public string ProgTextRight
+        public static string ProgTextRight
         {
             get => progright;
             set
             {
-                this.RaiseAndSetIfChanged(ref progright, value);
+                _instance.RaiseAndSetIfChanged(ref progright, value);
             }
         }
         
@@ -188,6 +198,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
+            _instance = this;
             ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
             Counter = 0;
             ParentWindow = context;
