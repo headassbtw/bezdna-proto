@@ -11,34 +11,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="we do a minor major overhaul OMEGALUL">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/Build_MSBuild.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Tools/HelpItemTemplate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC4U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC4U.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC5U.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC7U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_DXT1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="oop wait fuck msbuild">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="91539" />
+    <option name="totalTimeSeconds" value="92202" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -100,6 +74,7 @@
     <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/App.axaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zkDfdk5OBpdvTD2rzdMteDdwIk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -286,7 +261,7 @@
       <workItem from="1637361073007" duration="989000" />
       <workItem from="1637363330056" duration="2342000" />
       <workItem from="1637372809465" duration="11548000" />
-      <workItem from="1637385083849" duration="6261000" />
+      <workItem from="1637385083849" duration="6924000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -428,7 +403,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637342061392</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="a small update">
+      <created>1637391530943</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1637391530943</updated>
+    </task>
+    <task id="LOCAL-00022" summary="oop wait fuck msbuild">
+      <created>1637391872934</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1637391872934</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,6 +452,8 @@
     <MESSAGE value="stability fixes, now reads from the starpak that the rpak says it uses" />
     <MESSAGE value="hey, do you have audacity?" />
     <MESSAGE value="logger? more like pogger am i right gamers" />
-    <option name="LAST_COMMIT_MESSAGE" value="logger? more like pogger am i right gamers" />
+    <MESSAGE value="a small update" />
+    <MESSAGE value="oop wait fuck msbuild" />
+    <option name="LAST_COMMIT_MESSAGE" value="oop wait fuck msbuild" />
   </component>
 </project>

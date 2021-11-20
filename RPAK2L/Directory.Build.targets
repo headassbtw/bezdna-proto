@@ -7,7 +7,7 @@
         <Message Text="Setting CI Path" Importance="high" />
         <Message Text="$(ProjectDir)$(ArtifactDestination)" Importance="high"/>
         <Message Text="::set-output name=artifactpath::$(ProjectDir)$(ArtifactDestination)" Importance="high" />
-        <MakeDir Directories="$(ProjectDir)/Artifact/"/>
+        <Message Text="::set-output name=projpath::$(ProjectDir)" Importance="high" />
         <Delete Files="$(ProjectDir)$(ArtifactDestination)"/>
     </Target>
 </Project>
