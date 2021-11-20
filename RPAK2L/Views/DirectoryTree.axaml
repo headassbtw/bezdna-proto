@@ -2,19 +2,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RPAK2L.Views.DirectoryTree"
         Icon="/Assets/Icon.ico"
         MinWidth="600"
         MinHeight="450"
         TransparencyLevelHint="Blur"
-        
+        ExtendClientAreaTitleBarHeightHint="-1"
         ExtendClientAreaToDecorationsHint="False"
         
         WindowStartupLocation="CenterScreen"
         xmlns:views="clr-namespace:RPAK2L.ViewModels.FileView.Views"
         xmlns:models="clr-namespace:RPAK2L.ViewModels.FileView.Types"
-        Background="#16161680"
+        xmlns:styles="clr-namespace:RPAK2L.Styles"
+        Background="#80161616"
         
         Title="RPAK2L">
     
@@ -23,7 +24,7 @@
     </Design.DataContext>
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top">
+            <Menu Height="25" DockPanel.Dock="Top">
                 <MenuItem Header="File">
                     <MenuItem IsEnabled="False" Header="Open File..."/>
                     <Separator/>
@@ -42,6 +43,7 @@
                 </MenuItem>
                 <MenuItem Header="Help">
                         <MenuItem Header="About" Command="{Binding OpenAboutMenu}"/>
+                        <MenuItem Header="Show Help" IsEnabled="False"/>
                 </MenuItem>
             </Menu>
             <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*,Auto">
@@ -55,8 +57,8 @@
                     <ComboBox VerticalAlignment="Stretch" Initialized="RPakItemControl_Initialized" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
                 </Border>
             </Grid>
-            <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">
-                <Border Grid.Column="0" Background="#DF202020" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">
+                <Border Grid.Column="0" Background="#DF202020" BorderThickness="2" CornerRadius="0" Padding="1">
                     <TreeView Initialized="DirTree_OnInitialized" VerticalAlignment="Stretch" MinWidth="200" BorderThickness="3" SelectionChanged="DirView_OnSelectionChanged" Items="{Binding Types}">
                         <TreeView.DataTemplates>
                             <TreeDataTemplate DataType="models:FileTypes">
@@ -73,30 +75,25 @@
                         </TreeView.DataTemplates>
                     </TreeView>
                 </Border>
+                
                 <GridSplitter Grid.Column="1" />
                 <Grid Grid.Column="2" RowDefinitions="*,Auto,Auto,Auto">
-                    <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                    <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderThickness="2" CornerRadius="0" Padding="1">
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
-                            <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search"></TextBox>
+                            
+                            <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search" BorderBrush="red"/>
                             <ListBox Initialized="PakItems_OnInit" Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <ContextMenu>
-                                            <MenuItem Header="On Jah"></MenuItem>
-                                            <TextBlock Text="{Binding Name}">
-                                            
-                                            
-                                            </TextBlock>
-                                        </ContextMenu>
-                                       
-                                        
+                                        <TextBlock Text="{Binding Name}"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </Grid>
                     </Border>
+                    
                     <GridSplitter Grid.Row="1" />
-                    <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="2" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                    <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="2" BorderThickness="2,2,2,0" CornerRadius="0" Padding="1">
                         <Grid RowDefinitions="*">
                             <Grid Grid.Row="0" RowDefinitions="Auto,Auto,Auto">
                                 <TextBlock Grid.Row="0" TextWrapping="Wrap" FontSize="24" Text="{Binding InfoName}"/>
@@ -105,7 +102,7 @@
                             </Grid>
                         </Grid>
                     </Border>
-                    <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="3" BorderBrush="White" BorderThickness="2" CornerRadius="0" Padding="1">
+                    <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="3" BorderThickness="2,0,2,2" CornerRadius="0" Padding="1">
                         <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
                             <Button Grid.Column="0" Initialized="ExportButton_OnInitialized" Click="ExportButton_OnClick"><TextBlock Text="Export"></TextBlock></Button>
                             <Button Grid.Column="1" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"></TextBlock></Button>
@@ -113,23 +110,27 @@
                             <Button Grid.Column="3" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"></TextBlock></Button>
                         </Grid>
                     </Border>
+                    
                 </Grid>
             </Grid>
-            <Grid Height="20" Grid.Row="2" RowDefinitions="Auto,Auto">
+            <Grid IsVisible="{Binding DebugMenu_IsVisible}" Height="20" Grid.Row="2" RowDefinitions="Auto,Auto">
                 <TextBlock Grid.Row="0" TextWrapping="Wrap" FontSize="12" Text="{Binding CurrentStarpak}"/>
             </Grid>
         </Grid>
     </DockPanel>
-    <Grid IsVisible="{Binding IsLoading}" Background="#88000000">
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" RowDefinitions="Auto,Auto,Auto">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding LoadText}"/>
-            <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding ProgTextMid}"/>
-            <Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto">
-                <TextBlock Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
-                <ProgressBar Grid.Column="1" IsIndeterminate="True"/>
-                <TextBlock Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
+        <Grid IsVisible="{Binding IsLoading}" Background="#88000000">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Background="#88444444">
+            <Border Grid.Row="0" CornerRadius="0" Padding="1" BorderThickness="0,2,0,0"/>
+            <TextBlock Grid.Row="1" IsVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding LoadText}"/>
+            <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Text="{Binding ProgTextMid}"/>
+            <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto" HorizontalAlignment="Center">
+                <TextBlock Width="150" HorizontalAlignment="Stretch" Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
+                <ProgressBar Width="600" Height="20" Grid.Column="1" Name="ProgressBar" Minimum="0" Maximum="{Binding TaskTotalItems}" Value="{Binding TaskProgress}" />
+                <TextBlock Width="150" HorizontalAlignment="Stretch" Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
             </Grid>
+            <Border Grid.Row="4" CornerRadius="0" Padding="1" BorderThickness="0,0,0,2"/>
         </Grid>
+        
     </Grid>
 </Grid>
 </Window>

@@ -8,6 +8,9 @@
         <entry key="RPAK2L/App.axaml" value="RPAK2L/RPAK2L.csproj" />
         <entry key="RPAK2L/Dialogs/TaskProgressDialog.axaml" value="RPAK2L/RPAK2L.csproj" />
         <entry key="RPAK2L/Dialogs/WarningDialog.axaml" value="RPAK2L/RPAK2L.csproj" />
+        <entry key="RPAK2L/Styles/HelpItem.axaml" value="RPAK2L/RPAK2L.csproj" />
+        <entry key="RPAK2L/Styles/Styles.xaml" value="RPAK2L/RPAK2L.csproj" />
+        <entry key="RPAK2L/Styles/l.axaml" value="RPAK2L/RPAK2L.csproj" />
         <entry key="RPAK2L/Views/DirectoryTree.axaml" value="RPAK2L/RPAK2L.csproj" />
         <entry key="RPAK2L/Views/MainWindow.axaml" value="RPAK2L/RPAK2L.csproj" />
         <entry key="RPAK2L/Views/SubMenus/AboutMenu.axaml" value="RPAK2L/RPAK2L.csproj" />

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFrameworks>net5.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
         <IsPackable>false</IsPackable>
@@ -10,6 +10,7 @@
         <RepositoryType>git</RepositoryType>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <NeutralLanguage>en-US</NeutralLanguage>
+        <SelfContained>false</SelfContained>
         <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
         <Configurations>Debug;Release;Extreme_Debug</Configurations>
         <Platforms>x64</Platforms>
@@ -21,6 +22,7 @@
         <DefineConstants>CI</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+        <NoStandardLibraries>true</NoStandardLibraries>
         <DefineConstants>LINUX</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
@@ -62,6 +64,10 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <!--<PackageReference Include="fody" Version="6.6.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>-->
         <PackageReference Include="Wasmtime" Version="0.27.0-preview1" />
         <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
     </ItemGroup>
@@ -107,7 +113,9 @@
       <Compile Include="Program.cs" />
       <Compile Include="Headers/HeaderInterface.cs" />
       <Compile Include="Properties\Resources.Designer.cs" />
+      <Compile Include="Styles\HelpItem.axaml.cs" />
       <Compile Include="Tools\Exporters.cs" />
+      <Compile Include="Tools\HelpItemTemplate.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
       <Compile Include="ViewModels\FileView\Types\FileTypeGroup.cs" />
@@ -123,6 +131,18 @@
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Remove="**\**" />
+      <EmbeddedResource Include="Headers\DDS_BC4U.bin">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Headers\DDS_BC5U.bin">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Headers\DDS_BC7U.bin">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Headers\DDS_DXT1.bin">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
       <EmbeddedResource Include="Images\Icon_full.png" />
       <EmbeddedResource Include="Properties\Resources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
@@ -146,10 +166,8 @@
       <Content Include="Directory.Build.props" />
       <Content Include="Directory.Build.targets" />
       <Content Include="FodyWeavers.xsd" />
-      <EmbeddedResource Include="Headers\2048\DDS_DXT1.bin" />
-      <EmbeddedResource Include="Headers/2048/DDS_BC4U.bin" />
-      <EmbeddedResource Include="Headers/2048/DDS_BC5U.bin" />
-      <EmbeddedResource Include="Headers/2048/DDS_BC7U.bin" />
+      <AvaloniaResource Include="Styles\Styles.xaml" />
+      <Content Include="Styles\HelpItem.axaml" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">

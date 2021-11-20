@@ -18,12 +18,41 @@ namespace RPAK2L.ViewModels.FileView.Views
     public class DirectoryTreeViewModel : ReactiveObject
     {
         public static bool __isLoading = false;
-        public static string progleft;
+        private static string _progleft;
+        public ProgressBar _bar;
+        public static string progleft
+        {
+            get => progleft;
+            set
+            {
+                _instance.RaiseAndSetIfChanged(ref _progleft, value);
+            }
+        }
         public static string progmid;
         public static string progright;
+        private static double _taskTotal;
+        private static int _taskProg;
         public static string loadtext = "Loading...";
+
+        public static double TaskProgress { get; set; }
+        private bool _helpLabels = false;
+        public bool ShowHelpLabels
+        {
+            get => _helpLabels;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _helpLabels, value);
+            }
+        }
+        public static double TaskTotalItems
+        {
+            get => _taskTotal;
+            set { _instance.RaiseAndSetIfChanged(ref _taskTotal, value); }
+        }
         public Window ParentWindow;
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ShowHelpLabelsCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; set; }
         public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
@@ -41,13 +70,14 @@ namespace RPAK2L.ViewModels.FileView.Views
             }
         }
         public Models.Inf FileInfo { get; set; }
+        //i need a way to keep the file properties decently big on startup, but still resizable
+        private string _pakfileName = "  \n";
+        private string _pakfileBytes = "  \n";
+        private string _pakfileOffset = "  \n";
+        //...wait, that fucking worked?
+        private string _currentStarpak = "  ";
 
-        private string _pakfileName;
-        private string _pakfileBytes;
-        private string _pakfileOffset;
-        private string _currentStarpak;
-
-        private static DirectoryTreeViewModel _instance;
+        public static DirectoryTreeViewModel _instance;
         public static string LoadText
         {
             get => loadtext;
@@ -58,10 +88,11 @@ namespace RPAK2L.ViewModels.FileView.Views
         }
         public static string ProgTextLeft
         {
-            get => progleft;
+            get => _progleft;
             set
             {
-                _instance.RaiseAndSetIfChanged(ref progleft, value);
+                if(!string.IsNullOrEmpty(value)) TaskProgress = int.Parse(value);
+                _instance.RaiseAndSetIfChanged(ref _progleft, value);
             }
         }
         public static string ProgTextMid
@@ -115,6 +146,13 @@ namespace RPAK2L.ViewModels.FileView.Views
                 this.RaiseAndSetIfChanged(ref _pakfileOffset, value);
             }
         }
+
+        public Size InfAreaDesiredSize
+        {
+            get => new Size(0, 200);
+        }
+        
+        
         public string CurrentStarpak
         {
             get => _currentStarpak;
@@ -128,6 +166,15 @@ namespace RPAK2L.ViewModels.FileView.Views
         private int Counter { get; set; }
         private ObservableCollection<PakFileInfo> _pakFiles;
 
+        public void ResetTask()
+        {
+            _bar.IsIndeterminate = true;
+            _bar.Value = 0;
+            ProgTextMid = "Working...";
+            ProgTextLeft = "";
+            ProgTextRight = "";
+        }
+        
         public void SetPakFiles(ObservableCollection<PakFileInfo> pakFiles)
         {
             
@@ -198,8 +245,11 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
+            
             _instance = this;
             ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
+            ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
+            HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
             Counter = 0;
             ParentWindow = context;
             Files = new ObservableCollection<PakFileInfo>();

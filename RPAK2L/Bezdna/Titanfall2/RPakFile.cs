@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,13 @@ namespace bezdna_proto.Titanfall2
                 if (File.Exists(file.Name + ".raw"))
                     reader = new BinaryReader(new FileStream(file.Name + ".raw", FileMode.Open, FileAccess.Read));
                 else
+                {
+                    Stopwatch sw = Stopwatch.StartNew();
                     reader = new BinaryReader(new MemoryStream(Utils.Decompress(file, Header.SizeDecompressed, Utils.HEADER_SIZE7)));
+                    sw.Stop();
+                    Logger.Log.Info($"Decompressed rpak in {sw.ElapsedMilliseconds}ms");
+                }
+                    
                 GC.Collect();
             } else
             {

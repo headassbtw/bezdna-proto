@@ -114,7 +114,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             ApplyFired += (sender, args) =>
             {
                 _settings.WriteValue(iniKey, val);
-                _settings.Save();
+                
             };
             pathBox.HorizontalAlignment = HorizontalAlignment.Stretch;
             Button browseButton = new Button()
@@ -133,6 +133,8 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
 
         void Apply()
         {
+            _settings.Save();
+            Logger.Log.Info("Preferences saved to ini file");
             ApplyFired.Invoke(this, EventArgs.Empty);
         }
         

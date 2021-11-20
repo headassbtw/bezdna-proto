@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
+using Avalonia.Threading;
+using RPAK2L;
 using RPAK2L.Backend;
 using RPAK2L.Dialogs;
+using RPAK2L.ViewModels.FileView.Views;
 
 // this is utterly retarded... (C) VALVe
 using Wasmtime;
@@ -76,9 +80,10 @@ namespace bezdna_proto
                 - 0xAE502812AA7333u * (v3 + v9 / 8);
         }
 
+        public static int prog;
         public static byte[] Decompress(FileStream file, ulong expectedDSize, int headerSize)
         {
-
+            
             file.Seek(0, SeekOrigin.Begin);
             byte[] bytes = new byte[file.Length];
             file.Read(bytes);
@@ -119,13 +124,26 @@ namespace bezdna_proto
             if (ret != 1)
                 throw new Exception("Invalid compressed data!");
 
+            Stopwatch sw = Stopwatch.StartNew();
             var outb = new byte[dSize];
+            ProgressableTask _task = new ProgressableTask(0, outb.Length);
+            _task.Init("Decompressing");
+            ThreadPool.QueueUserWorkItem(async => {
+                while (prog < outb.Length)
+                {
+                    Dispatcher.UIThread.Post(() => {DirectoryTreeViewModel.TaskProgress = prog; _task.IncrementBar(prog);});
+                    Thread.Sleep(100);
+                }
+            });
             for (var i = 0; i < dSize; i++)
             {
                 // Once again, this is retarded
                 outb[i] = Memory.ReadByte(offset + i);
+                prog = i;
             }
-
+            sw.Stop();
+            Logger.Log.Info($"Did dumb memory shit in {sw.ElapsedMilliseconds}ms");
+            _task.Finish();
             return outb;
         }
     }

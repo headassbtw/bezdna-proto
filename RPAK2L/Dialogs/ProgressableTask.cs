@@ -22,15 +22,33 @@ namespace RPAK2L.Dialogs
             TotalItems = total;
         }
 
-        public void Init()
+        public void Init(string purpose)
         {
-            DirectoryTreeViewModel.__isLoading = true;
+            DirectoryTreeViewModel._instance.IsLoading = true;
+            DirectoryTreeViewModel.TaskProgress = 0;
+            Dispatcher.UIThread.Post(() =>
+            {
+                DirectoryTreeViewModel.ProgTextMid = purpose;
+                DirectoryTreeViewModel._instance._bar.IsIndeterminate = false;
+                DirectoryTreeViewModel._instance._bar.Maximum = TotalItems;
+            });
             DirectoryTreeViewModel.ProgTextRight = TotalItems.ToString();
         }
 
         public void Finish()
         {
-            DirectoryTreeViewModel.__isLoading = false;
+            DirectoryTreeViewModel._instance.IsLoading = false;
+        }
+
+        public void IncrementBar(int items)
+        {
+            
+            CurrentItems = items;
+            Dispatcher.UIThread.Post(() =>
+            {
+                DirectoryTreeViewModel._instance._bar.Value = items;
+            });
+            DirectoryTreeViewModel.ProgTextLeft = items.ToString();
         }
         public void IncrementBar()
         {

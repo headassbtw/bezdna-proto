@@ -20,19 +20,18 @@ namespace RPAK2L.Backend.Games
         public ObservableCollection<PakFileInfo> PakInfos;
         public ObservableCollection<FileEntryInternal> Files;
         private bool _finished = false;
-        private ProgressableTask _task;
         public R2Pak(FileStream PakStream)
         {
             
             ThreadPool.QueueUserWorkItem(async =>
             {
-                Stopwatch sw = Stopwatch.StartNew();
-                PakStream.Position = 0;
                 
+                PakStream.Position = 0;
+                Stopwatch sw = Stopwatch.StartNew();
                 Pak = new RPakFile(PakStream);
-                //Dispatcher.UIThread.Post(() => {Init(Pak.FilesInternal.Length);});
+                sw.Stop();
+                Logger.Log.Info($"Read rpak in {sw.ElapsedMilliseconds}ms");
                 PakInfos = new ObservableCollection<PakFileInfo>();
-                _task = new ProgressableTask(0, Pak.FilesInternal.Length);
                 int item = 0;
                 foreach (FileEntryInternal file in Pak.FilesInternal)
                 {
@@ -86,15 +85,9 @@ namespace RPAK2L.Backend.Games
                             });
                             break;
                     }
-                    //Dispatcher.UIThread.Post(() => {IncrementProgress();});
-                    _task.IncrementBar();
+
                     item++;
-                    Console.CursorLeft = 0;
-                    Console.WriteLine(item / Pak.FilesInternal.Length);
                 }
-                sw.Stop();
-                Logger.Log.Info($"Loaded rpak in {sw.ElapsedMilliseconds}ms");
-                _task.Finish();
                 _finished = true;
             });
             while (!_finished)

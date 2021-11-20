@@ -1,0 +1,37 @@
+name: MSBuild
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-linux:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Build
+        id: Build
+        run: msbuild RPAK2L\RPAK2L.csproj -t:rebuild -property:Configuration=Debug;RuntimeIdentifier:linux-x64
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Linux_x64_Debug
+          path: ${{ steps.Build.outputs.artifactpath }}
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Build
+        id: Build
+        run: msbuild RPAK2L\RPAK2L.csproj -t:rebuild -property:Configuration=Debug;RuntimeIdentifier:win-x64
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Windows_x64_Debug
+          path: ${{ steps.Build.outputs.artifactpath }}

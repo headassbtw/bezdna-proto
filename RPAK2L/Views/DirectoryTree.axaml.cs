@@ -71,6 +71,8 @@ namespace RPAK2L.Views
                     string dir = iniInstance.GetValue("GameDirectory", "","null");
 
                     _firstTimeShown = false;
+                    vm = DataContext as DirectoryTreeViewModel;
+                    vm._bar = this.FindControl<ProgressBar>("ProgressBar");
                 }
             };
         }
@@ -128,10 +130,16 @@ namespace RPAK2L.Views
             switch (selected.File.ShortName)
             {
                 case "txtr":
-                    inf.Size = "";
-                    foreach (var mip in ((Texture)selected.SpecificTypeFile).TextureDatas)
+                    var texx = ((Texture)selected.SpecificTypeFile);
+                    inf.Size = $"{texx.Algorithm}\n";
+                    
+                    foreach (var mip in texx.TextureDatas)
                     {
-                        inf.Size += mip.width + "x" + mip.height + "|" + (mip.streaming ? "Streaming" : "Static") + '|' + mip.seek.ToString("X").PadLeft(16, '0')  + '\n';
+                        inf.Size +=
+                            mip.width + "x" + mip.height + "|"
+                            + (mip.streaming ? "Streaming" : "Static") + '|'
+                            + mip.seek.ToString("X").PadLeft(16, '0')
+                            + '\n';
                     }
                     break;
                 case "matl":
@@ -270,6 +278,7 @@ namespace RPAK2L.Views
         private void Load(string fullRPakPath)
         {
             vm.IsLoading = true;
+            vm.ResetTask();
             _lifetime++;
             Logger.Log.Debug($"Load called from lifetime {_lifetime}");
              
@@ -350,7 +359,7 @@ namespace RPAK2L.Views
                     //LoadThread.Start();
                 }
                 Logger.Log.Info("Finished loading");
-                vm.IsLoading = false;
+                //vm.IsLoading = false;
         }
         
         private void FileOpen_OnClick(object? sender, RoutedEventArgs e)
@@ -367,9 +376,9 @@ namespace RPAK2L.Views
             DeleteButton.IsEnabled = false;
             ExportButton.IsEnabled = false;
             ReplaceButton.IsEnabled = false;
-            vm.InfoName = "";
-            vm.InfoBytes = "";
-            vm.InfoOffset = "";
+            vm.InfoName = "  \n";
+            vm.InfoBytes = "  \n";
+            vm.InfoOffset = "  \n";
             
             
             

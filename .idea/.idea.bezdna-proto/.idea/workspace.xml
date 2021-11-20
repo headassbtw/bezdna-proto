@@ -11,34 +11,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/App.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/App.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/Assets/avalonia-logo.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/FodyWeavers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/ViewLocator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" afterDir="false" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="we do a minor major overhaul OMEGALUL">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/Build_MSBuild.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Tools/HelpItemTemplate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Backend/GenericProgressDialog.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/TaskProgressDialog.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Directory.Build.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC4U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC4U.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC5U.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_BC7U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/2048/DDS_DXT1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bezdna-proto.sln" beforeDir="false" afterPath="$PROJECT_DIR$/bezdna-proto.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="72619" />
+    <option name="totalTimeSeconds" value="91539" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -67,37 +67,39 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Properties/Resources.resx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f12e041db1442449426965265946e5343c00/1A/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zkDfdk5OBpdvTD2rzdMteDdwIk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -107,23 +109,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="directory" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.75318915" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.5607321" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.6722772" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ErrorReporter/bin/x64/Debug/net5.0/linux-x64/ErrorReporter.dll" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.ErrorReporter">
+  <component name="RunManager" selected=".NET Project.RPAK2L">
     <configuration name="Build Error Reporter" type="DotNetFolderPublish" factoryName="Publish to folder">
-      <riderPublish configuration="Release" platform="Any CPU" produce_single_file="true" runtime="linux-x64" target_folder="$PROJECT_DIR$/ErrorReporter/bin/Debug/publish" target_framework="net5.0" uuid_high="-6302147321363150189" uuid_low="-6544581972731611284" />
+      <riderPublish configuration="Release" platform="Any CPU" runtime="linux-x64" target_folder="$PROJECT_DIR$/ErrorReporter/bin/Debug/publish" target_framework="net5.0" uuid_high="-6302147321363150189" uuid_low="-6544581972731611284" />
       <method v="2" />
     </configuration>
     <configuration name="Linux Extreme Debug" type="DotNetFolderPublish" factoryName="Publish to folder">
@@ -133,7 +136,7 @@
       </method>
     </configuration>
     <configuration name="Windows Debug" type="DotNetFolderPublish" factoryName="Publish to folder">
-      <riderPublish configuration="Release" platform="Any CPU" runtime="win-x64" target_folder="$PROJECT_DIR$/RPAK2L/bin/publish/Win_x64_dbg" target_framework="net5.0" uuid_high="3257039500476369351" uuid_low="-6896645775119865194" />
+      <riderPublish configuration="Debug" platform="Any CPU" runtime="win-x64" target_folder="$PROJECT_DIR$/RPAK2L/bin/publish/Win_x64_dbg" target_framework="net5.0" uuid_high="3257039500476369351" uuid_low="-6896645775119865194" />
       <method v="2" />
     </configuration>
     <configuration name="ErrorReporter" type="DotNetProject" factoryName=".NET Project">
@@ -282,6 +285,8 @@
       <workItem from="1637357850288" duration="2279000" />
       <workItem from="1637361073007" duration="989000" />
       <workItem from="1637363330056" duration="2342000" />
+      <workItem from="1637372809465" duration="11548000" />
+      <workItem from="1637385083849" duration="6261000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>

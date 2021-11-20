@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <PropertyGroup>
-        <ArtifactDestination>Artifacts/Artifact.zip</ArtifactDestination>
+        <ArtifactDestination>Artifact/</ArtifactDestination>
     </PropertyGroup>
     <Target Name="BuildForCI" AfterTargets="Build" Condition="'$(ContinuousIntegrationBuild)' == 'True'">
         <Message Text="Setting CI Path" Importance="high" />
         <Message Text="$(ProjectDir)$(ArtifactDestination)" Importance="high"/>
         <Message Text="::set-output name=artifactpath::$(ProjectDir)$(ArtifactDestination)" Importance="high" />
-        <MakeDir Directories="$(ProjectDir)/Artifacts/"/>
+        <MakeDir Directories="$(ProjectDir)/Artifact/"/>
         <Delete Files="$(ProjectDir)$(ArtifactDestination)"/>
-        <ZipDirectory SourceDirectory="$(OutputPath)" DestinationFile="$(ProjectDir)$(ArtifactDestination)" />
     </Target>
 </Project>
