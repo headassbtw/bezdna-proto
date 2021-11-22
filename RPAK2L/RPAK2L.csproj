@@ -160,12 +160,16 @@
       <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
       <AvaloniaResource Include="Dialogs\WarningDialog.axaml" />
+      <!--
+      
+      ignore these :)
+      
       <Content Include="CrimesAgainstHumanity\waifu.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <EmbeddedResource Include="CrimesAgainstHumanity\your_actual_waifu.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
+      </EmbeddedResource>-->
       <Content Include="Directory.Build.props" />
       <Content Include="Directory.Build.targets" />
       <Content Include="FodyWeavers.xsd" />

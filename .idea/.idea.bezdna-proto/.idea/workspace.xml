@@ -11,26 +11,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="huh">
       <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/waifu.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/your_actual_waifu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/FodyWeavers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/FodyWeavers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/FodyWeavers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="103007" />
+    <option name="totalTimeSeconds" value="103244" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -304,7 +288,7 @@
       <workItem from="1637615713413" duration="746000" />
       <workItem from="1637620077338" duration="31000" />
       <workItem from="1637620127105" duration="706000" />
-      <workItem from="1637621218431" duration="3255000" />
+      <workItem from="1637621218431" duration="3491000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -467,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637392078161</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="huh">
+      <created>1637624574868</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1637624574868</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,6 +496,7 @@
     <MESSAGE value="a small update" />
     <MESSAGE value="oop wait fuck msbuild" />
     <MESSAGE value="i literally installed something specifically so i didn't have to constantly push to test CI but here we fucking go i guess" />
-    <option name="LAST_COMMIT_MESSAGE" value="i literally installed something specifically so i didn't have to constantly push to test CI but here we fucking go i guess" />
+    <MESSAGE value="huh" />
+    <option name="LAST_COMMIT_MESSAGE" value="huh" />
   </component>
 </project>

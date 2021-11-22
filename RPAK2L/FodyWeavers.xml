@@ -1,5 +1,4 @@
 ﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
-  <!--
   <Costura>
     <ExcludeAssemblies>
       ErrorReporter
@@ -7,5 +6,5 @@
       Magick.NET.Core
       Magick.NET.Q16-AnyCPU
     </ExcludeAssemblies>
-  </Costura>-->
+  </Costura>
 </Weavers>
