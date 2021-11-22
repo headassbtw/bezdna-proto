@@ -14,8 +14,7 @@
         WindowStartupLocation="CenterScreen"
         xmlns:views="clr-namespace:RPAK2L.ViewModels.FileView.Views"
         xmlns:models="clr-namespace:RPAK2L.ViewModels.FileView.Types"
-        xmlns:styles="clr-namespace:RPAK2L.Styles"
-        Background="#80161616"
+        Background="#CF101010"
         
         Title="RPAK2L">
     
@@ -24,19 +23,17 @@
     </Design.DataContext>
     <Grid>
         <DockPanel>
-            <Menu Height="25" DockPanel.Dock="Top">
+            <Menu Background="#DD020202" Height="25" DockPanel.Dock="Top">
                 <MenuItem Header="File">
-                    <MenuItem IsEnabled="False" Header="Open File..."/>
+                    <MenuItem Header="Reload Paks" Click="FileOpen_OnClick"/>
+                    <MenuItem Header="Reload Headers" Command="{Binding ReloadHeadersCommand}"/>
                     <Separator/>
-                    <MenuItem Command="{Binding ExitCommand}" Header="Exit"/>
-                    <Separator IsVisible="{Binding DebugMenu_IsVisible}"/>
                     <MenuItem Header="Debug" IsVisible="{Binding DebugMenu_IsVisible}">
                         <MenuItem Header="Test" Click="TestMenu_OnClick"/>
                         <MenuItem Header="Throw Exception" Click="DebugThrowError_OnClick"/>
                     </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Paks">
-                    <MenuItem Header="Reload" Click="FileOpen_OnClick"/>
+                    <Separator IsVisible="{Binding DebugMenu_IsVisible}"/>
+                    <MenuItem Command="{Binding ExitCommand}" Header="Exit"/>
                 </MenuItem>
                 <MenuItem Header="Options">
                     <MenuItem Header="Settings" Command="{Binding OpenSettingsMenu}"/>
@@ -57,6 +54,8 @@
                     <ComboBox VerticalAlignment="Stretch" Initialized="RPakItemControl_Initialized" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
                 </Border>
             </Grid>
+                <Image Grid.Row="1" Source="{Binding Waifu}"/>
+                <!--SHE'S THERE TO KEEP YOU COMPANY OKAY?-->
                 <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">
                 <Border Grid.Column="0" Background="#DF202020" BorderThickness="2" CornerRadius="0" Padding="1">
                     <TreeView Initialized="DirTree_OnInitialized" VerticalAlignment="Stretch" MinWidth="200" BorderThickness="3" SelectionChanged="DirView_OnSelectionChanged" Items="{Binding Types}">
@@ -75,8 +74,7 @@
                         </TreeView.DataTemplates>
                     </TreeView>
                 </Border>
-                
-                <GridSplitter Grid.Column="1" />
+                    <GridSplitter Grid.Column="1" />
                 <Grid Grid.Column="2" RowDefinitions="*,Auto,Auto,Auto">
                     <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderThickness="2" CornerRadius="0" Padding="1">
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">

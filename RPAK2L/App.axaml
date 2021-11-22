@@ -11,6 +11,7 @@
         <SolidColorBrush x:Key="Accent">#DD990000</SolidColorBrush>
         <SolidColorBrush x:Key="HoverAccent">#55000000</SolidColorBrush>
     </Application.Resources>
+    
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
         <StyleInclude Source="/Styles/Styles.xaml"></StyleInclude>

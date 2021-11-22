@@ -67,12 +67,16 @@ namespace RPAK2L
             Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())
             {
-                #pragma warning disable CA1416 //this is under a function that only runs on windows
-                Console.SetWindowSize(1,1);
-                #pragma warning restore CA1416
-                Console.Title = "Joseph Mother";
-                var handle = GetConsoleWindow();
-                ShowWindow(handle, 0);
+                if (!Debugger.IsAttached) //reponse to https://github.com/headassbtw/rpak2l/issues/1
+                {
+                    //when compiled on linux, C# apps always show a console on windows. i don't want that.
+                    #pragma warning disable CA1416 //this is under a function that only runs on windows
+                    Console.SetWindowSize(1,1);
+                    #pragma warning restore CA1416
+                    Console.Title = "Joseph Mother";
+                    var handle = GetConsoleWindow();
+                    ShowWindow(handle, 0);
+                }
             }
             try
             {

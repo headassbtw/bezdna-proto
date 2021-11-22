@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reactive;
-using Avalonia;
+using System.Threading;
+using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using ReactiveUI;
+using RPAK2L.Headers;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.SubMenuViewModels;
 using RPAK2L.Views;
 using RPAK2L.Views.SubMenus;
 using File = RPAK2L.ViewModels.FileView.Types.File;
+using Size = Avalonia.Size;
 
 namespace RPAK2L.ViewModels.FileView.Views
 {
@@ -53,6 +58,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ShowHelpLabelsCommand { get; set; }
         public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ReloadHeadersCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; set; }
         public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
@@ -237,19 +243,44 @@ namespace RPAK2L.ViewModels.FileView.Views
             sm.DataContext = new AboutMenuViewModel();
             sm.ShowDialog(ParentWindow);
         }
-        
-        
-        
+
+        private Bitmap _waifu;
+
+        public Bitmap Waifu
+        {
+            get => _waifu;
+            set
+            {
+                Logger.Log.Info("i was forced into doing this. i did not want to.");
+                this.RaiseAndSetIfChanged(ref _waifu, value);
+            }
+        }
+
+        public void LoadWaifu()
+        {
+            try
+            {
+                var f = new Bitmap(Path.Combine(Environment.CurrentDirectory,
+                    "CrimesAgainstHumanity", "waifu.png"));
+                Logger.Log.Debug($"Waifu is {f.Width}x{f.Height}");
+                Waifu = f;
+            }
+            catch (Exception e)
+            {
+                Logger.Log.Info("cool");
+            }
+        }
         
         
         
         public DirectoryTreeViewModel(Window context)
         {
-            
             _instance = this;
+            LoadWaifu();
             ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
             ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
             HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
+            ReloadHeadersCommand = ReactiveCommand.Create(() => { Program.Headers.Init(); });
             Counter = 0;
             ParentWindow = context;
             Files = new ObservableCollection<PakFileInfo>();

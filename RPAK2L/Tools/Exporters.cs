@@ -4,6 +4,7 @@ using System.Linq;
 using bezdna_proto.Titanfall2.FileTypes;
 using RPAK2L.Dialogs;
 using RPAK2L.ViewModels.FileView.Types;
+using RPAK2L.ViewModels.SubMenuViewModels;
 using File = System.IO.File;
 
 namespace RPAK2L.Tools
@@ -17,13 +18,13 @@ namespace RPAK2L.Tools
             var tex = file.SpecificTypeFile as Texture;
             if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
             {
-                #if DEBUG || EXTREME_DEBUG
-                if(ExportStatic)
-                    Program.AppMainWindow.WarningDialog("This feature does not officially work, but i've enabled it in debug builds, for testing");
-                #elif Release
-                        this.WarningDialog("Unable to access this texture (not implemented)");
-                        break;
-                #endif
+                if(SettingsMenuViewModel._experimentalFeatures)
+                    Program.AppMainWindow.WarningDialog("This is an experimental feature, use at your own risk");
+                else
+                {
+                    Program.AppMainWindow.WarningDialog("Unable to access this texture (not implemented)");
+                    return;
+                }
             }
 
             string pak = file.Pak.StarPaks[0]
@@ -45,7 +46,7 @@ namespace RPAK2L.Tools
             Directory.CreateDirectory(ex);
             foreach (var text in material ? tex.TextureDatas.Take(1) : tex.TextureDatas)
             {
-                if (text.streaming || ExportStatic)
+                if (text.streaming || SettingsMenuViewModel._experimentalFeatures)
                 {
                     if(compression == "DXT1" || compression.StartsWith("BC"))
                     {

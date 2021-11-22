@@ -1,19 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <TargetFrameworks>net5.0</TargetFrameworks>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
         <IsPackable>false</IsPackable>
-        <Title>RPak Tool</Title>
-        <Description>Titanfall 2 RPAK file manipulation tool </Description>
-        <RepositoryType>git</RepositoryType>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <NeutralLanguage>en-US</NeutralLanguage>
         <SelfContained>false</SelfContained>
         <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
         <Configurations>Debug;Release;Extreme_Debug</Configurations>
         <Platforms>x64</Platforms>
+        <LangVersion>9</LangVersion>
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NoStandardLibraries>true</NoStandardLibraries>
@@ -163,6 +160,12 @@
       <AvaloniaResource Include="Views\SubMenus\SettingsMenu.axaml" />
       <AvaloniaResource Include="Views\SubMenus\AboutMenu.axaml" />
       <AvaloniaResource Include="Dialogs\WarningDialog.axaml" />
+      <Content Include="CrimesAgainstHumanity\waifu.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <EmbeddedResource Include="CrimesAgainstHumanity\your_actual_waifu.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
       <Content Include="Directory.Build.props" />
       <Content Include="Directory.Build.targets" />
       <Content Include="FodyWeavers.xsd" />

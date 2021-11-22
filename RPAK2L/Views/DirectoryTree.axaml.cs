@@ -252,8 +252,6 @@ namespace RPAK2L.Views
                         var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
                         Exporters.TextureData(tex, LastSelectedDirectory, "Materials",false,true);
                     }
-                    
-                    this.WarningDialog("Materials coming soon");
                     break;
                 case "shdr":
                     var sha = CurrentFileToExport.SpecificTypeFile as Shader;
@@ -419,7 +417,7 @@ namespace RPAK2L.Views
 
         private void TestMenu_OnClick(object? sender, RoutedEventArgs e)
         {
-            this.WarningDialog("Oh god oh fuck oh god oh fuck");
+            this.WarningDialog("Sugma");
         }
         
         private void AddButton_OnClick(object? sender, RoutedEventArgs e)

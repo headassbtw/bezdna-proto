@@ -17,6 +17,7 @@ using Avalonia.Media;
 using Avalonia.Threading;
 using ReactiveUI;
 using RPAK2L.Backend;
+using RPAK2L.Dialogs;
 
 namespace RPAK2L.ViewModels.SubMenuViewModels
 {
@@ -26,8 +27,9 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
         public EventHandler ApplyFired { get; set; }
         public ReactiveCommand<Unit, Unit> ApplyCommand { get; set; }
         public string WindowTitle => "Settings";
-        private string _gamePath = "";
-        private string _exportPath;
+        public static string _gamePath = "";
+        public static string _exportPath;
+        public static bool _experimentalFeatures = false;
         public string GamePath
         {
             get => _gamePath;
@@ -48,6 +50,15 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             }
         }
 
+        public bool ExperimentalFeatures
+        {
+            get => _experimentalFeatures;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _experimentalFeatures, value);
+            }
+        }
+        
 
         public ObservableCollection<Grid> SettingsItems { get; set; }
 
@@ -60,20 +71,57 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             };
         }
 
-        CheckBox BoolSetting(bool binding, string title, string iniKey)
+        public void BindBoolSetting(string binding, string title, string iniKey)
         {
-            //TODO: bool settings
-            Grid g = new Grid();
-            g.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
-            g.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
+            var btn = BoolSetting(binding, title, iniKey);
+        }
+        
+        CheckBox BoolSetting(string binding, string title, string iniKey)
+        {
+            var boxBinding = new Binding(binding);
+            var g = new Grid();
             g.MinWidth = 680;
-            g.MaxWidth = 7274;
-            var checkBox = new CheckBox
+            g.MaxWidth = 7274; //HOW THE FUCK DO I MAKE THIS BITCH EXPAND
+            g.RowDefinitions = RowDefinitions.Parse("Auto,Auto");
+            g.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
+            TextBlock header = new TextBlock();
+            header.Text = title;
+            Grid.SetRow(header,0);
+            g.Children.Add(header);
+            Grid pathGrid = new Grid();
+            pathGrid.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
+            Grid.SetRow(pathGrid,1);
+            if (_settings.GetValue(iniKey, "", "null") == "null")
             {
-                Content = title,
-                IsChecked = binding
+                _settings.WriteValue(iniKey,"false");
+                _settings.Save();
+            }
+            CheckBox pathBox = new CheckBox()
+            {
+                IsChecked = bool.Parse(_settings.GetValue(iniKey))
             };
-            return checkBox;
+            pathBox.Bind(CheckBox.IsCheckedProperty, boxBinding);
+            var text = pathBox.GetObservable(CheckBox.IsCheckedProperty);
+            bool val = false;
+            text.Subscribe(value =>
+            {
+                Logger.Log.Info($"Binding \"{binding}\" changed in box to {value}");
+                val = value.HasValue ? value.Value : false;
+            });
+            ApplyFired += (sender, args) =>
+            {
+                _settings.WriteValue(iniKey, val.ToString());
+            };
+            pathBox.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Grid.SetColumn(pathBox,0);
+            pathGrid.Children.Add(pathBox);
+            g.Children.Add(pathGrid);
+            SettingsItems.Add(g);
+            pathBox.Initialized += (sender, args) =>
+            {
+                pathBox.IsChecked = bool.Parse(_settings.GetValue(iniKey, "", "null"));
+            };
+            return pathBox;
         }
         (Button,TextBox) StringSetting(string binding, string title, string iniKey)
         {
@@ -136,6 +184,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             _settings.Save();
             Logger.Log.Info("Preferences saved to ini file");
             ApplyFired.Invoke(this, EventArgs.Empty);
+            Program.AppMainWindow.WarningDialog("Settings applied, a restart of the program may be required for some items to take effect");
         }
         
         public Window Window;
@@ -148,6 +197,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             Window = targetWindow;
             BindFolderSetting("GamePath", "Game Directory", "GamePath",new [] {"r2","paks","Win64"});
             BindFolderSetting("ExportPath", "Export Directory", "ExportPath");
+            BindBoolSetting("ExperimentalFeatures", "Experimental Features","Experiments");
         }
     }
 }

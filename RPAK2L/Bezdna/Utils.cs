@@ -102,12 +102,22 @@ namespace bezdna_proto
             const int parameters = Memory.PageSize * 2;
             const int startOffset = parameters + 0x100;
             int offset = startOffset;
+            ProgressableTask _task = new ProgressableTask(0, bytes.Length);
+            _task.Init("Reading");
+            ThreadPool.QueueUserWorkItem(async => {
+                while (prog < bytes.Length)
+                {
+                    Dispatcher.UIThread.Post(() => {DirectoryTreeViewModel.TaskProgress = prog; _task.IncrementBar(prog);});
+                    Thread.Sleep(10);
+                }
+            });
             
             for (var i = 0; i < bytes.Length; i++)
             {
                 // I can feel the retardation
                 Memory.WriteByte(offset, bytes[i]);
                 offset++;
+                prog = i;
             }
             var dSize = instance.get_decompressed_size(parameters, startOffset, -1, bytes.Length, 0, headerSize);
 
@@ -126,13 +136,13 @@ namespace bezdna_proto
 
             Stopwatch sw = Stopwatch.StartNew();
             var outb = new byte[dSize];
-            ProgressableTask _task = new ProgressableTask(0, outb.Length);
+            _task = new ProgressableTask(0, outb.Length);
             _task.Init("Decompressing");
             ThreadPool.QueueUserWorkItem(async => {
                 while (prog < outb.Length)
                 {
                     Dispatcher.UIThread.Post(() => {DirectoryTreeViewModel.TaskProgress = prog; _task.IncrementBar(prog);});
-                    Thread.Sleep(100);
+                    Thread.Sleep(10);
                 }
             });
             for (var i = 0; i < dSize; i++)

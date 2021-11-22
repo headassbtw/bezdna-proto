@@ -1,6 +1,34 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         
+        <Style Selector="CheckBox:checked">
+                <Setter Property="Foreground" Value="{DynamicResource Accent}" />
+        </Style>
+        <Style Selector="CheckBox /template/ Border#NormalRectangle">
+               <Setter Property="CornerRadius" Value="0"/>
+       </Style>
+        <Style Selector="CheckBox:checked">
+                <Setter Property="BorderBrush" Value="black" />
+        </Style>
+
+        <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="BorderBrush" Value="white" />
+                <Setter Property="Background" Value="{DynamicResource Accent}" />
+        </Style>
+        
+        <Style Selector="MenuItem:pressed /template/ Border#PART_LayoutRoot:pointerover">
+                <Setter Property="Background" Value="red" />
+        </Style>
+        
+        <Style Selector="MenuFlyoutPresenter /template/ Border">
+                <Setter Property="Background" Value="green" />
+        </Style>
+        
+        <Style Selector="MenuItem:selected /template/ Border#PART_LayoutRoot">
+                <Setter Property="Background" Value="{DynamicResource Accent}" />
+        </Style>
+        
         <Style Selector="TreeViewItem:selected /template/ Border#PART_LayoutRoot">
                 <Setter Property="Background" Value="{DynamicResource Accent}"/>
         </Style>
