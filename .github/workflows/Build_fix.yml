@@ -3,8 +3,14 @@ name: .NET
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'ErrorReporter'
+      - 'RPAK2L'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'ErrorReporter'
+      - 'RPAK2L'
 
 jobs:
   build-linux:
