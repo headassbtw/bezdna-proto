@@ -273,7 +273,7 @@ namespace RPAK2L.ViewModels.FileView.Views
             OpenExportDirCommand = ReactiveCommand.Create(() =>
             {
                 _ini.Load();
-                Process.Start(_ini.GetValue("ExportPath"));
+                Process.Start((OperatingSystem.IsWindows() ? "explorer.exe" : "xdg-open"),_ini.GetValue("ExportPath"));
             });
             ReloadHeadersCommand = ReactiveCommand.Create(() => { Program.Headers.Init(); });
             Counter = 0;

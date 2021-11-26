@@ -30,6 +30,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
         public static string _gamePath = "";
         public static string _exportPath;
         public static bool _experimentalFeatures = false;
+        public static bool _onlyExportHighestRes = true;
         public string GamePath
         {
             get => _gamePath;
@@ -58,7 +59,15 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
                 this.RaiseAndSetIfChanged(ref _experimentalFeatures, value);
             }
         }
-        
+
+        public bool OnlyExportHighestRes
+        {
+            get => _onlyExportHighestRes;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _onlyExportHighestRes, value);
+            }
+        }
 
         public ObservableCollection<Grid> SettingsItems { get; set; }
 
@@ -198,6 +207,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             BindFolderSetting("GamePath", "Game Directory", "GamePath",new [] {"r2","paks","Win64"});
             BindFolderSetting("ExportPath", "Export Directory", "ExportPath");
             BindBoolSetting("ExperimentalFeatures", "Experimental Features","Experiments");
+            BindBoolSetting("OnlyExportHighestRes", "Only export highest resolution texture","OnlyHighestRes");
         }
     }
 }

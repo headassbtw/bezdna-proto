@@ -15,8 +15,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="112140" />
+    <option name="totalTimeSeconds" value="113658" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -295,7 +294,8 @@
       <workItem from="1637900386388" duration="2571000" />
       <workItem from="1637903261780" duration="993000" />
       <workItem from="1637904548917" duration="1994000" />
-      <workItem from="1637922958711" duration="4638000" />
+      <workItem from="1637922958711" duration="4879000" />
+      <workItem from="1637956104835" duration="1537000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -514,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637926421629</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="ayo?">
+      <created>1637928452674</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1637928452675</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,6 +567,7 @@
     <MESSAGE value="i cannot read" />
     <MESSAGE value="fonts on windows can go fuck off, also added some docs" />
     <MESSAGE value="STATIC FUCKING ASSETS WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" />
-    <option name="LAST_COMMIT_MESSAGE" value="STATIC FUCKING ASSETS WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" />
+    <MESSAGE value="ayo?" />
+    <option name="LAST_COMMIT_MESSAGE" value="ayo?" />
   </component>
 </project>

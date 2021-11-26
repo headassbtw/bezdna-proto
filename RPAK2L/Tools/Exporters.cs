@@ -45,15 +45,26 @@ namespace RPAK2L.Tools
                 ex = ex.Substring(0,type);
             }
             
-            Directory.CreateDirectory(ex);
-            foreach (var text in material ? tex.TextureDatas.Take(1) : tex.TextureDatas)
+            
+            
+            foreach (var text in (material || SettingsMenuViewModel._onlyExportHighestRes) ? tex.TextureDatas.Take(1) : tex.TextureDatas)
             {
                 
                 if(compression == "DXT1" || compression.StartsWith("BC"))
                 {
                     Logger.Log.Debug($"ExportingMipMap ({text.width}x{text.height})");
                     byte[] buf = new byte[text.size];
-                    var fs = File.Create(Path.Combine(ex, (material ? textype : text.height) + ".dds"));
+                    string filename = Path.Combine(ex, (material ? textype : text.height) + ".dds");
+                    if (SettingsMenuViewModel._onlyExportHighestRes)
+                    {
+                        filename = ex + '_'+ (material ? textype : text.height) + ".dds";
+                        Directory.CreateDirectory(ex.Substring(0,ex.LastIndexOf(Path.DirectorySeparatorChar)));
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(ex);
+                    }
+                    var fs = File.Create(filename);
                     if (text.streaming)
                     {
                         Logger.Log.Info("Opening starpak stream [STREAMING]");
