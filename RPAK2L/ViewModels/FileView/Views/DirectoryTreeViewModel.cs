@@ -1,22 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reactive;
-using System.Threading;
-using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Threading;
 using ReactiveUI;
-using RPAK2L.Headers;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.SubMenuViewModels;
-using RPAK2L.Views;
 using RPAK2L.Views.SubMenus;
-using File = RPAK2L.ViewModels.FileView.Types.File;
 using Size = Avalonia.Size;
+using Avalonia.Controls;
+using Avalonia.Media.Imaging;
 
 namespace RPAK2L.ViewModels.FileView.Views
 {
@@ -244,30 +238,22 @@ namespace RPAK2L.ViewModels.FileView.Views
             sm.ShowDialog(ParentWindow);
         }
 
-        private Bitmap _waifu;
-
-        public Bitmap Waifu
-        {
-            get => _waifu;
-            set
-            {
-                Logger.Log.Info("i was forced into doing this. i did not want to.");
-                this.RaiseAndSetIfChanged(ref _waifu, value);
-            }
-        }
+        public Bitmap Waifu { get; set; }
 
         public void LoadWaifu()
         {
+            string path = Path.Combine(Environment.CurrentDirectory,
+                "CrimesAgainstHumanity", "waifu.png");
+            Logger.Log.Debug($"loading bg image from {path}");
             try
             {
-                var f = new Bitmap(Path.Combine(Environment.CurrentDirectory,
-                    "CrimesAgainstHumanity", "waifu.png"));
-                Logger.Log.Debug($"Waifu is {f.Width}x{f.Height}");
+                Bitmap f = new Bitmap(path);
                 Waifu = f;
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                Logger.Log.Info("cool");
+                Logger.Log.Error("NO BACKGROUND IMAGE FOR YOU, BITCH:");
+                Logger.Log.Error(exc);
             }
         }
         

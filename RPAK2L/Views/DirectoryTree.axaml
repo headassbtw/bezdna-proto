@@ -80,7 +80,7 @@
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
                             
                             <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search" BorderBrush="red"/>
-                            <ListBox Initialized="PakItems_OnInit" Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
+                            <ListBox Background="#DF202020" Initialized="PakItems_OnInit" Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>

@@ -87,7 +87,7 @@ namespace RPAK2L
             }
             catch (Exception exc)
             {
-                AppMainWindow.Close();
+                //AppMainWindow.Close();
 
                 Logger.Log.Error("Fatal Error:");
                 Logger.Log.Error(exc);
