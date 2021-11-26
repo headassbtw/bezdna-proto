@@ -3,14 +3,12 @@ name: .NET
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'ErrorReporter'
-      - 'RPAK2L'
+    paths-ignore:
+      - '***.md'
   pull_request:
     branches: [ master ]
-    paths:
-      - 'ErrorReporter'
-      - 'RPAK2L'
+    paths-ignore:
+      - '***.md'
 
 jobs:
   build-linux:
@@ -32,7 +30,7 @@ jobs:
         name: Linux_x64_Debug
         path: ./Artifact/
   build-windows:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET

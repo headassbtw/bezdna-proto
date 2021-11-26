@@ -11,26 +11,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/WaifuView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/WaifuView.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Resources/waifu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/avalonia.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
-    </list>
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="106706" />
+    <option name="totalTimeSeconds" value="106933" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -298,7 +286,7 @@
       <workItem from="1637620077338" duration="31000" />
       <workItem from="1637620127105" duration="706000" />
       <workItem from="1637621218431" duration="4755000" />
-      <workItem from="1637900386388" duration="2348000" />
+      <workItem from="1637900386388" duration="2571000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -482,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637625375507</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="funny background images, avalonia version bump">
+      <created>1637902860112</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1637902860113</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,6 +518,7 @@
     <MESSAGE value="huh" />
     <MESSAGE value="fixed me relying on stuff i didn't push because i got embarrassed lol" />
     <MESSAGE value="docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs" />
+    <MESSAGE value="funny background images, avalonia version bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="funny background images, avalonia version bump" />
   </component>
 </project>
