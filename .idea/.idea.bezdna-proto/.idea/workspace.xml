@@ -12,14 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/CI_Builds/actions_tab.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CI_Builds/artifacts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CI_Builds/choose_artifact.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/CI_Builds/latest_run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="108286" />
+    <option name="totalTimeSeconds" value="110213" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -297,7 +291,8 @@
       <workItem from="1637621218431" duration="4755000" />
       <workItem from="1637900386388" duration="2571000" />
       <workItem from="1637903261780" duration="993000" />
-      <workItem from="1637904548917" duration="1928000" />
+      <workItem from="1637904548917" duration="1994000" />
+      <workItem from="1637922958711" duration="2624000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -502,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637903447402</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fonts on windows can go fuck off, also added some docs">
+      <created>1637907218795</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1637907218795</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,6 +548,7 @@
     <MESSAGE value="funny background images, avalonia version bump" />
     <MESSAGE value="CI moment" />
     <MESSAGE value="i cannot read" />
-    <option name="LAST_COMMIT_MESSAGE" value="i cannot read" />
+    <MESSAGE value="fonts on windows can go fuck off, also added some docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fonts on windows can go fuck off, also added some docs" />
   </component>
 </project>

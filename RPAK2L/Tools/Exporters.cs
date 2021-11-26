@@ -16,6 +16,8 @@ namespace RPAK2L.Tools
             Logger.Log.Info("Exporting Texture...");
             if(file == null) return;
             var tex = file.SpecificTypeFile as Texture;
+            //FUCK YOU WE CAN ACCESS STATIC STUFF NOW BITCHHHH
+            /*
             if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
             {
                 if(SettingsMenuViewModel._experimentalFeatures)
@@ -25,7 +27,7 @@ namespace RPAK2L.Tools
                     Program.AppMainWindow.WarningDialog("Unable to access this texture (not implemented)");
                     return;
                 }
-            }
+            }*/
 
             string pak = file.Pak.StarPaks[0]
                 .Substring(file.Pak.StarPaks[0].LastIndexOf('\\')+1);
@@ -46,28 +48,35 @@ namespace RPAK2L.Tools
             Directory.CreateDirectory(ex);
             foreach (var text in material ? tex.TextureDatas.Take(1) : tex.TextureDatas)
             {
-                if (text.streaming || SettingsMenuViewModel._experimentalFeatures)
+                
+                if(compression == "DXT1" || compression.StartsWith("BC"))
                 {
-                    if(compression == "DXT1" || compression.StartsWith("BC"))
+                    Logger.Log.Debug($"ExportingMipMap ({text.width}x{text.height})");
+                    byte[] buf = new byte[text.size];
+                    var fs = File.Create(Path.Combine(ex, (material ? textype : text.height) + ".dds"));
+                    if (text.streaming)
                     {
-                        Logger.Log.Debug($"ExportingMipMap ({text.width}x{text.height})");
-                        byte[] buf = new byte[text.size];
-                        var fs = File.Create(Path.Combine(ex, (material ? textype : text.height) + ".dds"));
-                        Logger.Log.Debug("Opening starpak stream");
+                        Logger.Log.Info("Opening starpak stream [STREAMING]");
                         FileStream spr = new FileStream(
                             Path.Combine(LastSelectedDirectory, "r2", "paks", "Win64", pak),
                             FileMode.Open);
-
+                        
                         spr.Seek(text.seek, SeekOrigin.Begin);
                         spr.Read(buf);
-                        fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
-                        fs.Write(buf);
-                        fs.Close();
                     }
                     else
                     {
-                        Program.AppMainWindow.WarningDialog("Unsupported Compression Algoritm");
+                        Logger.Log.Info("Opening rpak stream [STATIC]");
+                        file.Pak.reader.BaseStream.Seek(text.seek, SeekOrigin.Begin);
+                        file.Pak.reader.Read(buf);
                     }
+                    fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
+                    fs.Write(buf);
+                    fs.Close();
+                }
+                else
+                {
+                    Program.AppMainWindow.WarningDialog("Unsupported Compression Algoritm");
                 }
             }
         }
