@@ -25,6 +25,8 @@
         <DockPanel>
             <Menu Background="#DD020202" Height="25" DockPanel.Dock="Top">
                 <MenuItem Header="File">
+                    <MenuItem Header="Open Export Directory" Command="{Binding OpenExportDirCommand}"/>
+                    <Separator/>
                     <MenuItem Header="Reload Paks" Click="FileOpen_OnClick"/>
                     <MenuItem Header="Reload Headers" Command="{Binding ReloadHeadersCommand}"/>
                     <Separator/>

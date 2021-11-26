@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reactive.Concurrency;
 using ReactiveUI;
+using RPAK2L.Dialogs;
 
 namespace RPAK2L.ErrorReporter
 {
@@ -12,7 +13,12 @@ namespace RPAK2L.ErrorReporter
         {
             if (Debugger.IsAttached) Debugger.Break();
 
-            RxApp.MainThreadScheduler.Schedule(() => { Logger.Log.Error("i tried to handle the error"); });
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                Logger.Log.Error("i tried to handle the error"); 
+                Program.AppMainWindow.WarningDialog("An error was thrown, but it could be handled. nothing was done.");
+                
+            });
         }
 
         public void OnError(Exception error)

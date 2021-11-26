@@ -11,9 +11,9 @@ namespace RPAK2L.Tools
 {
     public class Exporters
     {
-        public static void TextureData(PakFileInfo file, string LastSelectedDirectory, string exportSub = "", bool ExportStatic = true, bool material = false)
+        public static void TextureData(PakFileInfo file, string LastSelectedDirectory, string exportDir, string exportSub = "", bool ExportStatic = true, bool material = false)
         {
-            Logger.Log.Info("Exporting Texture...");
+            Logger.Log.Info($"Exporting Texture to {exportDir}");
             if(file == null) return;
             var tex = file.SpecificTypeFile as Texture;
             //FUCK YOU WE CAN ACCESS STATIC STUFF NOW BITCHHHH
@@ -31,12 +31,12 @@ namespace RPAK2L.Tools
 
             string pak = file.Pak.StarPaks[0]
                 .Substring(file.Pak.StarPaks[0].LastIndexOf('\\')+1);
-                    
-            Console.WriteLine(tex.StarpakNum);
+            
             var compression = tex.Algorithm.ToUpper();
-            Console.WriteLine(compression);
-            Console.WriteLine(tex.BaseFile.StarpakOffset);
-            string ex = Path.Combine(Environment.CurrentDirectory, "Export", exportSub,tex.Name).Replace('\\',Path.DirectorySeparatorChar).Replace('/',Path.DirectorySeparatorChar);
+            Logger.Log.Debug($"{compression} | 0x{tex.BaseFile.StarpakOffset.ToString("X").ToUpper()}");
+            Logger.Log.Debug(exportDir);
+            string ex = Path.Combine(exportDir, exportSub,tex.Name).Replace('\\',Path.DirectorySeparatorChar).Replace('/',Path.DirectorySeparatorChar);
+            Logger.Log.Debug(ex);
             int type = ex.LastIndexOf('_') + 1;
             string textype = "";
             if (material)

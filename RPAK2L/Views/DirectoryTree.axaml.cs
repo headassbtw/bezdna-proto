@@ -116,6 +116,8 @@ namespace RPAK2L.Views
             }
         }
 
+        
+        
         private string PakName;
         private PakFileInfo CurrentFileToExport;
         private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs ev)
@@ -225,7 +227,17 @@ namespace RPAK2L.Views
             AddButton = sender as Button;
             AddButton.IsEnabled = false;
         }
-        
+
+        public string ExportPath
+        {
+            get
+            {
+                iniInstance.Load();
+                string ExportExportExport = iniInstance.GetValue("ExportPath");
+                if (ExportExportExport == null) ExportExportExport = Path.Combine(Environment.CurrentDirectory,"Export");
+                return ExportExportExport;
+            }
+        }
         
         private void DeleteButton_OnClick(object? sender, RoutedEventArgs e)
         {
@@ -233,11 +245,12 @@ namespace RPAK2L.Views
         }
         private void ExportButton_OnClick(object? sender, RoutedEventArgs ev)
         {
+            
             bool ExportStreaming = true;
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
-                    Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, "Textures");
+                    Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, ExportPath,"Textures",true,false);
                     break;
                 case "matl":
                     var material = CurrentFileToExport.SpecificTypeFile as Material;
@@ -250,7 +263,7 @@ namespace RPAK2L.Views
                         else
                             refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
                         var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
-                        Exporters.TextureData(tex, LastSelectedDirectory, "Materials",false,true);
+                        Exporters.TextureData(tex, LastSelectedDirectory, ExportPath,"Materials",false,true);
                     }
                     break;
                 case "shdr":

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -11,6 +12,7 @@ using RPAK2L.Views.SubMenus;
 using Size = Avalonia.Size;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
+using RPAK2L.Views;
 
 namespace RPAK2L.ViewModels.FileView.Views
 {
@@ -53,6 +55,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         public ReactiveCommand<Unit, Unit> ShowHelpLabelsCommand { get; set; }
         public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ReloadHeadersCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> OpenExportDirCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; set; }
         public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
@@ -261,11 +264,17 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
+            Ini _ini = new Ini(Path.Combine(Environment.CurrentDirectory, "settings.ini"));
             _instance = this;
             LoadWaifu();
             ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
             ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
             HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
+            OpenExportDirCommand = ReactiveCommand.Create(() =>
+            {
+                _ini.Load();
+                Process.Start(_ini.GetValue("ExportPath"));
+            });
             ReloadHeadersCommand = ReactiveCommand.Create(() => { Program.Headers.Init(); });
             Counter = 0;
             ParentWindow = context;
