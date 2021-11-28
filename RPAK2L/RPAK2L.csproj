@@ -2,6 +2,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
+        <PreserveCompilationContext>false</PreserveCompilationContext>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
         <IsPackable>false</IsPackable>

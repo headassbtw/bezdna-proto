@@ -11,9 +11,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="ran out of space and picom took a fat shit, but it exports as png now, i plan on that being configurable later">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="watch this fail the CI 2: electric boogaloo">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="115747" />
+    <option name="totalTimeSeconds" value="116509" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -300,7 +301,7 @@
       <workItem from="1637956104835" duration="1537000" />
       <workItem from="1638100308943" duration="788000" />
       <workItem from="1638101584932" duration="614000" />
-      <workItem from="1638102257708" duration="420000" />
+      <workItem from="1638102257708" duration="1613000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -533,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638102301644</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="watch this fail the CI 2: electric boogaloo">
+      <created>1638102693144</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1638102693144</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="making a ui" />
     <MESSAGE value="a" />
     <MESSAGE value="we do a little more header stuff" />
     <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
@@ -581,6 +588,7 @@
     <MESSAGE value="STATIC FUCKING ASSETS WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" />
     <MESSAGE value="ayo?" />
     <MESSAGE value="ran out of space and picom took a fat shit, but it exports as png now, i plan on that being configurable later" />
-    <option name="LAST_COMMIT_MESSAGE" value="ran out of space and picom took a fat shit, but it exports as png now, i plan on that being configurable later" />
+    <MESSAGE value="watch this fail the CI 2: electric boogaloo" />
+    <option name="LAST_COMMIT_MESSAGE" value="watch this fail the CI 2: electric boogaloo" />
   </component>
 </project>
