@@ -392,7 +392,7 @@ namespace RPAK2L.Views
             vm.InfoOffset = "  \n";
             
             
-            
+            iniInstance.Load();
             FillInRpaks(iniInstance.GetValue("GamePath"));
         }
 

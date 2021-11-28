@@ -71,7 +71,7 @@ namespace RPAK2L.Tools
                     }
 
                     var fs = new MemoryStream();
-                    //var fs = File.Create(filename);
+                    
                     if (text.streaming)
                     {
                         Logger.Log.Info("Opening starpak stream [STREAMING]");
@@ -91,10 +91,20 @@ namespace RPAK2L.Tools
                     fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
                     fs.Write(buf);
                     fs.Seek(0, SeekOrigin.Begin);
-                    //fs.Close();
                     MagickNET.SetTempDirectory("/tmp");
-                    var img = new MagickImage(fs);
-                    img.Write(filename.Replace(".dds", ".png"));
+
+                    try
+                    {
+                        var img = new MagickImage(fs);
+                        img.Write(filename.Replace(".dds", ".png"));
+                    }
+                    catch (Exception exc)
+                    {
+                        var rfs = File.Create(filename);
+                        rfs.Write(fs.ToArray());
+                        Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
+                        rfs.Close();
+                    }
                     fs.Close();
                 }
                 else

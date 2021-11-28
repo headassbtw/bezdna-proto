@@ -11,14 +11,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC5U.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_BC7U.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Headers/DDS_DXT1.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="116523" />
+    <option name="totalTimeSeconds" value="119406" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -48,8 +55,6 @@
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/App.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,7 +69,6 @@
     <setting file="file://$PROJECT_DIR$/RPAK2L/Logger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/Views/SubMenus/AboutMenu.axaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" root0="FORCE_HIGHLIGHTING" />
@@ -298,6 +302,8 @@
       <workItem from="1638100308943" duration="788000" />
       <workItem from="1638101584932" duration="614000" />
       <workItem from="1638102257708" duration="1627000" />
+      <workItem from="1638104083482" duration="338000" />
+      <workItem from="1638136556610" duration="3404000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -544,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638103874955</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="a">
+      <created>1638104280160</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1638104280160</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +580,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="we do a little more header stuff" />
     <MESSAGE value="not sure what else i can add in two minutes, so uh here, saves the game dir semi-properly, i'll fix it up after this class" />
     <MESSAGE value="fucking avalonia and it's yee-yee ass inability to make a grid expand when created in code and not xaml" />
     <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
@@ -592,6 +604,7 @@
     <MESSAGE value="ran out of space and picom took a fat shit, but it exports as png now, i plan on that being configurable later" />
     <MESSAGE value="watch this fail the CI 2: electric boogaloo" />
     <MESSAGE value="fuck you windows" />
-    <option name="LAST_COMMIT_MESSAGE" value="fuck you windows" />
+    <MESSAGE value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="a" />
   </component>
 </project>
