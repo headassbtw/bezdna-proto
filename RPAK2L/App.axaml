@@ -1,7 +1,6 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:RPAK2L"
-             xmlns:default="clr-namespace:Avalonia.Themes.Default;assembly=Avalonia.Themes.Default"
              x:Class="RPAK2L.App">
     <Application.DataTemplates>
         <local:ViewLocator/>

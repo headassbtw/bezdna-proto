@@ -12,10 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/waifu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/CrimesAgainstHumanity/your_actual_waifu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +31,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="113658" />
+    <option name="totalTimeSeconds" value="115744" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -44,43 +52,44 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Logger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Models/Misc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Properties/Resources.resx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Properties/Resources.resx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Logger.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Models/Misc.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/DirectoryTree.axaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/AboutMenu.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/SubMenus/SettingsMenu.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/FileView/Views/DirectoryTreeViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/AboutMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/ViewModels/SubMenuViewModels/SettingsMenuViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Headers/HeaderInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f12e041db1442449426965265946e5343c00/1A/X11PlatformThreading.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -296,6 +305,8 @@
       <workItem from="1637904548917" duration="1994000" />
       <workItem from="1637922958711" duration="4879000" />
       <workItem from="1637956104835" duration="1537000" />
+      <workItem from="1638100308943" duration="788000" />
+      <workItem from="1638101584932" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>

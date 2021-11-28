@@ -13,6 +13,7 @@
         CanResize="False"
         WindowStartupLocation="CenterOwner"
         Title="Warning">
+    <!-- CenterScreen and CenterOwner is broken on avalonia versions above 0.10.5, which is why the project is on this version -->
     <Design.DataContext>
         <dc:WarningDataContext/>
     </Design.DataContext>

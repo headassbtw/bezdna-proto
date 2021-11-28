@@ -124,9 +124,9 @@
             <TextBlock Grid.Row="1" IsVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding LoadText}"/>
             <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Text="{Binding ProgTextMid}"/>
             <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto" HorizontalAlignment="Center">
-                <TextBlock Width="150" HorizontalAlignment="Stretch" Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
-                <ProgressBar Width="600" Height="20" Grid.Column="1" Name="ProgressBar" Minimum="0" Maximum="{Binding TaskTotalItems}" Value="{Binding TaskProgress}" />
-                <TextBlock Width="150" HorizontalAlignment="Stretch" Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
+                <TextBlock TextAlignment="Center" Width="200" HorizontalAlignment="Stretch" Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
+                <ProgressBar Width="700" Height="20" Grid.Column="1" Name="ProgressBar" Minimum="0" Maximum="{Binding TaskTotalItems}" Value="{Binding TaskProgress}" />
+                <TextBlock TextAlignment="Center" Width="200" HorizontalAlignment="Stretch" Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
             </Grid>
             <Border Grid.Row="4" CornerRadius="0" Padding="1" BorderThickness="0,0,0,2"/>
         </Grid>
