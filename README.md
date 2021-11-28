@@ -16,6 +16,8 @@ i forked this repo, not only to preserve the code, but also to add a GUI to the 
 7. Do what you want with the action buttons on the bottom right
 
 ## Running CI (GitHub Actions) Builds
+<b><h1>IF IT DOESN'T LOAD, OR COMPLAINS ABOUT CONTENTS OF "RPAK2L.deps.json", JUST DELETE IT</h1></b>
+
 If there isn't something in the releases tab, GitHub actions has your back, which automatically produces builds when i commit something
 <h3>Steps:</h3>
 1. Go to the "Actions" tab
