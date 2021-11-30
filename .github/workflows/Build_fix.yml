@@ -24,6 +24,8 @@ jobs:
     - name: Build
       id: Build
       run: dotnet publish RPAK2L --nologo --no-restore -c Release -f net5.0 -r linux-x64 -o ./Artifact/
+    - name: Delete deps.json
+      run: rm -f ./Artifact/RPAK2L.deps.json
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
@@ -42,6 +44,8 @@ jobs:
     - name: Build
       id: Build
       run: dotnet publish RPAK2L --nologo --no-restore -c Release -r win-x64 -o ./Artifact/
+    - name: Delete deps.json
+      run: del Artifact\RPAK2L.deps.json
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
