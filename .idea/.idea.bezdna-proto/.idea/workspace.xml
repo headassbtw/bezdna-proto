@@ -11,9 +11,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="joe">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/QuickStart/DropdownPaks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/QuickStart/OpenFile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/QuickStart/Screenshot_20211129_223901.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/QuickStart/Start.md" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/QuickStart/Start.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +27,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="138770" />
+    <option name="totalTimeSeconds" value="139453" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -109,7 +115,7 @@
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.rider.remote" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Publish to custom server.Win_VM">
+  <component name="RunManager" selected=".NET Project.RPAK2L">
     <configuration name="Build Error Reporter" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish configuration="Release" platform="Any CPU" runtime="linux-x64" target_folder="$PROJECT_DIR$/ErrorReporter/bin/Debug/publish" target_framework="net5.0" uuid_high="-6302147321363150189" uuid_low="-6544581972731611284" />
       <method v="2" />
@@ -310,7 +316,8 @@
       <workItem from="1638198999152" duration="2993000" />
       <workItem from="1638208593264" duration="9499000" />
       <workItem from="1638250882281" duration="1543000" />
-      <workItem from="1638252530486" duration="362000" />
+      <workItem from="1638252530486" duration="668000" />
+      <workItem from="1638253724292" duration="629000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -585,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638252700792</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="joe">
+      <created>1638252896575</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1638252896575</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

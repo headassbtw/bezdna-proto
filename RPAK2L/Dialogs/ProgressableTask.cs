@@ -29,7 +29,6 @@ namespace RPAK2L.Dialogs
             DirectoryTreeViewModel.TaskProgress = 0;
             Dispatcher.UIThread.Post(() =>
             {
-                DirectoryTreeViewModel._instance._centerGrid.Height = 70;
                 DirectoryTreeViewModel.ProgTextMid = purpose;
                 DirectoryTreeViewModel._instance._bar.IsIndeterminate = false;
                 DirectoryTreeViewModel._instance._bar.Maximum = TotalItems;
@@ -39,14 +38,9 @@ namespace RPAK2L.Dialogs
 
         public void Finish()
         {
+            //fuck you
             ThreadPool.QueueUserWorkItem(async =>
             {
-                Dispatcher.UIThread.Post(() =>
-                {
-
-                    DirectoryTreeViewModel._instance._centerGrid.Opacity = 0;
-                });
-                Thread.Sleep(400);
                 Dispatcher.UIThread.Post(() =>
                 {    
                     DirectoryTreeViewModel._instance.IsLoading = false;
