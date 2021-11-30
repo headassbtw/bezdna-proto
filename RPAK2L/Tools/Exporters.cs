@@ -1,22 +1,38 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using BCnEncoder.Decoder.Options;
+using BCnEncoder.Shared;
+using BCnEncoder.Shared.ImageFiles;
 using bezdna_proto.Titanfall2.FileTypes;
 using ImageMagick;
 using RPAK2L.Dialogs;
 using RPAK2L.ViewModels.FileView.Types;
 using RPAK2L.ViewModels.SubMenuViewModels;
+using RPAK2L.Views;
 using File = System.IO.File;
 
 namespace RPAK2L.Tools
 {
     public class Exporters
     {
-        public static void TextureData(PakFileInfo file, string LastSelectedDirectory, string exportDir, string exportSub = "", bool ExportStatic = true, bool material = false)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file">PakFileInfo</param>
+        /// <param name="LastSelectedDirectory">Directory to pull from</param>
+        /// <param name="exportDir">Directory to export to</param>
+        /// <param name="exportSub">Sub-dir of export</param>
+        /// <param name="ExportStatic">export static assets (deprecated, always true)</param>
+        /// <param name="material">if is a material</param>
+        /// <returns> 0 if OK, 1 if unsupported, 2 if failed</returns>
+        public static int TextureData(PakFileInfo file, string LastSelectedDirectory, string exportDir, string exportSub = "", bool ExportStatic = true, bool material = false)
         {
+            int _return = 0;
             Logger.Log.Info($"Exporting Texture to {exportDir}");
-            if(file == null) return;
+            if (file == null) return 2;
             var tex = file.SpecificTypeFile as Texture;
             //FUCK YOU WE CAN ACCESS STATIC STUFF NOW BITCHHHH
             /*
@@ -49,9 +65,9 @@ namespace RPAK2L.Tools
                 textype = ex.Substring(type);
                 ex = ex.Substring(0,type);
             }
-            
-            
-            
+
+
+            List<string> failedImages = new List<string>();
             foreach (var text in (material || SettingsMenuViewModel._onlyExportHighestRes) ? tex.TextureDatas.Take(1) : tex.TextureDatas)
             {
                 
@@ -95,7 +111,15 @@ namespace RPAK2L.Tools
 
                     try
                     {
-                        var img = new MagickImage(fs);
+                        var decoder = new BCnEncoder.Decoder.BcDecoder();
+
+                        var data = decoder.Decode2D(DdsFile.Load(fs));
+                        var encoder = new BCnEncoder.Encoder.BcEncoder();
+                        encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
+                        var ms = new MemoryStream();
+                        encoder.EncodeToDds(data).Write(ms);
+                        ms.Seek(0, SeekOrigin.Begin);
+                        var img = new MagickImage(ms);
                         img.Write(filename.Replace(".dds", ".png"));
                     }
                     catch (Exception exc)
@@ -103,15 +127,20 @@ namespace RPAK2L.Tools
                         var rfs = File.Create(filename);
                         rfs.Write(fs.ToArray());
                         Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
+                        DirectoryTree.ExportErrors.Add(tex.Name);
                         rfs.Close();
+                        _return = 2;
                     }
                     fs.Close();
                 }
                 else
                 {
                     Program.AppMainWindow.WarningDialog("Unsupported Compression Algoritm");
+                    _return = 1;
                 }
             }
+            Logger.Log.Info("Finished Exporting");
+            return _return;
         }
     }
 }

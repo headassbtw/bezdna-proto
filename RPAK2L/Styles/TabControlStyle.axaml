@@ -1,0 +1,12 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <Style Selector="TabControl WrapPanel">
+                <Setter Property="Background" Value="#55FFFFFF"/>
+        </Style>
+        <Style Selector="TabItem:focus">
+                <Setter Property="Background" Value="{DynamicResource Accent}"/>
+        </Style>
+        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource Accent}"/>
+        </Style>
+</Styles>

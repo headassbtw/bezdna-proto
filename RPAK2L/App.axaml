@@ -13,6 +13,7 @@
     
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
-        <StyleInclude Source="/Styles/Styles.xaml"></StyleInclude>
+        <StyleInclude Source="/Styles/Styles.xaml"/>
+        <StyleInclude Source="/Styles/TabControlStyle.axaml"/>
     </Application.Styles>
 </Application>

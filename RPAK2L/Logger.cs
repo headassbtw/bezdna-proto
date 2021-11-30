@@ -4,9 +4,15 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using RPAK2L.ViewModels.FileView.Views;
 
 namespace RPAK2L
 {
+    public class InAppConsoleMsg
+    {
+        public string TextLine { get; set; }
+        public string HexColorCode { get; set; }
+    }
     public class Logger
     {
         public static Logger Log; 
@@ -44,6 +50,29 @@ namespace RPAK2L
             Console.WriteLine(inf);
             LogFileWriter.WriteLine(inf);
             Console.ResetColor();
+            string _hexcol = "#FFFFFF";
+            switch (color)
+            {
+                case ConsoleColor.Red:
+                    _hexcol = "#FF4444";
+                    break;
+                case ConsoleColor.White:
+                    _hexcol = "#FFFFFF";
+                    break;
+                case ConsoleColor.DarkGreen:
+                    _hexcol = "#009900";
+                    break;
+                case ConsoleColor.Yellow:
+                    _hexcol = "#999900";
+                    break;
+            }
+            DirectoryTreeViewModel.ConsoleLog(
+                new InAppConsoleMsg()
+                {
+                    TextLine = $"{logType}] {log}",
+                    HexColorCode = _hexcol
+                }
+            );
         }
         
         public void Close()

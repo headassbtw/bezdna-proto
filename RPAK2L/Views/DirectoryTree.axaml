@@ -25,6 +25,8 @@
         <DockPanel>
             <Menu Background="#DD020202" Height="25" DockPanel.Dock="Top">
                 <MenuItem Header="File">
+                    <MenuItem Header="Open" Click="FileBrowserRpakLoad"/>
+                    <MenuItem IsEnabled="{Binding HasRecents}" MaxWidth="900" Header="Recent Files" Items="{Binding Recents}"/>
                     <MenuItem Header="Open Export Directory" Command="{Binding OpenExportDirCommand}"/>
                     <Separator/>
                     <MenuItem Header="Reload Paks" Click="FileOpen_OnClick"/>
@@ -33,16 +35,22 @@
                     <MenuItem Header="Debug" IsVisible="{Binding DebugMenu_IsVisible}">
                         <MenuItem Header="Test" Click="TestMenu_OnClick"/>
                         <MenuItem Header="Throw Exception" Click="DebugThrowError_OnClick"/>
+                        <MenuItem Header="Test Multi-Item Dialog" Command="{Binding TestMultiWarnCommand}"/>
                     </MenuItem>
                     <Separator IsVisible="{Binding DebugMenu_IsVisible}"/>
                     <MenuItem Command="{Binding ExitCommand}" Header="Exit"/>
                 </MenuItem>
+                
                 <MenuItem Header="Options">
                     <MenuItem Header="Settings" Command="{Binding OpenSettingsMenu}"/>
                 </MenuItem>
+                <MenuItem Header="Console">
+                    <CheckBox IsChecked="{Binding ConsoleEnabled}" Content="Enabled"/>
+                    <MenuItem Header="Clear" Command="{Binding ConsoleClearCommand}"/>
+                </MenuItem>
                 <MenuItem Header="Help">
-                        <MenuItem Header="About" Command="{Binding OpenAboutMenu}"/>
-                        <MenuItem Header="Show Help" IsEnabled="False"/>
+                    <MenuItem Header="Help" Command="{Binding HelpWindowCommand}"/>
+                    <MenuItem Header="About" Command="{Binding OpenAboutMenu}"/>
                 </MenuItem>
             </Menu>
             <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*,Auto">
@@ -59,23 +67,35 @@
                 <Image Grid.Row="1" Source="{Binding Waifu}"/>
                 <!--SHE'S THERE TO KEEP YOU COMPANY OKAY?-->
                 <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">
-                <Border Grid.Column="0" Background="#DF202020" BorderThickness="2" CornerRadius="0" Padding="1">
-                    <TreeView Initialized="DirTree_OnInitialized" VerticalAlignment="Stretch" MinWidth="200" BorderThickness="3" SelectionChanged="DirView_OnSelectionChanged" Items="{Binding Types}">
-                        <TreeView.DataTemplates>
-                            <TreeDataTemplate DataType="models:FileTypes">
-                                <Grid VerticalAlignment="Stretch" ColumnDefinitions="*,Auto" HorizontalAlignment="Stretch">
-                                    <TextBlock Grid.Column="0" Foreground="White" Text="{Binding Name}" />
-                                    <Border Grid.Column="1" MaxWidth="40" Width="40" BorderBrush="Gray" BorderThickness="1,0,0,0">
-                                        <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Right" Foreground="Black" Text="wip" />
-                                    </Border>
-                                </Grid>
-                            </TreeDataTemplate>
-                            <DataTemplate DataType="models:File">
-                                <TextBlock Text="{Binding Name}" />
-                            </DataTemplate>    
-                        </TreeView.DataTemplates>
-                    </TreeView>
-                </Border>
+                <Grid Grid.Column="0" RowDefinitions="*,Auto,*">
+                    <Border Grid.Column="0" Background="#DF202020" BorderThickness="2" CornerRadius="0" Padding="1">
+                        <TreeView Initialized="DirTree_OnInitialized" VerticalAlignment="Stretch" MinWidth="200" BorderThickness="3" SelectionChanged="DirView_OnSelectionChanged" Items="{Binding Types}">
+                            <TreeView.DataTemplates>
+                                <TreeDataTemplate DataType="models:FileTypes">
+                                    <Grid VerticalAlignment="Stretch" ColumnDefinitions="*,Auto" HorizontalAlignment="Stretch">
+                                        <TextBlock Grid.Column="0" Foreground="White" Text="{Binding Name}" />
+                                        <Border Grid.Column="1" MaxWidth="40" Width="40" BorderBrush="Gray" BorderThickness="1,0,0,0">
+                                            <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Right" Foreground="Black" Text="[items]" />
+                                        </Border>
+                                    </Grid>
+                                </TreeDataTemplate>
+                                <DataTemplate DataType="models:File">
+                                    <TextBlock Text="{Binding Name}" />
+                                </DataTemplate>    
+                            </TreeView.DataTemplates>
+                        </TreeView>
+                    </Border>
+                    <GridSplitter Grid.Row="1" IsEnabled="{Binding ConsoleEnabled}"/>
+                    <Border Grid.Row="2" IsEnabled="{Binding ConsoleEnabled}">
+                        <ListBox AutoScrollToSelectedItem="True" Focusable="False" Padding="0,1,0,1" Background="#DF202020" Items="{Binding Console}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="0" Foreground="{Binding HexColorCode}" Text="{Binding TextLine}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Border>
+                </Grid>
                     <GridSplitter Grid.Column="1" />
                 <Grid Grid.Column="2" RowDefinitions="*,Auto,Auto,Auto">
                     <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderThickness="2" CornerRadius="0" Padding="1">
@@ -104,13 +124,12 @@
                     </Border>
                     <Border Background="#EE202020" VerticalAlignment="Stretch" Grid.Row="3" BorderThickness="2,0,2,2" CornerRadius="0" Padding="1">
                         <Grid Grid.Row="3" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto">
-                            <Button Grid.Column="0" Initialized="ExportButton_OnInitialized" Click="ExportButton_OnClick"><TextBlock Text="Export"></TextBlock></Button>
-                            <Button Grid.Column="1" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"></TextBlock></Button>
-                            <Button Grid.Column="2" Initialized="DeleteButton_OnInitialized" Click="DeleteButton_OnClick"><TextBlock Text="Delete"></TextBlock></Button>
-                            <Button Grid.Column="3" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"></TextBlock></Button>
+                            <Button Grid.Column="0" Initialized="ExportButton_OnInitialized" Click="ExportButton_OnClick"><TextBlock Text="Export"/></Button>
+                            <Button Grid.Column="1" IsVisible="False" Initialized="ReplaceButton_OnInitialized" Click="ReplaceButton_OnClick"><TextBlock Text="Replace"/></Button>
+                            <Button Grid.Column="2" IsVisible="False" Initialized="DeleteButton_OnInitialized" Click="DeleteButton_OnClick"><TextBlock Text="Delete"/></Button>
+                            <Button Grid.Column="3" IsVisible="False" Initialized="AddButton_OnInitialized" Click="AddButton_OnClick"><TextBlock Text="Add File"/></Button>
                         </Grid>
                     </Border>
-                    
                 </Grid>
             </Grid>
             <Grid IsVisible="{Binding DebugMenu_IsVisible}" Height="20" Grid.Row="2" RowDefinitions="Auto,Auto">

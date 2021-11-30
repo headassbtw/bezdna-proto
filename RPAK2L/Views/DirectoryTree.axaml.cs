@@ -12,6 +12,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using Avalonia.X11;
 using bezdna_proto.Titanfall2.FileTypes;
 using DynamicData.Binding;
@@ -155,18 +156,17 @@ namespace RPAK2L.Views
                             refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
                         else
                             refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
-                        inf.Size += refName;
                         var a = _textures
                             .FirstOrDefault(f => 
                                 (f.SpecificTypeFile as Texture)
                                 .GUID == e);
                         if (a != null)
                         {
+                            inf.Size += refName;
                             Texture tex = a.SpecificTypeFile as Texture;
                             if(tex != null) inf.Size += " | " + tex.Width + "x" + tex.Height;
-                            
+                            inf.Size += '\n';
                         }
-                        inf.Size += '\n';
                     }
                     break;
                 case "shdr":
@@ -238,15 +238,17 @@ namespace RPAK2L.Views
                 return ExportExportExport;
             }
         }
-        
+
+        public static List<string> ExportErrors;
         private void DeleteButton_OnClick(object? sender, RoutedEventArgs e)
         {
             this.WarningDialog("Feature not implemented");
         }
         private void ExportButton_OnClick(object? sender, RoutedEventArgs ev)
         {
-            
-            bool ExportStreaming = true;
+            ThreadPool.QueueUserWorkItem(async =>
+            {
+                 bool ExportStreaming = true;
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
@@ -263,8 +265,11 @@ namespace RPAK2L.Views
                         else
                             refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
                         var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
-                        Exporters.TextureData(tex, LastSelectedDirectory, ExportPath,"Materials",false,true);
+                        Exporters.TextureData(tex, LastSelectedDirectory, ExportPath, "Materials", false, true);
                     }
+                    Program.AppMainWindow.WarningMultiDialog(
+                        "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
+                        ExportErrors.ToArray());
                     break;
                 case "shdr":
                     var sha = CurrentFileToExport.SpecificTypeFile as Shader;
@@ -278,6 +283,7 @@ namespace RPAK2L.Views
                     this.WarningDialog("Unknown file type");
                     break;
             }
+            });
         }
         private void ReplaceButton_OnClick(object? sender, RoutedEventArgs e)
         {
@@ -286,17 +292,25 @@ namespace RPAK2L.Views
 
         private PakInterface pakBackend;
         private int _lifetime;
-        private void Load(string fullRPakPath)
+        public void Load(string fullRPakPath)
         {
             vm.IsLoading = true;
             vm.ResetTask();
             _lifetime++;
             Logger.Log.Debug($"Load called from lifetime {_lifetime}");
-             
-                
-                //vm.Types = new ObservableCollection<FileTypes>();
 
-                ThreadPool.QueueUserWorkItem(sync =>
+            string recentsFile = Path.Combine(Environment.CurrentDirectory, "recents.txt");
+            if (File.Exists(recentsFile))
+            {
+                if (!File.ReadAllLines(recentsFile).Contains(fullRPakPath))
+                {
+                    var sw = new StreamWriter(File.OpenWrite(recentsFile));
+                    sw.WriteLine(fullRPakPath);
+                    sw.Close();
+                }
+            }
+            vm.ReloadRecents();
+            ThreadPool.QueueUserWorkItem(sync =>
                 {
                     vm.Types.Clear();
                     pakBackend = new PakInterface(fullRPakPath);
@@ -453,6 +467,23 @@ namespace RPAK2L.Views
             Load(selected);
         }
 
+        private void FileBrowserRpakLoad(object? sender, RoutedEventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(async async =>
+            {
+                var p = FileChooseDialog.ChooseRpakDialog(LastSelectedDirectory);
+                var a = await p;
+                if (!string.IsNullOrEmpty(a))
+                {
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        Load(a);
+                    });
+                }
+            });
+
+        }
+        
 
         private void PakItems_OnInit(object? sender, EventArgs e)
         {

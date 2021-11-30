@@ -15,7 +15,8 @@ namespace RPAK2L.ErrorReporter
 
             RxApp.MainThreadScheduler.Schedule(() =>
             {
-                Logger.Log.Error("i tried to handle the error"); 
+                Logger.Log.Error("Error from ReactiveCommand:"); 
+                Logger.Log.Error(value);
                 Program.AppMainWindow.WarningDialog("An error was thrown, but it could be handled. nothing was done.");
                 
             });
@@ -25,7 +26,12 @@ namespace RPAK2L.ErrorReporter
         {
             if (Debugger.IsAttached) Debugger.Break();
 
-            RxApp.MainThreadScheduler.Schedule(() => { Logger.Log.Error("i tried to handle the error"); });
+            RxApp.MainThreadScheduler.Schedule(() =>
+            {
+                Logger.Log.Error("Error from ReactiveCommand:");
+                Logger.Log.Error(error);
+                
+            });
         }
 
         public void OnCompleted()

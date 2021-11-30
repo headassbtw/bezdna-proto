@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dialogs="clr-namespace:RPAK2L.Dialogs"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RPAK2L.Dialogs.WarningMultiItemDialog"
+        MinWidth="520"
+        Width="520"
+        MaxWidth="520"
+        MinHeight="240"
+        Height="240"
+        MaxHeight="240"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="Warning">
+    <Design.DataContext>
+        <dialogs:WarningMultiItemDataContext/>
+    </Design.DataContext>
+    <Grid RowDefinitions="*,Auto">
+        <Grid ColumnDefinitions="Auto,*">
+            <Image Grid.Column="0" Width="100" Height="100" Source="resm:RPAK2L.Images.Icon_full.png"/>
+            <Grid Grid.Column="1" RowDefinitions="Auto,*">
+                <TextBlock Grid.Row="0" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Warning}"/>
+                <ListBox Grid.Row="1" Items="{Binding Content}"/>
+            </Grid>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Grid.Row="1">
+            <Button Click="Okay_OnClick"><TextBlock>Okay</TextBlock></Button>
+        </Grid>
+    </Grid>
+</Window>

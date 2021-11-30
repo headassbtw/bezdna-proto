@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -12,12 +13,25 @@ using RPAK2L.Views.SubMenus;
 using Size = Avalonia.Size;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
+using Avalonia.Threading;
+using DynamicData;
+using RPAK2L.Dialogs;
+using RPAK2L.Dialogs.HelpDialog;
 using RPAK2L.Views;
+using File = System.IO.File;
 
 namespace RPAK2L.ViewModels.FileView.Views
 {
     public class DirectoryTreeViewModel : ReactiveObject
     {
+        public static void ConsoleLog(InAppConsoleMsg content)
+        {
+            if (_instance != null && _console != null && _instance.Console != null)
+            {
+                _instance.Console.Insert(0,content);
+            }
+        }
+        private static ObservableCollection<InAppConsoleMsg> _console;
         public static bool __isLoading = false;
         private static string _progleft;
         public ProgressBar _bar;
@@ -35,6 +49,14 @@ namespace RPAK2L.ViewModels.FileView.Views
         private static int _taskProg;
         public static string loadtext = "Loading...";
 
+        public ObservableCollection<InAppConsoleMsg> Console
+        {
+            get => _console;
+            set
+            {
+                _instance.RaiseAndSetIfChanged(ref _console, value);
+            }
+        }
         public static double TaskProgress { get; set; }
         private bool _helpLabels = false;
         public bool ShowHelpLabels
@@ -56,10 +78,25 @@ namespace RPAK2L.ViewModels.FileView.Views
         public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ReloadHeadersCommand { get; set; }
         public ReactiveCommand<Unit,Unit> OpenExportDirCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> TestMultiWarnCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> ConsoleClearCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> HelpWindowCommand { get; set; }
         public ObservableCollection<FileTypes> Types { get; set; }
         public ObservableCollection<PakFileInfo> Files { get; set; }
         public ObservableCollection<PakFileInfo> VisibleFiles { get; set; }
         public ObservableCollection<string> RPakChoices { get; set; }
+        
+        public ObservableCollection<Control> Recents { get; set; }
+        public bool ConsoleEnabled
+        {
+            get => _consoleEn;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _consoleEn, value);
+            }
+            
+        }
+        private bool _consoleEn = true;
 
         public bool DebugMenu_IsVisible
         {
@@ -214,7 +251,6 @@ namespace RPAK2L.ViewModels.FileView.Views
             get => _searchFilter;
             set
             {
-                Console.WriteLine(value);
                 this.RaiseAndSetIfChanged(ref _searchFilter, value);
                 var filtered = Files.Where(x => x.Name.ToLower().Contains(value.ToLower())).ToList();
                 Logger.Log.Info($"{filtered.Count} Items match search parameters");
@@ -246,7 +282,7 @@ namespace RPAK2L.ViewModels.FileView.Views
         public void LoadWaifu()
         {
             string path = Path.Combine(Environment.CurrentDirectory,
-                "CrimesAgainstHumanity", "waifu.png");
+                "UserContent", "Backround.png");
             Logger.Log.Debug($"loading bg image from {path}");
             try
             {
@@ -255,29 +291,78 @@ namespace RPAK2L.ViewModels.FileView.Views
             }
             catch (Exception exc)
             {
-                Logger.Log.Error("NO BACKGROUND IMAGE FOR YOU, BITCH:");
-                Logger.Log.Error(exc);
+                Logger.Log.Error("Background image could not be loaded");
             }
         }
-        
+        public bool HasRecents
+        {
+            get => Recents.Count > 0;
+        }
+
+        public void ReloadRecents()
+        {
+            Recents.Clear();
+            string path = Path.Combine(Environment.CurrentDirectory, "recents.txt");
+            if (File.Exists(path))
+            {
+                Recents.Add(new MenuItem()
+                {
+                    Header = "Clear Recents",
+                    Command = ReactiveCommand.Create(() => {File.WriteAllLines(path, new string[0]);})
+                });
+                Recents.Add(new Separator());
+                string[] recents = File.ReadAllLines(path);
+                for (int i = 0; i < recents.Length; i++)
+                {
+                    string recent = recents[i];
+                    if (File.Exists(recent))
+                    {
+                        var item = new MenuItem();
+                        item.Header = recent;
+                        item.Click += (sender, args) =>(ParentWindow as DirectoryTree).Load(recent); 
+                        Recents.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                File.Create(path);
+            }
+        }
         
         
         public DirectoryTreeViewModel(Window context)
         {
             Ini _ini = new Ini(Path.Combine(Environment.CurrentDirectory, "settings.ini"));
             _instance = this;
+            Console = new ObservableCollection<InAppConsoleMsg>();
             LoadWaifu();
+            
             ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
             ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
+            ConsoleClearCommand = ReactiveCommand.Create(() => { Console.Clear(); });
             HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
+            
+            TestMultiWarnCommand = ReactiveCommand.Create(() =>
+            {
+                Program.AppMainWindow.WarningMultiDialog("Normally this would explain stuff, like why a dds failed to convert, but this is a test so i need to fluff it up and i don't want to write 'test' 20x", new []{"one","two","three"});
+            });
             OpenExportDirCommand = ReactiveCommand.Create(() =>
             {
                 _ini.Load();
                 Process.Start((OperatingSystem.IsWindows() ? "explorer.exe" : "xdg-open"),_ini.GetValue("ExportPath"));
             });
+            HelpWindowCommand = ReactiveCommand.Create(() =>
+            {
+                var helpmen = new HelpWindow();
+                helpmen.DataContext = new HelpContext();
+                helpmen.ShowDialog(Program.AppMainWindow);
+            });
             ReloadHeadersCommand = ReactiveCommand.Create(() => { Program.Headers.Init(); });
             Counter = 0;
             ParentWindow = context;
+            Recents = new ObservableCollection<Control>(new List<Control>());
+            ReloadRecents();
             Files = new ObservableCollection<PakFileInfo>();
             VisibleFiles = new ObservableCollection<PakFileInfo>();
             Types = new ObservableCollection<FileTypes>();
