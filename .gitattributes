@@ -62,3 +62,10 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+
+###############################################################################
+# diff for random shit lol
+###############################################################################
+
+*.blend     binary

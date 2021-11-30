@@ -16,8 +16,6 @@ using Avalonia.Threading;
 using Avalonia.X11;
 using bezdna_proto.Titanfall2.FileTypes;
 using DynamicData.Binding;
-using ImageMagick;
-using ImageMagick.Formats;
 using RPAK2L.Backend;
 using RPAK2L.Dialogs;
 using RPAK2L.Tools;
@@ -74,6 +72,7 @@ namespace RPAK2L.Views
                     _firstTimeShown = false;
                     vm = DataContext as DirectoryTreeViewModel;
                     vm._bar = this.FindControl<ProgressBar>("ProgressBar");
+                    vm._centerGrid = this.FindControl<Grid>("CenterGrid");
                 }
             };
         }
@@ -89,6 +88,7 @@ namespace RPAK2L.Views
         }
 
         private List<PakFileInfo> _textures;
+        
         private void DirView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             FileTypes selected = ((FileTypes) e.AddedItems[0]);
@@ -246,43 +246,46 @@ namespace RPAK2L.Views
         }
         private void ExportButton_OnClick(object? sender, RoutedEventArgs ev)
         {
+            vm.ResetTask();
+            vm.IsLoading = true;
+            vm._bar.IsIndeterminate = false;
+            var _task = new ProgressableTask(0, 1);
             ThreadPool.QueueUserWorkItem(async =>
             {
                  bool ExportStreaming = true;
-            switch (CurrentFileToExport.File.ShortName)
-            {
-                case "txtr":
-                    Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, ExportPath,"Textures",true,false);
-                    break;
-                case "matl":
-                    var material = CurrentFileToExport.SpecificTypeFile as Material;
-                    for (var i = 0; i < material.TextureReferences.Length; i++)
-                    {
-                        var e = material.TextureReferences[i];
-                        var refName = "";
-                        if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
-                            refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
-                        else
-                            refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
-                        var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
-                        Exporters.TextureData(tex, LastSelectedDirectory, ExportPath, "Materials", false, true);
-                    }
-                    Program.AppMainWindow.WarningMultiDialog(
-                        "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
-                        ExportErrors.ToArray());
-                    break;
-                case "shdr":
-                    var sha = CurrentFileToExport.SpecificTypeFile as Shader;
-                    this.WarningDialog("Shaders not implemented");
-                    break;
-                case "dtbl":
-                    var dtb = CurrentFileToExport.SpecificTypeFile as DataTables;
-                    this.WarningDialog("DataTables not implemented");
-                    break;
-                default:
-                    this.WarningDialog("Unknown file type");
-                    break;
-            }
+                switch (CurrentFileToExport.File.ShortName)
+                {
+                    case "txtr":
+                        Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, ExportPath,"Textures",true,false);
+                        vm.IsLoading = false;
+                        break;
+                    case "matl":
+                        var material = CurrentFileToExport.SpecificTypeFile as Material;
+                        for (var i = 0; i < material.TextureReferences.Length; i++)
+                        {
+                            var e = material.TextureReferences[i];
+                            var refName = "";
+                            if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
+                                refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
+                            else
+                                refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
+                            var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
+                            Exporters.TextureData(tex, LastSelectedDirectory, ExportPath, "Materials", false, true);
+                        }
+                        vm.IsLoading = false;
+                        break;
+                    case "shdr":
+                        var sha = CurrentFileToExport.SpecificTypeFile as Shader;
+                        this.WarningDialog("Shaders not implemented");
+                        break;
+                    case "dtbl":
+                        var dtb = CurrentFileToExport.SpecificTypeFile as DataTables;
+                        this.WarningDialog("DataTables not implemented");
+                        break;
+                    default:
+                        this.WarningDialog("Unknown file type");
+                        break;
+                }
             });
         }
         private void ReplaceButton_OnClick(object? sender, RoutedEventArgs e)

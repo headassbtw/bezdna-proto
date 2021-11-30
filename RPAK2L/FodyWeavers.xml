@@ -3,8 +3,8 @@
     <ExcludeAssemblies>
       ErrorReporter
       Wasmtime.Dotnet
-      Magick.NET.Core
-      Magick.NET.Q16-AnyCPU
+      BCnEncoder.Net
+      BCnEncoder.Net.ImageSharp
     </ExcludeAssemblies>
   </Costura>
 </Weavers>

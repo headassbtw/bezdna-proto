@@ -73,7 +73,6 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>-->
         <PackageReference Include="Wasmtime" Version="0.27.0-preview1" />
-        <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="8.3.3" />
     </ItemGroup>
     <ItemGroup>
       <UpToDateCheckInput Remove="**\*.axaml" />

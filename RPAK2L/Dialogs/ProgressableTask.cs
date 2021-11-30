@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Threading;
 using ReactiveUI;
 using RPAK2L.ViewModels.FileView.Views;
@@ -28,6 +29,7 @@ namespace RPAK2L.Dialogs
             DirectoryTreeViewModel.TaskProgress = 0;
             Dispatcher.UIThread.Post(() =>
             {
+                DirectoryTreeViewModel._instance._centerGrid.Height = 70;
                 DirectoryTreeViewModel.ProgTextMid = purpose;
                 DirectoryTreeViewModel._instance._bar.IsIndeterminate = false;
                 DirectoryTreeViewModel._instance._bar.Maximum = TotalItems;
@@ -37,7 +39,19 @@ namespace RPAK2L.Dialogs
 
         public void Finish()
         {
-            DirectoryTreeViewModel._instance.IsLoading = false;
+            ThreadPool.QueueUserWorkItem(async =>
+            {
+                Dispatcher.UIThread.Post(() =>
+                {
+
+                    DirectoryTreeViewModel._instance._centerGrid.Opacity = 0;
+                });
+                Thread.Sleep(400);
+                Dispatcher.UIThread.Post(() =>
+                {    
+                    DirectoryTreeViewModel._instance.IsLoading = false;
+                });
+            });
         }
 
         public void IncrementBar(int items)
