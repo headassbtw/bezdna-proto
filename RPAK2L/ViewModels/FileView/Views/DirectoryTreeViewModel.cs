@@ -294,6 +294,7 @@ namespace RPAK2L.ViewModels.FileView.Views
                 Logger.Log.Error("Background image could not be loaded");
             }
         }
+        public Grid _centerGrid;
         public bool HasRecents
         {
             get => Recents.Count > 0;

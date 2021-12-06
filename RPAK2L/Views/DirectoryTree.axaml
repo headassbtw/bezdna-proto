@@ -17,7 +17,17 @@
         Background="#CF101010"
         
         Title="RPAK2L">
-    
+    <Window.Styles>
+        <Style Selector="Grid.LoadCenter">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4"/>
+                    <DoubleTransition Property="Height" Duration="0:0:0.4"/>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:1"/>
+                </Transitions>
+            </Setter>
+        </Style>
+    </Window.Styles>
     <Design.DataContext>
         <views:DirectoryTreeViewModel/>
     </Design.DataContext>
@@ -85,8 +95,8 @@
                             </TreeView.DataTemplates>
                         </TreeView>
                     </Border>
-                    <GridSplitter Grid.Row="1" IsEnabled="{Binding ConsoleEnabled}"/>
-                    <Border Grid.Row="2" IsEnabled="{Binding ConsoleEnabled}">
+                    <GridSplitter Grid.Row="1"/>
+                    <Border Grid.Row="2" IsVisible="{Binding ConsoleEnabled}">
                         <ListBox AutoScrollToSelectedItem="True" Focusable="False" Padding="0,1,0,1" Background="#DF202020" Items="{Binding Console}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -137,19 +147,18 @@
             </Grid>
         </Grid>
     </DockPanel>
-        <Grid IsVisible="{Binding IsLoading}" Background="#88000000">
-        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Background="#88444444">
+    <Grid IsVisible="{Binding IsLoading}" Background="#88000000">
+        <Grid Classes="LoadCenter" Name="CenterGrid" VerticalAlignment="Center" HorizontalAlignment="Stretch" ColumnDefinitions="*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Background="#88444444">
             <Border Grid.Row="0" CornerRadius="0" Padding="1" BorderThickness="0,2,0,0"/>
             <TextBlock Grid.Row="1" IsVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="95" Text="{Binding LoadText}"/>
             <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Text="{Binding ProgTextMid}"/>
             <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto" HorizontalAlignment="Center">
                 <TextBlock TextAlignment="Center" Width="200" HorizontalAlignment="Stretch" Grid.Column="0" FontSize="24" Text="{Binding ProgTextLeft}"/>
-                <ProgressBar Width="700" Height="20" Grid.Column="1" Name="ProgressBar" Minimum="0" Maximum="{Binding TaskTotalItems}" Value="{Binding TaskProgress}" />
+                <ProgressBar Width="700" Height="20" Grid.Column="1" Name="ProgressBar" Minimum="0" Maximum="{Binding TaskTotalItems}" Value="{Binding TaskProgress}"/>
                 <TextBlock TextAlignment="Center" Width="200" HorizontalAlignment="Stretch" Grid.Column="2" FontSize="24" Text="{Binding ProgTextRight}"/>
             </Grid>
             <Border Grid.Row="4" CornerRadius="0" Padding="1" BorderThickness="0,0,0,2"/>
         </Grid>
-        
     </Grid>
 </Grid>
 </Window>

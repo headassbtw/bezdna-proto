@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using Avalonia.Threading;
 using BCnEncoder.Decoder.Options;
+using BCnEncoder.ImageSharp;
 using BCnEncoder.Shared;
 using BCnEncoder.Shared.ImageFiles;
 using bezdna_proto.Titanfall2.FileTypes;
-using ImageMagick;
+using ReactiveUI;
 using RPAK2L.Dialogs;
 using RPAK2L.ViewModels.FileView.Types;
+using RPAK2L.ViewModels.FileView.Views;
 using RPAK2L.ViewModels.SubMenuViewModels;
 using RPAK2L.Views;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using File = System.IO.File;
 
 namespace RPAK2L.Tools
@@ -30,25 +35,14 @@ namespace RPAK2L.Tools
         /// <returns> 0 if OK, 1 if unsupported, 2 if failed</returns>
         public static int TextureData(PakFileInfo file, string LastSelectedDirectory, string exportDir, string exportSub = "", bool ExportStatic = true, bool material = false)
         {
+            
             int _return = 0;
             Logger.Log.Info($"Exporting Texture to {exportDir}");
             if (file == null) return 2;
             var tex = file.SpecificTypeFile as Texture;
-            //FUCK YOU WE CAN ACCESS STATIC STUFF NOW BITCHHHH
-            /*
-            if (tex.TextureDatas.Where(t => t.streaming).ToList().Count <= 0)
-            {
-                if(SettingsMenuViewModel._experimentalFeatures)
-                    Program.AppMainWindow.WarningDialog("This is an experimental feature, use at your own risk");
-                else
-                {
-                    Program.AppMainWindow.WarningDialog("Unable to access this texture (not implemented)");
-                    return;
-                }
-            }*/
-            
-            
-            
+
+
+
 
             string pak = file.Pak.StarPaks[0]
                 .Substring(file.Pak.StarPaks[0].LastIndexOf('\\')+1);
@@ -107,20 +101,32 @@ namespace RPAK2L.Tools
                     fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
                     fs.Write(buf);
                     fs.Seek(0, SeekOrigin.Begin);
-                    MagickNET.SetTempDirectory("/tmp");
-
                     try
                     {
+                        
                         var decoder = new BCnEncoder.Decoder.BcDecoder();
-
-                        var data = decoder.Decode2D(DdsFile.Load(fs));
-                        var encoder = new BCnEncoder.Encoder.BcEncoder();
-                        encoder.OutputOptions.FileFormat = OutputFileFormat.Dds;
-                        var ms = new MemoryStream();
-                        encoder.EncodeToDds(data).Write(ms);
-                        ms.Seek(0, SeekOrigin.Begin);
-                        var img = new MagickImage(ms);
-                        img.Write(filename.Replace(".dds", ".png"));
+                        decoder.Options.IsParallel = true;
+                        var p = new Progress<ProgressElement>();
+                        ProgressableTask _task = null;
+                        p.ProgressChanged += (s, e) =>
+                        {
+                            Dispatcher.UIThread.Post(() =>
+                            {
+                                if (_task == null)
+                                {
+                                    _task = new ProgressableTask(e.CurrentBlock,e.TotalBlocks);
+                                    _task.Init("Decoding");
+                                }
+                                
+                                _task.IncrementBar();
+                            });
+                        };
+                        decoder.Options.Progress = p;
+                        using Image<Rgba32> image = decoder.DecodeToImageRgba32(fs);
+                        var outStream = File.OpenWrite(filename.Replace(".dds", ".png"));
+                        outStream.Seek(0, SeekOrigin.Begin);
+                        image.SaveAsPng(outStream);
+                        _task.Finish();
                     }
                     catch (Exception exc)
                     {

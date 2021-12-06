@@ -13,22 +13,16 @@
     <Grid>
         <DockPanel>
             <TabControl TabStripPlacement="Left">
-                <TabItem Header="Help" IsHitTestVisible="False">
+                <TabItem FontStyle="Oblique" Header="Help" IsHitTestVisible="False">
                     <DockPanel>
-                        <TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="40">
                             This window will explain various aspects of this app, select an item on the sidebar to start!
-                        </TextBlock>
-                        <TextBlock FontSize="18">
-                            I hope this is better than markdown...
                         </TextBlock>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Quick Start">
                     <avalonia:MarkdownScrollViewer
                         Source="avares://RPAK2L/Resources/HelpMenu/QuickStart/Start.md"/>
-                </TabItem>
-                <TabItem Header="Exporting">
-                    
                 </TabItem>
                 <TabItem Header="Configuring">
                     <avalonia:MarkdownScrollViewer
