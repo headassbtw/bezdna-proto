@@ -23,7 +23,6 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
 {
     public class SettingsMenuViewModel : ViewModelBase
     {
-        private Ini _settings;
         public EventHandler ApplyFired { get; set; }
         public ReactiveCommand<Unit, Unit> ApplyCommand { get; set; }
         public string WindowTitle => "Settings";
@@ -100,14 +99,13 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             Grid pathGrid = new Grid();
             pathGrid.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
             Grid.SetRow(pathGrid,1);
-            if (_settings.GetValue(iniKey, "", "null") == "null")
+            if (Settings.Get(iniKey, "null") == "null")
             {
-                _settings.WriteValue(iniKey,"false");
-                _settings.Save();
+                Settings.Set(iniKey,"false");
             }
             CheckBox pathBox = new CheckBox()
             {
-                IsChecked = bool.Parse(_settings.GetValue(iniKey))
+                IsChecked = bool.Parse(Settings.Get(iniKey))
             };
             pathBox.Bind(CheckBox.IsCheckedProperty, boxBinding);
             var text = pathBox.GetObservable(CheckBox.IsCheckedProperty);
@@ -119,7 +117,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             });
             ApplyFired += (sender, args) =>
             {
-                _settings.WriteValue(iniKey, val.ToString());
+                Settings.Set(iniKey, val.ToString());
             };
             pathBox.HorizontalAlignment = HorizontalAlignment.Stretch;
             Grid.SetColumn(pathBox,0);
@@ -128,7 +126,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             SettingsItems.Add(g);
             pathBox.Initialized += (sender, args) =>
             {
-                pathBox.IsChecked = bool.Parse(_settings.GetValue(iniKey, "", "null"));
+                pathBox.IsChecked = bool.Parse(Settings.Get(iniKey));
             };
             return pathBox;
         }
@@ -148,15 +146,14 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             pathGrid.ColumnDefinitions.Add(new ColumnDefinition(100, GridUnitType.Star));
             pathGrid.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Auto));
             Grid.SetRow(pathGrid,1);
-            if (_settings.GetValue(iniKey, "", "null") == "null")
+            if (Settings.Get(iniKey,"null") == "null")
             {
-                _settings.WriteValue(iniKey,"/tmp");
-                _settings.Save();
+                Settings.Set(iniKey,"/tmp");
             }
             TextBox pathBox = new TextBox()
             {
                 IsEnabled = false,
-                Text = _settings.GetValue(iniKey,"","null"),
+                Text = Settings.Get(iniKey),
                 [!TextBox.TextProperty] = boxBinding
             };
             pathBox.Bind(TextBox.TextProperty, boxBinding);
@@ -170,8 +167,7 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             });
             ApplyFired += (sender, args) =>
             {
-                _settings.WriteValue(iniKey, val);
-                
+                Settings.Set(iniKey, val);
             };
             pathBox.HorizontalAlignment = HorizontalAlignment.Stretch;
             Button browseButton = new Button()
@@ -184,23 +180,22 @@ namespace RPAK2L.ViewModels.SubMenuViewModels
             pathGrid.Children.Add(browseButton);
             g.Children.Add(pathGrid);
             SettingsItems.Add(g);
-            pathBox.Initialized += (sender, args) => { pathBox.Text = _settings.GetValue(iniKey, "", "null");};
+            pathBox.Initialized += (sender, args) => { pathBox.Text = Settings.Get(iniKey);};
             return (browseButton, pathBox);
         }
 
         void Apply()
         {
-            _settings.Save();
-            Logger.Log.Info("Preferences saved to ini file");
             ApplyFired.Invoke(this, EventArgs.Empty);
+            Settings.Save();
+            Logger.Log.Info("Preferences saved to ini file");
             Program.AppMainWindow.WarningDialog("Settings applied, a restart of the program may be required for some items to take effect");
         }
         
         public Window Window;
         public SettingsMenuViewModel(Window targetWindow)
         {
-            _settings = new Ini(Path.Combine(Environment.CurrentDirectory, "settings.ini"));
-            _settings.Load();
+            Settings.Load();
             ApplyCommand = ReactiveCommand.Create(Apply);
             SettingsItems = new ObservableCollection<Grid>();
             Window = targetWindow;

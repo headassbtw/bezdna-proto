@@ -9,6 +9,7 @@
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NeutralLanguage>en-US</NeutralLanguage>
+        <SelfContained>false</SelfContained>
         <NoStandardLibraries>true</NoStandardLibraries>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

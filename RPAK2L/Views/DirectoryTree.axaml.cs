@@ -67,9 +67,6 @@ namespace RPAK2L.Views
                 {
                     vm = DataContext as DirectoryTreeViewModel;
                     Program.Headers.Init();
-                    
-                    iniInstance.Load();
-                    string dir = iniInstance.GetValue("GameDirectory", "","null");
 
                     _firstTimeShown = false;
                     vm = DataContext as DirectoryTreeViewModel;
@@ -99,26 +96,8 @@ namespace RPAK2L.Views
             vm.AddPakFiles(selected.Files.Count);
         }
 
-        private Ini iniInstance = new Ini(System.IO.Path.Combine(Environment.CurrentDirectory, "settings.ini"));
-        private string LastSelectedDirectory
-        {
-            get
-            {
-                iniInstance.Load();
-                string path = iniInstance.GetValue("GameDirectory");
-                if (path == null) path = Environment.CurrentDirectory;
-                return path;
-            }
-            set
-            {
-                iniInstance.Load();
-                iniInstance.WriteValue("GameDirectory", value);
-                iniInstance.Save();
-            }
-        }
 
-        
-        
+
         private string PakName;
         private PakFileInfo CurrentFileToExport;
         private void FileView_OnSelectionChanged(object? sender, SelectionChangedEventArgs ev)
@@ -232,8 +211,7 @@ namespace RPAK2L.Views
         {
             get
             {
-                iniInstance.Load();
-                string ExportExportExport = iniInstance.GetValue("ExportPath");
+                string ExportExportExport = Settings.Get("ExportPath");
                 if (ExportExportExport == null) ExportExportExport = Path.Combine(Environment.CurrentDirectory,"Export");
                 return ExportExportExport;
             }
@@ -252,7 +230,7 @@ namespace RPAK2L.Views
             switch (CurrentFileToExport.File.ShortName)
             {
                 case "txtr":
-                    Exporters.TextureData(CurrentFileToExport, LastSelectedDirectory, ExportPath,"Textures",true,false);
+                    Exporters.TextureData(CurrentFileToExport, Settings.Get("GamePath"), ExportPath,"Textures",true,false);
                     break;
                 case "matl":
                     var material = CurrentFileToExport.SpecificTypeFile as Material;
@@ -265,7 +243,7 @@ namespace RPAK2L.Views
                         else
                             refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
                         var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
-                        Exporters.TextureData(tex, LastSelectedDirectory, ExportPath, "Materials", false, true);
+                        Exporters.TextureData(tex, Settings.Get("GamePath"), ExportPath, "Materials", false, true);
                     }
                     Program.AppMainWindow.WarningMultiDialog(
                         "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
@@ -405,9 +383,7 @@ namespace RPAK2L.Views
             vm.InfoBytes = "  \n";
             vm.InfoOffset = "  \n";
             
-            
-            iniInstance.Load();
-            FillInRpaks(iniInstance.GetValue("GamePath"));
+            FillInRpaks(Settings.Get("GamePath"));
         }
 
         private void FillInRpaks(string path)
@@ -420,7 +396,6 @@ namespace RPAK2L.Views
                 this.WarningDialog("Paks folder is missing or invalid");
                 return;
             }
-            LastSelectedDirectory = path;
             var allpaks = Directory.GetFiles(dir);
             vm.RPakChoices.Clear();
             foreach (string pak in allpaks.Where(a => a.EndsWith(".rpak") && !a.EndsWith(").rpak")))
@@ -471,7 +446,7 @@ namespace RPAK2L.Views
         {
             ThreadPool.QueueUserWorkItem(async async =>
             {
-                var p = FileChooseDialog.ChooseRpakDialog(LastSelectedDirectory);
+                var p = FileChooseDialog.ChooseRpakDialog(Settings.Get("GamePath"));
                 var a = await p;
                 if (!string.IsNullOrEmpty(a))
                 {

@@ -16,7 +16,7 @@
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NoStandardLibraries>true</NoStandardLibraries>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(CI)' == 'True'">
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'True'">
         <DefineConstants>CI</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
@@ -122,6 +122,7 @@
       <Compile Include="Program.cs" />
       <Compile Include="Headers/HeaderInterface.cs" />
       <Compile Include="Properties\Resources.Designer.cs" />
+      <Compile Include="Settings.cs" />
       <Compile Include="Styles\HelpItem.axaml.cs" />
       <Compile Include="Tools\Exporters.cs" />
       <Compile Include="Tools\HelpItemTemplate.cs" />
@@ -192,6 +193,7 @@
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\Config.md" />
       <AvaloniaResource Include="Resources\HelpMenu\QuickStart\Start.md" />
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\SettingsWindow.png" />
+      <AvaloniaResource Include="Resources\HelpMenu\QuickStart\OpenFile.png" />
       <Content Include="Styles\HelpItem.axaml" />
       <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
     </ItemGroup>

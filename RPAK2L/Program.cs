@@ -63,6 +63,8 @@ namespace RPAK2L
                 }
                 tmp++;
             }
+            Settings.Init(Path.Combine(Environment.CurrentDirectory, "settings.ini"));
+            Settings.Load();
             Logger.Log = new Logger(logPath);
             Headers = new HeaderInterface();
             if (OperatingSystem.IsWindows())

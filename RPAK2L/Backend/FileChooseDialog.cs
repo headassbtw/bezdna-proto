@@ -21,7 +21,7 @@ namespace RPAK2L.Backend
             win.Filters = fil;
             var task = win.ShowAsync(Program.AppMainWindow);
             var res = await task;
-            if (res.Length <= 0)
+            if (res == null || res.Length <= 0)
                 return null;
             else
                 return res.FirstOrDefault();

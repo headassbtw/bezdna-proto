@@ -333,7 +333,6 @@ namespace RPAK2L.ViewModels.FileView.Views
         
         public DirectoryTreeViewModel(Window context)
         {
-            Ini _ini = new Ini(Path.Combine(Environment.CurrentDirectory, "settings.ini"));
             _instance = this;
             Console = new ObservableCollection<InAppConsoleMsg>();
             LoadWaifu();
@@ -349,8 +348,7 @@ namespace RPAK2L.ViewModels.FileView.Views
             });
             OpenExportDirCommand = ReactiveCommand.Create(() =>
             {
-                _ini.Load();
-                Process.Start((OperatingSystem.IsWindows() ? "explorer.exe" : "xdg-open"),_ini.GetValue("ExportPath"));
+                Process.Start((OperatingSystem.IsWindows() ? "explorer.exe" : "xdg-open"),Settings.Get("ExportPath"));
             });
             HelpWindowCommand = ReactiveCommand.Create(() =>
             {
