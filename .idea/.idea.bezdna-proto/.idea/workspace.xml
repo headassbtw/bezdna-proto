@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/FileChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Ini.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/App.axaml" root0="FORCE_HIGHLIGHTING" />
@@ -73,10 +77,13 @@
     <setting file="file://$PROJECT_DIR$/ErrorReporter/ViewModels/ViewModelBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileEntryInternal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RPAK2L/Settings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Models/Misc.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" root0="FORCE_HIGHLIGHTING" />
@@ -304,7 +311,8 @@
       <workItem from="1638208593264" duration="9564000" />
       <workItem from="1638813258731" duration="130000" />
       <workItem from="1638818804097" duration="20000" />
-      <workItem from="1638820933741" duration="3120000" />
+      <workItem from="1638820933741" duration="3893000" />
+      <workItem from="1638826897297" duration="1083000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -572,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638824148799</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fixed the shitass settings backend, and added more help things">
+      <created>1638824191748</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1638824191748</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

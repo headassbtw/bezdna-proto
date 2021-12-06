@@ -10,25 +10,16 @@
     <Design.DataContext>
         <helpDialog:HelpContext/>
     </Design.DataContext>
-    <Grid>
-        <DockPanel>
-            <TabControl TabStripPlacement="Left">
-                <TabItem FontStyle="Oblique" Header="Help" IsHitTestVisible="False">
-                    <DockPanel>
-                        <TextBlock TextWrapping="Wrap" FontSize="40">
-                            This window will explain various aspects of this app, select an item on the sidebar to start!
-                        </TextBlock>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="Quick Start">
-                    <avalonia:MarkdownScrollViewer
-                        Source="avares://RPAK2L/Resources/HelpMenu/QuickStart/Start.md"/>
-                </TabItem>
-                <TabItem Header="Configuring">
-                    <avalonia:MarkdownScrollViewer
-                        Source="avares://RPAK2L/Resources/HelpMenu/Configuration/Config.md"/>
-                </TabItem>
-            </TabControl>
-        </DockPanel>
-    </Grid>
+    <Panel>
+        <TabControl TabStripPlacement="Left" Margin="0 0 0 0">
+            <TabItem Classes="helptab" Header="Quick Start">
+                <avalonia:MarkdownScrollViewer
+                    Source="avares://RPAK2L/Resources/HelpMenu/QuickStart/Start.md"/>
+            </TabItem>
+            <TabItem Classes="helptab" Header="Configuring">
+                <avalonia:MarkdownScrollViewer
+                    Source="avares://RPAK2L/Resources/HelpMenu/Configuration/Config.md"/>
+            </TabItem>
+        </TabControl>
+    </Panel>
 </Window>
