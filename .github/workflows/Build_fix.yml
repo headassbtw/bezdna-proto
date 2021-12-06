@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
     - name: Build
       id: Build
-      run: dotnet publish RPAK2L --nologo --no-restore -c Release -f net5.0 -r linux-x64 -o ./Artifact/
+      run: dotnet publish RPAK2L --nologo --no-restore --sc -c Release -f net5.0 -r linux-x64 -o ./Artifact/
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
@@ -41,7 +41,7 @@ jobs:
       run: dotnet restore
     - name: Build
       id: Build
-      run: dotnet publish RPAK2L --nologo --no-restore -c Release -r win-x64 -o ./Artifact/
+      run: dotnet publish RPAK2L --nologo --no-restore --sc -c Release -r win-x64 -o ./Artifact/
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
