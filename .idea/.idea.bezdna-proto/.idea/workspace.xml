@@ -12,8 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/RPAK2L/Resources/HelpMenu/PatchNotes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/latestversion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Dialogs/HelpDialog/HelpWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +49,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/HelpItem.axaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/FileChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Ini.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/DirectoryChooseDialog.cs" root0="FORCE_HIGHLIGHTING" />
@@ -81,9 +86,7 @@
     <setting file="file://$PROJECT_DIR$/bezdna-proto/bezdna-proto.csproj" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/RPakHeader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/SectionDescriptor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Bezdna/Titanfall2/FileTypes/DataTables.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///home/headass/RiderProjects/RPAK2L/RPAK2L/Styles/TabControlStyle.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ErrorReporter/App.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Models/Misc.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Styles/Styles.xaml" root0="FORCE_HIGHLIGHTING" />
@@ -312,7 +315,9 @@
       <workItem from="1638813258731" duration="130000" />
       <workItem from="1638818804097" duration="20000" />
       <workItem from="1638820933741" duration="3893000" />
-      <workItem from="1638826897297" duration="1083000" />
+      <workItem from="1638826897297" duration="1261000" />
+      <workItem from="1638830723087" duration="448000" />
+      <workItem from="1638892473657" duration="452000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -587,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638824191748</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="minor tweaks">
+      <created>1638828301847</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1638828301848</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="WHOOPS BROKE RIDER, OH FUCK WHERE IS MY RAM WHERE DID IT GO WHAT" />
     <MESSAGE value="BRO IT FUCKING WORKS, HOLY SHIT" />
     <MESSAGE value="we do a little error box making" />
     <MESSAGE value="consider your pants shitted" />
@@ -634,6 +645,7 @@
     <MESSAGE value="a" />
     <MESSAGE value="works well enough for my dorito chip of a laptop CPU to handle, i want to use my desktop" />
     <MESSAGE value="fixed the shitass settings backend, and added more help things" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the shitass settings backend, and added more help things" />
+    <MESSAGE value="minor tweaks" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor tweaks" />
   </component>
 </project>

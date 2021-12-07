@@ -15,6 +15,7 @@
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NoStandardLibraries>true</NoStandardLibraries>
+        <AssemblyVersion>0.1.1</AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'True'">
         <DefineConstants>CI</DefineConstants>
@@ -194,6 +195,7 @@
       <AvaloniaResource Include="Resources\HelpMenu\QuickStart\Start.md" />
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\SettingsWindow.png" />
       <AvaloniaResource Include="Resources\HelpMenu\QuickStart\OpenFile.png" />
+      <AvaloniaResource Include="Resources\HelpMenu\PatchNotes.md" />
       <Content Include="Styles\HelpItem.axaml" />
       <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
     </ItemGroup>

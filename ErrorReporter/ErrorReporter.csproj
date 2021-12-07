@@ -11,6 +11,7 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <SelfContained>false</SelfContained>
         <NoStandardLibraries>true</NoStandardLibraries>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <PlatformTarget>x64</PlatformTarget>
