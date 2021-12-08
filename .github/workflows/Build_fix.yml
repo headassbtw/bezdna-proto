@@ -27,9 +27,9 @@ jobs:
     - name: Delete deps.json
       run: rm -f ./Artifact/RPAK2L.deps.json
     - name: Set Tool Executable Flag
-      run: chmod +x ./Artifact/RPAK2L
+      run: chmod +rwx ./Artifact/RPAK2L
     - name: Set Updater Executable Flag
-      run: chmod +x ./Artifact/updater
+      run: chmod +rwx ./Artifact/updater
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
@@ -50,6 +50,8 @@ jobs:
       run: dotnet publish RPAK2L --nologo --no-restore -c Release -r win-x64 -o ./Artifact/
     - name: Delete deps.json
       run: del Artifact\RPAK2L.deps.json
+    - name: Delete linux updater
+      run: del Artifact\updater
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
