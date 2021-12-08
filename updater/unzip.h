@@ -2,8 +2,8 @@
 // Created by headass on 12/7/21.
 //
 
-#ifndef UNTITLED_UNZIP_H
-#define UNTITLED_UNZIP_H
+#ifndef UNZIP_H
+#define UNZIP_H
 class zipt{
 public:
     static void safe_create_dir(const char *dir);
@@ -11,4 +11,4 @@ public:
 };
 
 
-#endif //UNTITLED_UNZIP_H
+#endif //UNZIP_H

@@ -1,10 +1,6 @@
 //
 // Created by headass on 12/7/21.
 //
-
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,18 +41,18 @@ int zipt::unzip(char* archive)
 
     if ((za = zip_open(archive, 0, &err)) == NULL) {
         zip_error_to_str(buf, sizeof(buf), err, errno);
-        fprintf(stderr, "can't open zip archive `%s': %s/n",
+        fprintf(stderr, "can't open zip archive `%s': %s\n",
                 archive, buf);
         return 1;
     }
 
     for (i = 0; i < zip_get_num_entries(za, 0); i++) {
         if (zip_stat_index(za, i, 0, &sb) == 0) {
-            printf("==================/n");
+            printf("==================\n");
             len = strlen(sb.name);
             printf("Name: [%s], ", sb.name);
             printf("Size: [%llu], ", sb.size);
-            printf("mtime: [%u]/n", (unsigned int)sb.mtime);
+            printf("mtime: [%u]\n", (unsigned int)sb.mtime);
             if (sb.name[len - 1] == '/') {
                 safe_create_dir(sb.name);
             } else {
@@ -68,7 +64,7 @@ int zipt::unzip(char* archive)
 
                 fd = open(sb.name, O_RDWR | O_TRUNC | O_CREAT, 0644);
                 if (fd < 0) {
-                    fprintf(stderr, "boese, boese/n");
+                    fprintf(stderr, "boese, boese\n");
                     exit(101);
                 }
 
@@ -76,7 +72,7 @@ int zipt::unzip(char* archive)
                 while (sum != sb.size) {
                     len = zip_fread(zf, buf, 100);
                     if (len < 0) {
-                        fprintf(stderr, "boese, boese/n");
+                        fprintf(stderr, "boese, boese\n");
                         exit(102);
                     }
                     write(fd, buf, len);
@@ -86,12 +82,12 @@ int zipt::unzip(char* archive)
                 zip_fclose(zf);
             }
         } else {
-            printf("File[%s] Line[%d]/n", __FILE__, __LINE__);
+            printf("File[%s] Line[%d]\n", __FILE__, __LINE__);
         }
     }
 
     if (zip_close(za) == -1) {
-        fprintf(stderr, "can't close zip archive `%s'/n", archive);
+        fprintf(stderr, "can't close zip archive `%s'\n", archive);
         return 1;
     }
 

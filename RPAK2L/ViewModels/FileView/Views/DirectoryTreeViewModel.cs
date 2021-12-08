@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Reflection;
 using Avalonia.Controls;
 using ReactiveUI;
 using RPAK2L.ViewModels.FileView.Types;
@@ -75,6 +76,12 @@ namespace RPAK2L.ViewModels.FileView.Views
         public Window ParentWindow;
         public ReactiveCommand<Unit, Unit> ExitCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ShowHelpLabelsCommand { get; set; }
+
+        public bool HasUpdater
+        {
+            get => OperatingSystem.IsLinux();
+        }
+        public ReactiveCommand<Unit, Unit> RunUpdaterCommand { get; set; }
         public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
         public ReactiveCommand<Unit, Unit> ReloadHeadersCommand { get; set; }
         public ReactiveCommand<Unit,Unit> OpenExportDirCommand { get; set; }
@@ -358,6 +365,14 @@ namespace RPAK2L.ViewModels.FileView.Views
                 helpmen.ShowDialog(Program.AppMainWindow);
             });
             ReloadHeadersCommand = ReactiveCommand.Create(() => { Program.Headers.Init(); });
+            RunUpdaterCommand = ReactiveCommand.Create(() =>
+            {
+                
+                var p = Process.Start(Path.Combine(Environment.CurrentDirectory, "updater"), Process.GetCurrentProcess().Id.ToString());
+                p.WaitForExit();
+                Process.GetCurrentProcess().Kill();
+
+            });
             Counter = 0;
             ParentWindow = context;
             Recents = new ObservableCollection<Control>(new List<Control>());

@@ -198,6 +198,9 @@
       <AvaloniaResource Include="Resources\HelpMenu\PatchNotes.md" />
       <Content Include="Styles\HelpItem.axaml" />
       <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
+      <None Include="updater">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     <ItemGroup>
       <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">

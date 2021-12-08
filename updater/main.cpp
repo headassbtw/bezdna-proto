@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <QApplication>
@@ -10,6 +11,7 @@
 #include <QFile>
 #include <QHeaderView>
 #include <chrono>
+#include <qapplication.h>
 #include <thread>
 #include <zip.h>
 #include <paths.h>
@@ -29,10 +31,9 @@ void setup(){
     FileDownloader::connect(dl, SIGNAL (downloaded()), dl, SLOT (loadImage()));
 }
 
+
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-
-
 
     Paths::executable_path();
 
@@ -101,18 +102,23 @@ void FileDownloader::downloadProg(qint64 ist, qint64 max) {
 
 void FileDownloader::loadImage(){
     std::cout << "Downloaded, i think" << std::endl;
-    QString* str = new QString(dl->downloadedData().data());
-    std::ofstream ostr = std::ofstream();
-    ostr.open("/tmp/update.zip");
-
     QFile file("/tmp/update.zip");
+    
     file.open(QIODevice::WriteOnly);
-    QDataStream out(&file);   // we will serialize the data into the file
-    out << dl->downloadedData();
+    QDataStream out(&file);
+    //fun fact, don't do "file << data" because it writes 4 bullshit bytes at the beginning that doesn't let it get unzipped!
+    out.writeRawData(dl->downloadedData(), dl->downloadedData().size());
+    file.close();
 
     char* arc = "/tmp/update.zip";
-
     zipt::unzip(arc);
+
+  #ifdef Q_OS_LINUX
+  system("chmod +x ./RPAK2L"); //weird thing where linux won't mark it executable when unzipping??
+  #endif
+  remove(arc);
+  QApplication::closeAllWindows();
+
 }
 
 

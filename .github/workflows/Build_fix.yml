@@ -26,8 +26,10 @@ jobs:
       run: dotnet publish RPAK2L --nologo --no-restore -c Release -f net5.0 -r linux-x64 -o ./Artifact/
     - name: Delete deps.json
       run: rm -f ./Artifact/RPAK2L.deps.json
-    - name: Set Executable Flag
-      run chmod +x ./Artifact/RPAK2L
+    - name: Set Tool Executable Flag
+      run: chmod +x ./Artifact/RPAK2L
+    - name: Set Updater Executable Flag
+      run: chmod +x ./Artifact/updater
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:

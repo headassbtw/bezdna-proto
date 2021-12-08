@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(untitled)
+project(updater)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
@@ -14,8 +14,8 @@ find_package(Qt5 COMPONENTS
         Network
         REQUIRED)
 
-add_executable(untitled main.cpp updaterDownloader.cpp updaterDownloader.h paths.cpp paths.h unzip.cpp unzip.h)
-target_link_libraries(untitled
+add_executable(updater main.cpp updaterDownloader.cpp updaterDownloader.h paths.cpp paths.h unzip.cpp unzip.h)
+target_link_libraries(updater
         zip
         pthread
         Qt5::Network
