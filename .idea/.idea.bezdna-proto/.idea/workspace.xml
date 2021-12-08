@@ -11,17 +11,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/Build_fix.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="136038" />
+    <option name="totalTimeSeconds" value="136307" />
     <option name="gitIntegration" value="true" />
     <option name="naggedAbout" value="1" />
   </component>
@@ -603,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638900980634</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="h">
+      <created>1638927793693</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1638927793693</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="we do a little error box making" />
     <MESSAGE value="consider your pants shitted" />
     <MESSAGE value="stability fixes, now reads from the starpak that the rpak says it uses" />
     <MESSAGE value="hey, do you have audacity?" />
@@ -650,6 +653,7 @@
     <MESSAGE value="fixed the shitass settings backend, and added more help things" />
     <MESSAGE value="minor tweaks" />
     <MESSAGE value="my laptop do be on fire tho" />
-    <option name="LAST_COMMIT_MESSAGE" value="my laptop do be on fire tho" />
+    <MESSAGE value="h" />
+    <option name="LAST_COMMIT_MESSAGE" value="h" />
   </component>
 </project>

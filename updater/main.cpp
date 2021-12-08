@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
 
 
-    std::string ln = "releases/download/0.1.0/";
+    std::string ln = "releases/latest/download/";
     std::string url = "https://github.com/headassbtw/rpak2l/" + ln
           #ifdef Q_OS_WIN
             + "Windows"
