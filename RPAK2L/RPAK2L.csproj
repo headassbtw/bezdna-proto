@@ -8,6 +8,7 @@
         <ApplicationIcon>../RPAK2L.Program/Assets/Icon.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
         <NeutralLanguage>en-US</NeutralLanguage>
+        
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <NoStandardLibraries>true</NoStandardLibraries>
         <AssemblyVersion>0.2.0</AssemblyVersion>
