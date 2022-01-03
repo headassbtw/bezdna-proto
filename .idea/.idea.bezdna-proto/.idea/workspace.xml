@@ -11,13 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RPAK2L/Tools/FileExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.bezdna-proto/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ErrorReporter/ErrorReporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/RPAK2L.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RPAK2L/Tools/Exporters.cs" afterDir="false" />
-    </list>
+    <list default="true" id="a826fa72-6217-4279-bf8f-1434665a134c" name="Changes" comment="yo wait, dotnet 6 exists?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/RPAK2L/Backend/Games/R2PakProcess.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDataContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ErrorReporter/Views/MainWindow.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/headass/RiderProjects/bezdna-proto/RPAK2L/Views/DirectoryTree.axaml" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/WarningDialog.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RPAK2L/Dialogs/ProgressableTask.cs" root0="FORCE_HIGHLIGHTING" />
@@ -320,7 +315,7 @@
       <workItem from="1639615141392" duration="718000" />
       <workItem from="1639711666721" duration="2458000" />
       <workItem from="1641094852394" duration="48000" />
-      <workItem from="1641190971613" duration="366000" />
+      <workItem from="1641190971613" duration="725000" />
     </task>
     <task id="LOCAL-00001" summary="making a ui">
       <created>1634693298159</created>
@@ -623,7 +618,28 @@
       <option name="project" value="LOCAL" />
       <updated>1639615842945</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="fixed something where materials would cause the loading screen to stay">
+      <created>1641191355378</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1641191355378</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Disable updater">
+      <created>1641191478574</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1641191478574</updated>
+    </task>
+    <task id="LOCAL-00046" summary="yo wait, dotnet 6 exists?">
+      <created>1641191571040</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1641191571040</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,9 +661,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="stability fixes, now reads from the starpak that the rpak says it uses" />
-    <MESSAGE value="hey, do you have audacity?" />
-    <MESSAGE value="logger? more like pogger am i right gamers" />
     <MESSAGE value="a small update" />
     <MESSAGE value="oop wait fuck msbuild" />
     <MESSAGE value="i literally installed something specifically so i didn't have to constantly push to test CI but here we fucking go i guess" />
@@ -670,6 +683,9 @@
     <MESSAGE value="my laptop do be on fire tho" />
     <MESSAGE value="h" />
     <MESSAGE value="fixed a crash, what the fuck was i thinking..." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed a crash, what the fuck was i thinking..." />
+    <MESSAGE value="fixed something where materials would cause the loading screen to stay" />
+    <MESSAGE value="Disable updater" />
+    <MESSAGE value="yo wait, dotnet 6 exists?" />
+    <option name="LAST_COMMIT_MESSAGE" value="yo wait, dotnet 6 exists?" />
   </component>
 </project>
