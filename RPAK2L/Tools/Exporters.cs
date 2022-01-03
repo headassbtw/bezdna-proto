@@ -110,12 +110,7 @@ namespace RPAK2L.Tools
                     {
                         
                         var decoder = new BCnEncoder.Decoder.BcDecoder();
-<<<<<<< HEAD
                         decoder.Options.IsParallel = false;
-                        
-=======
-                        decoder.Options.IsParallel = true;
->>>>>>> 764d9bb742c812619bb66e55b2d8be4cc56eafef
                         using Image<Rgba32> image = decoder.DecodeToImageRgba32(fs);
 
                         FileExtras.DeleteIfExists(pngPath); //the loading screen doesn't go away unless you do this?

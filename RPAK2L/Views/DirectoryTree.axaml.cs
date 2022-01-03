@@ -263,13 +263,10 @@ namespace RPAK2L.Views
                         Exporters.TextureData(tex, Settings.Get("GamePath"), ExportPath, "Materials", false, true);
                         _task.IncrementBar();
                     }
-<<<<<<< HEAD
-                    Program.AppMainWindow.WarningMultiDialog(
+                    /*Program.AppMainWindow.WarningMultiDialog(
                         "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
-                        ExportErrors.ToArray());
+                        ExportErrors.ToArray());*/
                     _task.Finish();
-=======
->>>>>>> 764d9bb742c812619bb66e55b2d8be4cc56eafef
                     break;
                 case "shdr":
                     var sha = CurrentFileToExport.SpecificTypeFile as Shader;
