@@ -39,12 +39,9 @@ namespace RPAK2L.Dialogs
         public void Finish()
         {
             //fuck you
-            ThreadPool.QueueUserWorkItem(async =>
-            {
-                Dispatcher.UIThread.Post(() =>
-                {    
-                    DirectoryTreeViewModel._instance.IsLoading = false;
-                });
+            Dispatcher.UIThread.Post(() =>
+            {    
+                DirectoryTreeViewModel._instance.IsLoading = false;
             });
         }
 
@@ -55,13 +52,17 @@ namespace RPAK2L.Dialogs
             Dispatcher.UIThread.Post(() =>
             {
                 DirectoryTreeViewModel._instance._bar.Value = items;
+                DirectoryTreeViewModel.ProgTextLeft = items.ToString();
             });
-            DirectoryTreeViewModel.ProgTextLeft = items.ToString();
+            
         }
         public void IncrementBar()
         {
             CurrentItems++;
-            DirectoryTreeViewModel.ProgTextLeft = CurrentItems.ToString();
+            Dispatcher.UIThread.Post(() =>
+            {
+                DirectoryTreeViewModel.ProgTextLeft = CurrentItems.ToString();
+            });
         }
     }
 }

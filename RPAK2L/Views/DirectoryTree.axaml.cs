@@ -129,6 +129,7 @@ namespace RPAK2L.Views
                     var material = selected.SpecificTypeFile as Material;
                     for (var i = 0; i < material.TextureReferences.Length; i++)
                     {
+                        
                         var e = material.TextureReferences[i];
                         var refName = "";
                         if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
@@ -149,8 +150,21 @@ namespace RPAK2L.Views
                     }
                     break;
                 case "shdr":
+                    var shader = selected.SpecificTypeFile as Shader;
+                    inf.Size = $"{shader.ShaderType.ToString()} shader, {shader.NumShaders} shaders\n";
+                    if (shader.ShaderElements.Length > 0)
+                    {
+                        inf.Size += "Elements:\n";
+                        for (int e = 0; e < shader.ShaderElements.Length; e++)
+                        {
+                            inf.Size +=
+                                $"0x{shader.ShaderElements[e].data.offset.ToString("X").PadLeft(16, '0')} | ";
+                        }
+                    }
+
                     break;
                 case "dtbl":
+                    var datatable = selected.SpecificTypeFile as DataTables;
                     break;
                 default:
                     break;
@@ -234,8 +248,11 @@ namespace RPAK2L.Views
                     break;
                 case "matl":
                     var material = CurrentFileToExport.SpecificTypeFile as Material;
+                    ProgressableTask _task = new ProgressableTask(0,material.TextureReferences.Length);
+                    _task.Init("Exporting");
                     for (var i = 0; i < material.TextureReferences.Length; i++)
                     {
+                        
                         var e = material.TextureReferences[i];
                         var refName = "";
                         if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
@@ -244,10 +261,12 @@ namespace RPAK2L.Views
                             refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
                         var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
                         Exporters.TextureData(tex, Settings.Get("GamePath"), ExportPath, "Materials", false, true);
+                        _task.IncrementBar();
                     }
                     Program.AppMainWindow.WarningMultiDialog(
                         "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
                         ExportErrors.ToArray());
+                    _task.Finish();
                     break;
                 case "shdr":
                     var sha = CurrentFileToExport.SpecificTypeFile as Shader;

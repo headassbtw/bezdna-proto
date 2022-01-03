@@ -35,13 +35,15 @@ namespace RPAK2L.Tools
         /// <returns> 0 if OK, 1 if unsupported, 2 if failed</returns>
         public static int TextureData(PakFileInfo file, string LastSelectedDirectory, string exportDir, string exportSub = "", bool ExportStatic = true, bool material = false)
         {
-            
             int _return = 0;
+            
+            if (file == null){
+                Logger.Log.Error("File export attempt was null");
+                return 2;
+            }
+
             Logger.Log.Info($"Exporting Texture to {exportDir}");
-            if (file == null) return 2;
             var tex = file.SpecificTypeFile as Texture;
-
-
 
 
             string pak = file.Pak.StarPaks[0]
@@ -105,28 +107,12 @@ namespace RPAK2L.Tools
                     {
                         
                         var decoder = new BCnEncoder.Decoder.BcDecoder();
-                        decoder.Options.IsParallel = true;
-                        var p = new Progress<ProgressElement>();
-                        ProgressableTask _task = null;
-                        p.ProgressChanged += (s, e) =>
-                        {
-                            Dispatcher.UIThread.Post(() =>
-                            {
-                                if (_task == null)
-                                {
-                                    _task = new ProgressableTask(e.CurrentBlock,e.TotalBlocks);
-                                    _task.Init("Decoding");
-                                }
-                                
-                                _task.IncrementBar();
-                            });
-                        };
-                        decoder.Options.Progress = p;
+                        decoder.Options.IsParallel = false;
+                        
                         using Image<Rgba32> image = decoder.DecodeToImageRgba32(fs);
                         var outStream = File.OpenWrite(filename.Replace(".dds", ".png"));
                         outStream.Seek(0, SeekOrigin.Begin);
                         image.SaveAsPng(outStream);
-                        _task.Finish();
                     }
                     catch (Exception exc)
                     {
