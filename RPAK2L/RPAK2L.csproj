@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
@@ -15,7 +15,7 @@
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NoStandardLibraries>true</NoStandardLibraries>
-        <AssemblyVersion>0.1.1</AssemblyVersion>
+        <AssemblyVersion>0.1.2</AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'True'">
         <DefineConstants>CI</DefineConstants>
@@ -126,6 +126,7 @@
       <Compile Include="Settings.cs" />
       <Compile Include="Styles\HelpItem.axaml.cs" />
       <Compile Include="Tools\Exporters.cs" />
+      <Compile Include="Tools\FileExtensions.cs" />
       <Compile Include="Tools\HelpItemTemplate.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
@@ -198,6 +199,9 @@
       <AvaloniaResource Include="Resources\HelpMenu\PatchNotes.md" />
       <Content Include="Styles\HelpItem.axaml" />
       <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
+      <None Include="updater">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     <ItemGroup>
       <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">

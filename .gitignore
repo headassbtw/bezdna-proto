@@ -3,6 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+
+# CMake stuff for the updater
+*.out
+*.make
+*.cmake
+/updater/build
+/updater/cmake-build-debug
+/updater/cmake-working-dir
+
+
 # User-specific files
 *.rsuser
 *.suo

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace RPAK2L
 {
@@ -17,6 +18,13 @@ namespace RPAK2L
         public static void Load()
         {
             IniInstance.Load();
+            
+            if(IniInstance.GetValue("ExportPath","","lmaothatshitisnull") == "lmaothatshitisnull")
+            {
+                IniInstance.WriteValue("ExportPath",Path.Combine(Environment.CurrentDirectory, "Export"));
+            }
+            
+            
             string[] keys = IniInstance.GetKeys("");
             for (int i = 0; i < keys.Length; i++)
             {

@@ -103,26 +103,40 @@ namespace RPAK2L.Tools
                     fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
                     fs.Write(buf);
                     fs.Seek(0, SeekOrigin.Begin);
-                    try
+                    ProgressableTask _task = new ProgressableTask(0,1);
+                    _task.Init("Decoding");
+                    string pngPath = filename.Replace(".dds", ".png");
+                    //try
                     {
                         
                         var decoder = new BCnEncoder.Decoder.BcDecoder();
+<<<<<<< HEAD
                         decoder.Options.IsParallel = false;
                         
+=======
+                        decoder.Options.IsParallel = true;
+>>>>>>> 764d9bb742c812619bb66e55b2d8be4cc56eafef
                         using Image<Rgba32> image = decoder.DecodeToImageRgba32(fs);
-                        var outStream = File.OpenWrite(filename.Replace(".dds", ".png"));
+
+                        FileExtras.DeleteIfExists(pngPath); //the loading screen doesn't go away unless you do this?
+                        var outStream = new FileStream(pngPath, FileMode.Create);
                         outStream.Seek(0, SeekOrigin.Begin);
                         image.SaveAsPng(outStream);
                     }
-                    catch (Exception exc)
+                    /*catch (Exception exc)
                     {
                         var rfs = File.Create(filename);
                         rfs.Write(fs.ToArray());
-                        Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
-                        DirectoryTree.ExportErrors.Add(tex.Name);
+                        Dispatcher.UIThread.Post(() =>
+                        {
+                            
+                            Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
+                        });
                         rfs.Close();
+                        
                         _return = 2;
-                    }
+                    }*/
+                    _task.Finish();
                     fs.Close();
                 }
                 else
@@ -132,6 +146,7 @@ namespace RPAK2L.Tools
                 }
             }
             Logger.Log.Info("Finished Exporting");
+            DirectoryTreeViewModel.__isLoading = false; //fuck you
             return _return;
         }
     }

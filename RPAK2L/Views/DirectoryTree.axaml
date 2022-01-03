@@ -42,6 +42,11 @@
                     <MenuItem Header="Reload Paks" Click="FileOpen_OnClick"/>
                     <MenuItem Header="Reload Headers" Command="{Binding ReloadHeadersCommand}"/>
                     <Separator/>
+                    <!--
+                    I'll put these back later when i fuck with the updater, suck my dick
+                    <MenuItem Header="Update" Command="{Binding RunUpdaterCommand}" IsVisible="{Binding HasUpdater}"/>
+                    <Separator IsVisible="{Binding HasUpdater}"/>
+                    -->
                     <MenuItem Header="Debug" IsVisible="{Binding DebugMenu_IsVisible}">
                         <MenuItem Header="Test" Click="TestMenu_OnClick"/>
                         <MenuItem Header="Throw Exception" Click="DebugThrowError_OnClick"/>

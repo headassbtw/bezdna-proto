@@ -20,7 +20,7 @@ FileDownloader::FileDownloader(QUrl imageUrl, QObject *parent) :
     );
 
     QNetworkRequest request(imageUrl);
-
+    
     QNetworkReply* reply = m_WebCtrl.get(request);
     connect(reply, &QNetworkReply::downloadProgress, this, &FileDownloader::downloadProg);
 }
