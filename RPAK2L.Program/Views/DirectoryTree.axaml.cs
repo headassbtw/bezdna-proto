@@ -80,7 +80,7 @@ namespace RPAK2L.Program.Views
         {
             AvaloniaXamlLoader.Load(this);
             //DataContext = new DirectoryTreeViewModel();
-            
+            this.Closing += (sender, args) => { RPAK2L.UI.Funcs.Exit(0);}; 
             Logger.Log.Debug("InitComponent");
             
         }

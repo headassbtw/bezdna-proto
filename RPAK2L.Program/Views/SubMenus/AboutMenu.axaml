@@ -19,7 +19,7 @@
                 <TextBlock Grid.Row="1" FontSize="18">Respawn game RPAK tool</TextBlock>
                 <TextBlock Grid.Row="2" FontSize="24">Made by headassbtw</TextBlock>
             </Grid>
-            <Image Grid.Column="1" Width="200" Height="200" Source="resm:RPAK2L.Images.Icon_full.png"></Image>
+            <Image Grid.Column="1" Width="200" Height="200" Source="resm:RPAK2L.Program.Images.Icon_full.png"></Image>
         </Grid>
         <Grid HorizontalAlignment="Right" ColumnDefinitions="Auto,Auto" Grid.Row="1">
             <Button Grid.Column="0" Click="ShitOnXbox">I will shit on your xbox</Button>

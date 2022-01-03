@@ -345,7 +345,8 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
             Console = new ObservableCollection<InAppConsoleMsg>();
             LoadWaifu();
             
-            ExitCommand = ReactiveCommand.Create(() => {Program.AppMainWindow.Close(); });
+            ExitCommand = ReactiveCommand.Create(() => {Dispatcher.UIThread.Post(() => { Program.AppMainWindow.Close(); RPAK2L.UI.Funcs.Exit(0); }); });
+            //ExitCommand = ReactiveCommand.Create(() => {RPAK2L.UI.Funcs.Throw(() => { Program.AppMainWindow.Close();  });});
             ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
             ConsoleClearCommand = ReactiveCommand.Create(() => { Console.Clear(); });
             HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
@@ -368,10 +369,7 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
             RunUpdaterCommand = ReactiveCommand.Create(() =>
             {
                 Program.Updating = true;
-                Program.AppMainWindow.Close();
-                /*var p = Process.Start(Path.Combine(Environment.CurrentDirectory, "updater"), Process.GetCurrentProcess().Id.ToString());
-                p.WaitForExit();
-                Process.GetCurrentProcess().Kill();*/
+                Dispatcher.UIThread.Post(() => Program.AppMainWindow.Close());
 
             });
             Counter = 0;

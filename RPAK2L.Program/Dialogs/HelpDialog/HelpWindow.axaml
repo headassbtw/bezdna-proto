@@ -14,15 +14,15 @@
         <TabControl Grid.Row="0" TabStripPlacement="Left" Margin="0 0 0 0">
             <TabItem Classes="helptab" Header="Quick Start">
                 <avalonia:MarkdownScrollViewer
-                    Source="avares://RPAK2L/Resources/HelpMenu/QuickStart/Start.md"/>
+                    Source="avares://RPAK2L.Program/Resources/HelpMenu/QuickStart/Start.md"/>
             </TabItem>
             <TabItem Classes="helptab" Header="Configuring">
                 <avalonia:MarkdownScrollViewer
-                    Source="avares://RPAK2L/Resources/HelpMenu/Configuration/Config.md"/>
+                    Source="avares://RPAK2L.Program/Resources/HelpMenu/Configuration/Config.md"/>
             </TabItem>
             <TabItem Classes="helptab" Header="Patch Notes">
                 <avalonia:MarkdownScrollViewer
-                    Source="avares://RPAK2L/Resources/HelpMenu/PatchNotes.md"/>
+                    Source="avares://RPAK2L.Program/Resources/HelpMenu/PatchNotes.md"/>
             </TabItem>
         </TabControl>
         <Grid Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Left">

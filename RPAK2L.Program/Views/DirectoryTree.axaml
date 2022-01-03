@@ -66,7 +66,7 @@
                 </MenuItem>
             </Menu>
             <Grid VerticalAlignment="Stretch" RowDefinitions="Auto,*,Auto">
-                <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Stretch" MaxHeight="30" Height="30" Grid.Row="0">
+                <!--<Grid ColumnDefinitions="Auto,*" VerticalAlignment="Stretch" MaxHeight="30" Height="30" Grid.Row="0">
                 <Border Background="#EE000000">
                     <Button IsEnabled="True" VerticalAlignment="Stretch" Click="FileOpen_OnClick">
                         <TextBlock VerticalAlignment="Stretch" Text="Reload Paks"></TextBlock>
@@ -75,7 +75,7 @@
                 <Border Grid.Column="1" Background="#EE000000">
                     <ComboBox VerticalAlignment="Stretch" Initialized="RPakItemControl_Initialized" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
                 </Border>
-            </Grid>
+            </Grid>-->
                 <Image Grid.Row="1" Source="{Binding Waifu}"/>
                 <!--SHE'S THERE TO KEEP YOU COMPANY OKAY?-->
                 <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">

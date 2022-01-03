@@ -8,7 +8,7 @@ using DynamicData;
 
 namespace ErrorReporter
 {
-    class Program
+    public class Program
     {
         public static string ProgramName;
 
@@ -50,8 +50,9 @@ namespace ErrorReporter
             {
                 Log = $"No Log at:\n{LogPath}";
             }
+            
             BuildAvaloniaApp()
-                .StartWithClassicDesktopLifetime(args);
+                .StartWithFuckLifetime(args);
             
             
         }

@@ -20,6 +20,7 @@
       </ProjectReference>
       <ProjectReference Include="..\RPAK2L.Program\RPAK2L.Program.csproj" />
       <ProjectReference Include="..\RPAK2L.Reporter\RPAK2L.Reporter.csproj" />
+      <ProjectReference Include="..\RPAK2L.Updater\RPAK2L.Updater.csproj" />
     </ItemGroup>
     
     <ItemGroup>
@@ -31,6 +32,23 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <AvaloniaXaml Remove="App.axaml" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <AvaloniaResource Include="App.axaml" />
+      <AvaloniaResource Include="Styles\Styles.xaml" />
+      <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Update="App.axaml.cs">
+        <DependentUpon>App.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

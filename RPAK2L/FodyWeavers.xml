@@ -3,6 +3,7 @@
     <ExcludeAssemblies>
       RPAK2L.Program
       RPAK2L.Reporter
+      RPAK2L.Updater
       RPAK2L.UI
     </ExcludeAssemblies>
   </Costura>

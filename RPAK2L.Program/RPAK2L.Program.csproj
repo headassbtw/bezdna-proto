@@ -114,7 +114,6 @@
       <Compile Include="Headers/HeaderInterface.cs" />
       <Compile Include="Properties\Resources.Designer.cs" />
       <Compile Include="Settings.cs" />
-      <Compile Include="Styles\HelpItem.axaml.cs" />
       <Compile Include="Tools\Exporters.cs" />
       <Compile Include="Tools\FileExtensions.cs" />
       <Compile Include="Tools\HelpItemTemplate.cs" />
@@ -170,15 +169,12 @@
       <Content Include="Directory.Build.props" />
       <Content Include="Directory.Build.targets" />
       <Content Include="FodyWeavers.xsd" />
-      <AvaloniaResource Include="Styles\Styles.xaml" />
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\GetToSettingsMenu.png" />
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\Config.md" />
       <AvaloniaResource Include="Resources\HelpMenu\QuickStart\Start.md" />
       <AvaloniaResource Include="Resources\HelpMenu\Configuration\SettingsWindow.png" />
       <AvaloniaResource Include="Resources\HelpMenu\QuickStart\OpenFile.png" />
       <AvaloniaResource Include="Resources\HelpMenu\PatchNotes.md" />
-      <Content Include="Styles\HelpItem.axaml" />
-      <AvaloniaResource Include="Styles\TabControlStyle.axaml" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="Wasmtime.Dotnet, Version=0.27.0.0, Culture=neutral, PublicKeyToken=null">

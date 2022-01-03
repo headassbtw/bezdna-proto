@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -14,23 +15,15 @@ namespace RPAK2L.Program
         {
             AvaloniaXamlLoader.Load(this);
         }
-
         public override void OnFrameworkInitializationCompleted()
         {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            
+            /*if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                
                 desktop.MainWindow = new DirectoryTree();
                 desktop.MainWindow.DataContext = new DirectoryTreeViewModel(desktop.MainWindow);
                 Program.AppMainWindow = desktop.MainWindow;
-            }
-            if (ApplicationLifetime is ICrashLifetime crashLifetime)
-            {
-                
-                crashLifetime.MainWindow = new DirectoryTree();
-                crashLifetime.MainWindow.DataContext = new DirectoryTreeViewModel(crashLifetime.MainWindow);
-                Program.AppMainWindow = crashLifetime.MainWindow;
-            }
+            }*/
 
             base.OnFrameworkInitializationCompleted();
             Logger.Log.Debug("FrameworkInitComp");
