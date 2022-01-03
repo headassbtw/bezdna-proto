@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <PreserveCompilationContext>false</PreserveCompilationContext>
+        <Nullable>enable</Nullable>
+        <Platform>x64</Platform>
+        <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <SelfContained>false</SelfContained>
+        <NoStandardLibraries>true</NoStandardLibraries>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <RootNamespace>ErrorReporter</RootNamespace>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Models\" />
+        <AvaloniaResource Include="Assets\**" />
+        <None Remove=".gitignore" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\RPAK2L.UI\RPAK2L.UI.csproj" />
+    </ItemGroup>
+</Project>

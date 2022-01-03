@@ -1,9 +1,10 @@
 ﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
   <Costura>
-    <ExcludeAssemblies>
-      RPAK2L.Program
-      RPAK2L.Reporter
-      RPAK2L.UI
-    </ExcludeAssemblies>
+    <IncludeAssemblies>
+      Avalonia
+      Avalonia.Base
+      Avalonia.DesktopRuntime
+      Avalonia.Animation
+    </IncludeAssemblies>
   </Costura>
 </Weavers>

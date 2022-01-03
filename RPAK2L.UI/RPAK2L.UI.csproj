@@ -1,27 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <ApplicationIcon>../RPAK2L.Program/Assets/Icon.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
         <NeutralLanguage>en-US</NeutralLanguage>
-        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-        <NoStandardLibraries>true</NoStandardLibraries>
-        <AssemblyVersion>0.2.0</AssemblyVersion>
     </PropertyGroup>
-    
     <ItemGroup>
-        
-      <ProjectReference Include="..\RPAK2L.UI\RPAK2L.UI.csproj">
-          
-      </ProjectReference>
-      <ProjectReference Include="..\RPAK2L.Program\RPAK2L.Program.csproj" />
-      <ProjectReference Include="..\RPAK2L.Reporter\RPAK2L.Reporter.csproj" />
+        <None Include="FodyWeavers.xml" />
     </ItemGroup>
-    
     <ItemGroup>
+      <PackageReference Include="Avalonia" Version="0.10.5" />
+      <PackageReference Include="Avalonia.Desktop" Version="0.10.5" />
+      <PackageReference Include="Avalonia.Diagnostics" Version="0.10.5" />
+      <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.5" />
+        <PackageReference Include="Markdown.Avalonia" Version="0.10.5" />
       <PackageReference Include="costura.fody" Version="5.7.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

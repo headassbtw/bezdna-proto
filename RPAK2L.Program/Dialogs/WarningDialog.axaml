@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dc="clr-namespace:RPAK2L.Program.Dialogs"
+        x:Class="RPAK2L.Program.Dialogs.WarningDialog"
+        MinWidth="280"
+        Width="280"
+        MaxWidth="280"
+        MinHeight="170"
+        Height="170"
+        MaxHeight="170"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Title="Warning">
+    <!-- CenterScreen and CenterOwner is broken on avalonia versions above 0.10.5, which is why the project is on this version -->
+    <Design.DataContext>
+        <dc:WarningDataContext/>
+    </Design.DataContext>
+    <Grid RowDefinitions="*,Auto">
+        <Grid ColumnDefinitions="Auto,*">
+            <Image Grid.Column="0" Width="100" Height="100" Source="resm:RPAK2L.Program.Images.Icon_full.png"/>
+            <TextBlock Grid.Column="1" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Content}"/>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Grid.Row="1">
+            <Button Click="Okay_OnClick"><TextBlock>Okay</TextBlock></Button>
+        </Grid>
+    </Grid>
+</Window>

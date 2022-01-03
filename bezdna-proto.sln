@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPAK2L", "RPAK2L\RPAK2L.csproj", "{2D33542B-4D4F-49C7-A04A-313520482A96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPAK2L.Program", "RPAK2L.Program\RPAK2L.Program.csproj", "{2D33542B-4D4F-49C7-A04A-313520482A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorReporter", "ErrorReporter\ErrorReporter.csproj", "{A88A4666-C3F8-4A93-A52C-F95ED7E8376C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPAK2L.Reporter", "RPAK2L.Reporter\RPAK2L.Reporter.csproj", "{A88A4666-C3F8-4A93-A52C-F95ED7E8376C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPAK2L", "RPAK2L\RPAK2L.csproj", "{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPAK2L.UI", "RPAK2L.UI\RPAK2L.UI.csproj", "{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,18 @@ Global
 		{A88A4666-C3F8-4A93-A52C-F95ED7E8376C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A88A4666-C3F8-4A93-A52C-F95ED7E8376C}.Win|win-x64.ActiveCfg = Debug|Any CPU
 		{A88A4666-C3F8-4A93-A52C-F95ED7E8376C}.Win|win-x64.Build.0 = Debug|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Win|win-x64.ActiveCfg = Debug|Any CPU
+		{FAD54ABB-0EB9-43E3-B0CD-42D41478D7DC}.Win|win-x64.Build.0 = Debug|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Win|win-x64.ActiveCfg = Debug|Any CPU
+		{9A9D2383-D6F5-4C8A-8257-0A049DC4AD4D}.Win|win-x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

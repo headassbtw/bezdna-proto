@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:RPAK2L.Program"
+             x:Class="RPAK2L.Program.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+    <Application.Resources>
+        <SolidColorBrush x:Key="HelpBorderAccent">#0066FF</SolidColorBrush>
+        <SolidColorBrush x:Key="Accent">#DD990000</SolidColorBrush>
+        <SolidColorBrush x:Key="HoverAccent">#55000000</SolidColorBrush>
+    </Application.Resources>
+    
+    <Application.Styles>
+        <FluentTheme Mode="Dark"/>
+        <StyleInclude Source="/Styles/Styles.xaml"/>
+        <StyleInclude Source="/Styles/TabControlStyle.axaml"/>
+    </Application.Styles>
+</Application>
