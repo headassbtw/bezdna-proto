@@ -101,42 +101,36 @@ namespace RPAK2L.Tools
                     fs.Write(Program.Headers.GetCustomRes((uint)text.width, (uint)text.height, compression));
                     fs.Write(buf);
                     fs.Seek(0, SeekOrigin.Begin);
-                    try
+                    ProgressableTask _task = new ProgressableTask(0,1);
+                    _task.Init("Decoding");
+                    string pngPath = filename.Replace(".dds", ".png");
+                    //try
                     {
                         
                         var decoder = new BCnEncoder.Decoder.BcDecoder();
                         decoder.Options.IsParallel = true;
-                        var p = new Progress<ProgressElement>();
-                        ProgressableTask _task = null;
-                        p.ProgressChanged += (s, e) =>
-                        {
-                            Dispatcher.UIThread.Post(() =>
-                            {
-                                if (_task == null)
-                                {
-                                    _task = new ProgressableTask(e.CurrentBlock,e.TotalBlocks);
-                                    _task.Init("Decoding");
-                                }
-                                
-                                _task.IncrementBar();
-                            });
-                        };
-                        decoder.Options.Progress = p;
                         using Image<Rgba32> image = decoder.DecodeToImageRgba32(fs);
-                        var outStream = File.OpenWrite(filename.Replace(".dds", ".png"));
+
+                        FileExtras.DeleteIfExists(pngPath); //the loading screen doesn't go away unless you do this?
+                        var outStream = new FileStream(pngPath, FileMode.Create);
                         outStream.Seek(0, SeekOrigin.Begin);
                         image.SaveAsPng(outStream);
                         _task.Finish();
                     }
-                    catch (Exception exc)
+                    /*catch (Exception exc)
                     {
                         var rfs = File.Create(filename);
                         rfs.Write(fs.ToArray());
-                        Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
-                        DirectoryTree.ExportErrors.Add(tex.Name);
+                        Dispatcher.UIThread.Post(() =>
+                        {
+                            
+                            Program.AppMainWindow.WarningDialog("Could not convert to png, saved as dds");
+                        });
                         rfs.Close();
+                        
                         _return = 2;
-                    }
+                    }*/
+                    _task.Finish();
                     fs.Close();
                 }
                 else
@@ -146,6 +140,7 @@ namespace RPAK2L.Tools
                 }
             }
             Logger.Log.Info("Finished Exporting");
+            DirectoryTreeViewModel.__isLoading = false; //fuck you
             return _return;
         }
     }

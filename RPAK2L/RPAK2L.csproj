@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <Nullable>enable</Nullable>
         <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
@@ -126,6 +126,7 @@
       <Compile Include="Settings.cs" />
       <Compile Include="Styles\HelpItem.axaml.cs" />
       <Compile Include="Tools\Exporters.cs" />
+      <Compile Include="Tools\FileExtensions.cs" />
       <Compile Include="Tools\HelpItemTemplate.cs" />
       <Compile Include="ViewLocator.cs" />
       <Compile Include="ViewModels\FileView\Types\File.cs" />
