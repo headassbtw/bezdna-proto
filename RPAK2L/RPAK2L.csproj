@@ -15,7 +15,7 @@
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <SourceRevisionId>$([System.DateTime]::UtcNow.ToString("yyyy.MM.dd.HH"))</SourceRevisionId>
         <NoStandardLibraries>true</NoStandardLibraries>
-        <AssemblyVersion>0.1.1</AssemblyVersion>
+        <AssemblyVersion>0.1.2</AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'True'">
         <DefineConstants>CI</DefineConstants>
