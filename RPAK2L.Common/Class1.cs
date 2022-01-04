@@ -1,5 +1,9 @@
-﻿namespace RPAK2L.UI
+﻿namespace RPAK2L.Common
 {
+    public class Vars
+    {
+        public static string[] Args;
+    }
     public class ExitTypeArgs : EventArgs
     {
         public int Type;
@@ -15,7 +19,6 @@
             Parameters = param;
         }
     }
-    
     public class Funcs
     {
         public static event EventHandler<ExitTypeArgs> Exiting;

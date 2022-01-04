@@ -63,7 +63,7 @@ namespace RPAK2L.Program
                
                 
                 Logger.Log.Close();
-                RPAK2L.UI.Funcs.Exit(2,logPath);
+                RPAK2L.Common.Funcs.Exit(2,logPath);
                 return logPath;
             }
 

@@ -4,7 +4,7 @@
       RPAK2L.Program
       RPAK2L.Reporter
       RPAK2L.Updater
-      RPAK2L.UI
+      RPAK2L.Common
     </ExcludeAssemblies>
   </Costura>
 </Weavers>

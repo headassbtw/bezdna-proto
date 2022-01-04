@@ -80,7 +80,7 @@ namespace RPAK2L.Program.Views
         {
             AvaloniaXamlLoader.Load(this);
             //DataContext = new DirectoryTreeViewModel();
-            this.Closing += (sender, args) => { RPAK2L.UI.Funcs.Exit(0);}; 
+            this.Closing += (sender, args) => { RPAK2L.Common.Funcs.Exit(0);}; 
             Logger.Log.Debug("InitComponent");
             
         }
@@ -294,7 +294,7 @@ namespace RPAK2L.Program.Views
         public void Load(string fullRPakPath)
         {
 
-            CurrentRpakDirectory = fullRPakPath.Substring(fullRPakPath.LastIndexOfAny(new[] {'\\', '/'}));
+            CurrentRpakDirectory = fullRPakPath.Substring(0,fullRPakPath.LastIndexOfAny(new[] {'\\', '/'}));
             
             vm.IsLoading = true;
             vm.ResetTask();

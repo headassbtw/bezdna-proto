@@ -25,6 +25,6 @@
         <None Remove=".gitignore" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\RPAK2L.UI\RPAK2L.UI.csproj" />
+      <ProjectReference Include="..\RPAK2L.Common\RPAK2L.Common.csproj" />
     </ItemGroup>
 </Project>

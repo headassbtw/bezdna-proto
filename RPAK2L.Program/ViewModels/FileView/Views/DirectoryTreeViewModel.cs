@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reflection;
+using Avalonia;
 using Avalonia.Controls;
 using ReactiveUI;
 using RPAK2L.Program.ViewModels.FileView.Types;
@@ -79,7 +80,7 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
 
         public bool HasUpdater
         {
-            get => OperatingSystem.IsLinux();
+            get => RPAK2L.Common.Vars.Args.Contains("--updater");
         }
         public ReactiveCommand<Unit, Unit> RunUpdaterCommand { get; set; }
         public ReactiveCommand<Unit, Unit> HideHelpLabelsCommand { get; set; }
@@ -345,8 +346,8 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
             Console = new ObservableCollection<InAppConsoleMsg>();
             LoadWaifu();
             
-            ExitCommand = ReactiveCommand.Create(() => {Dispatcher.UIThread.Post(() => { Program.AppMainWindow.Close(); RPAK2L.UI.Funcs.Exit(0); }); });
-            //ExitCommand = ReactiveCommand.Create(() => {RPAK2L.UI.Funcs.Throw(() => { Program.AppMainWindow.Close();  });});
+            ExitCommand = ReactiveCommand.Create(() => {Dispatcher.UIThread.Post(() => { Program.AppMainWindow.Close(); }); });
+            //ExitCommand = ReactiveCommand.Create(() => {RPAK2L.Common.Funcs.Throw(() => { Program.AppMainWindow.Close();  });});
             ShowHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = true; });
             ConsoleClearCommand = ReactiveCommand.Create(() => { Console.Clear(); });
             HideHelpLabelsCommand = ReactiveCommand.Create(() => { ShowHelpLabels = false; });
@@ -369,7 +370,7 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
             RunUpdaterCommand = ReactiveCommand.Create(() =>
             {
                 Program.Updating = true;
-                Dispatcher.UIThread.Post(() => Program.AppMainWindow.Close());
+                RPAK2L.Common.Funcs.Exit(1);
 
             });
             Counter = 0;

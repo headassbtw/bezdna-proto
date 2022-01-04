@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <NeutralLanguage>en-US</NeutralLanguage>
+        <RootNamespace>RPAK2L.UI</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
         <None Include="FodyWeavers.xml" />

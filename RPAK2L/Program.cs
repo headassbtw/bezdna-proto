@@ -11,7 +11,7 @@ namespace RPAK2L
 {
     public class Wrapper
     {
-        
+        public static string[] Args;
         
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<RPAK2L.App>()
@@ -21,18 +21,21 @@ namespace RPAK2L
         
         public static void Main(string[] args)
         {
+            Args = args;
+            RPAK2L.Common.Vars.Args = args;
             var builder = BuildAvaloniaApp();
             Program.Program.InitSystems();
-            RPAK2L.UI.Funcs.Exiting += (sender, typeArgs) =>
+            RPAK2L.Common.Funcs.Exiting += (sender, typeArgs) =>
             {
+                Logger.Log.Close();
                 var lifetime = (builder.Instance.ApplicationLifetime as ClassicDesktopStyleApplicationLifetime);
                 Console.WriteLine("Exiting");
                 switch (typeArgs.Type)
                 {
                     
                     case 0: //normal
+                        
                         lifetime.Shutdown();
-                        lifetime.Dispose();
                         break;
                     case 1: //updating
                         Updater.Main.Update(Environment.CurrentDirectory);
@@ -43,7 +46,6 @@ namespace RPAK2L
                         ErrorReporter.Program.ProgramName = "RPAK2L";
                         ErrorReporter.Program.HasProgram = true;
                         ErrorReporter.Program.HasLog = true;
-                        Program.Logger.Log.Close();
                         ErrorReporter.Program.Log = "File.ReadAllText(typeArgs.Parameters)";
                         Console.WriteLine(typeArgs.Parameters);
                         lifetime.MainWindow.Close();
@@ -51,7 +53,6 @@ namespace RPAK2L
                         lifetime.MainWindow.Show();
                         break;
                 }
-                lifetime.Dispose();
             };
             try
             {
@@ -60,32 +61,9 @@ namespace RPAK2L
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                RPAK2L.UI.Funcs.Exit(2, Program.Program.logPath);
             }
-            
-                string rtn = "";
-            //string rtn = Program.Program.Main(args);
-
-
-            Thread.Sleep(500);
-            Console.WriteLine(rtn);
-            if (File.Exists(rtn))
-            {
-                Console.WriteLine("is a file, showing crash");
-                ErrorReporter.Program.Main(new []{
-                    "-p",
-                    "RPAK2L",
-                    "-path",
-                    rtn
-                });
-            }
-
-            if (Directory.Exists(rtn))
-            {
-                Console.WriteLine("is a directory, updating");
-                //ThreadPool.QueueUserWorkItem(task => Updater.Main.Update(rtn));
-                Updater.Main.Update(rtn);
-            }
+            Console.WriteLine("Shutting Down");
+                
 
         }
     }
