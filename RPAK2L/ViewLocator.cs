@@ -1,7 +1,7 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using ErrorReporter.ViewModels;
+using RPAK2L.Program.ViewModels;
 
 namespace RPAK2L
 {

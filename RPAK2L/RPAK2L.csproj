@@ -20,8 +20,6 @@
           
       </ProjectReference>
       <ProjectReference Include="..\RPAK2L.Program\RPAK2L.Program.csproj" />
-      <ProjectReference Include="..\RPAK2L.Reporter\RPAK2L.Reporter.csproj" />
-      <ProjectReference Include="..\RPAK2L.Updater\RPAK2L.Updater.csproj" />
     </ItemGroup>
     
     <ItemGroup>

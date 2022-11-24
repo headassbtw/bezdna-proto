@@ -1,4 +1,0 @@
-/home/headass/CLionProjects/untitled/build/CMakeFiles/untitled.dir
-/home/headass/CLionProjects/untitled/build/CMakeFiles/edit_cache.dir
-/home/headass/CLionProjects/untitled/build/CMakeFiles/rebuild_cache.dir
-/home/headass/CLionProjects/untitled/build/CMakeFiles/untitled_autogen.dir

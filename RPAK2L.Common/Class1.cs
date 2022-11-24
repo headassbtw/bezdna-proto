@@ -1,4 +1,6 @@
-﻿namespace RPAK2L.Common
+﻿using System;
+
+namespace RPAK2L.Common
 {
     public class Vars
     {

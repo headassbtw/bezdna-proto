@@ -8,6 +8,7 @@
     <Application.Resources>
         <SolidColorBrush x:Key="HelpBorderAccent">#0066FF</SolidColorBrush>
         <SolidColorBrush x:Key="Accent">#DD990000</SolidColorBrush>
+        <SolidColorBrush x:Key="AccentBright">#DDaa0000</SolidColorBrush>
         <SolidColorBrush x:Key="HoverAccent">#55000000</SolidColorBrush>
     </Application.Resources>
     

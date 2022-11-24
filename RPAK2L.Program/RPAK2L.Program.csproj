@@ -183,7 +183,5 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\RPAK2L.Common\RPAK2L.Common.csproj" />
-      <ProjectReference Include="..\RPAK2L.Reporter\RPAK2L.Reporter.csproj" />
-      
     </ItemGroup>
 </Project>

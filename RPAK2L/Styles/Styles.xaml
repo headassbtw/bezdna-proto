@@ -2,7 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         
         
-        
+        <Style Selector="TextBlock">
+                <Setter Property="Background" Value="#00000000"></Setter>
+        </Style>
         <Style Selector="CheckBox:checked">
                 <Setter Property="Foreground" Value="{DynamicResource Accent}" />
         </Style>
@@ -20,11 +22,11 @@
         </Style>
         
         <Style Selector="MenuItem:pressed /template/ Border#PART_LayoutRoot:pointerover">
-                <Setter Property="Background" Value="red" />
+                <Setter Property="Background" Value="{DynamicResource Accent}" />
         </Style>
         
         <Style Selector="MenuFlyoutPresenter /template/ Border">
-                <Setter Property="Background" Value="green" />
+                <Setter Property="Background" Value="{DynamicResource Accent}" />
         </Style>
         
         <Style Selector="MenuItem:selected /template/ Border#PART_LayoutRoot">
@@ -46,7 +48,7 @@
                 <Setter Property="CornerRadius" Value="0"></Setter>
         </Style>
         <Style Selector="TextBox:disabled /template/ Border">
-                <Setter Property="BorderBrush" Value="red"></Setter>
+                <Setter Property="BorderBrush" Value="{DynamicResource Accent}"></Setter>
         </Style>
         <Style Selector="TextBox /template/ Border">
                 <Setter Property="CornerRadius" Value="0"/>
@@ -56,7 +58,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
         </Style>
         <Style Selector="TextBox:focus /template/ Border">
-                <Setter Property="BorderBrush" Value="#CC990000"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource HoverAccent}"/>
         </Style>
         <Style Selector="Border">
                 <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
@@ -74,11 +76,11 @@
                 <Setter Property="CornerRadius" Value="0"/>
         </Style>
         <Style Selector="TextBox /template/ ContentPresenter">
-                <Setter Property="BorderBrush" Value="Red"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
                 <Setter Property="CornerRadius" Value="0"/>
         </Style>
         <Style Selector="TreeView:selected">
-                <Setter Property="Background" Value="red"/>
+                <Setter Property="Background" Value="{DynamicResource Accent}"/>
         </Style>
         <Style Selector="Button:pointerover /template/ ContentPresenter">
                 <Setter Property="Background" Value="{DynamicResource Accent}"/>

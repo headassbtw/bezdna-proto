@@ -8,7 +8,7 @@ There are a few options for exporting, but the main one is to go to the`File` ta
 
 This will open a window for you to select a `.rpak` file.
 
-**DO NOT OPEN RPAKS ENDING IN `(##)`, THEY ARE PATCHES AND WILL NOT LOAD**
+#### DO NOT OPEN RPAKS ENDING IN `(##)`, THEY ARE PATCHES AND WILL NOT LOAD
 
 Once you load a file, the contents will start populating, and you can use the tool.
 

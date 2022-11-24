@@ -285,23 +285,7 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
             sm.ShowDialog(ParentWindow);
         }
 
-        public Bitmap Waifu { get; set; }
 
-        public void LoadWaifu()
-        {
-            string path = Path.Combine(Environment.CurrentDirectory,
-                "UserContent", "Backround.png");
-            Logger.Log.Debug($"loading bg image from {path}");
-            try
-            {
-                Bitmap f = new Bitmap(path);
-                Waifu = f;
-            }
-            catch (Exception exc)
-            {
-                Logger.Log.Error("Background image could not be loaded");
-            }
-        }
         public Grid _centerGrid;
         public bool HasRecents
         {
@@ -344,7 +328,6 @@ namespace RPAK2L.Program.ViewModels.FileView.Views
         {
             _instance = this;
             Console = new ObservableCollection<InAppConsoleMsg>();
-            LoadWaifu();
             
             ExitCommand = ReactiveCommand.Create(() => {Dispatcher.UIThread.Post(() => { Program.AppMainWindow.Close(); }); });
             //ExitCommand = ReactiveCommand.Create(() => {RPAK2L.Common.Funcs.Throw(() => { Program.AppMainWindow.Close();  });});

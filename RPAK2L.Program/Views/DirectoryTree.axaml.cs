@@ -240,47 +240,54 @@ namespace RPAK2L.Program.Views
         {
             ThreadPool.QueueUserWorkItem(async =>
             {
-                 bool ExportStreaming = true;
-            switch (CurrentFileToExport.File.ShortName)
-            {
-                
-                case "txtr":
-                    Exporters.TextureData(CurrentFileToExport, CurrentRpakDirectory, ExportPath,"Textures",true,false);
-                    break;
-                case "matl":
-                    var material = CurrentFileToExport.SpecificTypeFile as Material;
-                    ProgressableTask _task = new ProgressableTask(0,material.TextureReferences.Length);
-                    _task.Init("Exporting");
-                    for (var i = 0; i < material.TextureReferences.Length; i++)
+                try
+                {
+                    bool ExportStreaming = true;
+                    switch (CurrentFileToExport.File.ShortName)
                     {
                         
-                        var e = material.TextureReferences[i];
-                        var refName = "";
-                        if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
-                            refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
-                        else
-                            refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
-                        var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
-                        Exporters.TextureData(tex, CurrentRpakDirectory, ExportPath, "Materials", false, true);
-                        _task.IncrementBar();
+                        case "txtr":
+                            Exporters.TextureData(CurrentFileToExport, CurrentRpakDirectory, ExportPath,"Textures",true,false);
+                            break;
+                        case "matl":
+                            var material = CurrentFileToExport.SpecificTypeFile as Material;
+                            ProgressableTask _task = new ProgressableTask(0,material.TextureReferences.Length);
+                            _task.Init("Exporting");
+                            for (var i = 0; i < material.TextureReferences.Length; i++)
+                            {
+                                
+                                var e = material.TextureReferences[i];
+                                var refName = "";
+                                if (material.TextureReferences.Length % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length == 0)
+                                    refName = bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i % bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length];
+                                else
+                                    refName = i < bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName.Length ? bezdna_proto.Titanfall2.FileTypes.Material.TextureRefName[i] : $"UNK{i}";
+                                var tex = _textures.FirstOrDefault(f => (f.SpecificTypeFile as Texture).GUID == e);
+                                Exporters.TextureData(tex, CurrentRpakDirectory, ExportPath, "Materials", false, true);
+                                _task.IncrementBar();
+                            }
+                            /*Program.AppMainWindow.WarningMultiDialog(
+                                "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
+                                ExportErrors.ToArray());*/
+                            _task.Finish();
+                            break;
+                        case "shdr":
+                            var sha = CurrentFileToExport.SpecificTypeFile as Shader;
+                            this.WarningDialog("Shaders not implemented");
+                            break;
+                        case "dtbl":
+                            var dtb = CurrentFileToExport.SpecificTypeFile as DataTables;
+                            this.WarningDialog("DataTables not implemented");
+                            break;
+                        default:
+                            this.WarningDialog("Unknown file type");
+                            break;
                     }
-                    /*Program.AppMainWindow.WarningMultiDialog(
-                        "Failed to export certain textures as PNG, they will be saved as a DDS, which you may not be able to open",
-                        ExportErrors.ToArray());*/
-                    _task.Finish();
-                    break;
-                case "shdr":
-                    var sha = CurrentFileToExport.SpecificTypeFile as Shader;
-                    this.WarningDialog("Shaders not implemented");
-                    break;
-                case "dtbl":
-                    var dtb = CurrentFileToExport.SpecificTypeFile as DataTables;
-                    this.WarningDialog("DataTables not implemented");
-                    break;
-                default:
-                    this.WarningDialog("Unknown file type");
-                    break;
-            }
+                }
+                catch (Exception e)
+                {
+                    this.WarningDialog($"Exception thrown: {e.Message}");
+                }
             });
         }
         private void ReplaceButton_OnClick(object? sender, RoutedEventArgs e)

@@ -17,6 +17,8 @@ namespace RPAK2L.Program.Dialogs.HelpDialog
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+            
+            
         }
     }
 }

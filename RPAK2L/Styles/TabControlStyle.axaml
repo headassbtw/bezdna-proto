@@ -1,12 +1,36 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <Style Selector="TabControl">
+                <Setter Property="Background" Value="#151515"/>
+        </Style>
         <Style Selector="TabControl WrapPanel">
-                <Setter Property="Background" Value="#55FFFFFF"/>
+                <Setter Property="Background" Value="#252525"/>
         </Style>
+
+        <Style Selector="TabItem TextBlock">
+                <Setter Property="Foreground" Value="#ff0000"></Setter>
+        </Style>
+        
+        <Style Selector="TabItem">
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Height" Value="34"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Background" Value="#1c1c1c"/>
+                <Setter Property="Foreground" Value="#000000"/>
+                
+                <Setter Property="Padding" Value="10 0"/>
+        </Style>
+        
+        <Style Selector="TabItem:pointerover">
+                <Setter Property="Background" Value="#00ff00"/>
+        </Style>
+
         <Style Selector="TabItem:focus">
-                <Setter Property="Background" Value="{DynamicResource Accent}"/>
+                <Setter Property="Background" Value="{DynamicResource Accent}"/>        
         </Style>
-        <Style Selector="TabItem:focus /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource Accent}"/>
+        
+        <Style Selector="TabItem:focus TextBlock">
+                <Setter Property="Foreground" Value="#000000"/>
         </Style>
+        
 </Styles>

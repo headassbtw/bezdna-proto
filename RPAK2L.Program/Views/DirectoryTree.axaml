@@ -76,8 +76,6 @@
                     <ComboBox VerticalAlignment="Stretch" Initialized="RPakItemControl_Initialized" SelectionChanged="RPakItemControl_OnSelectionChanged" HorizontalAlignment="Stretch" Items="{Binding RPakChoices}"></ComboBox>
                 </Border>
             </Grid>-->
-                <Image Grid.Row="1" Source="{Binding Waifu}"/>
-                <!--SHE'S THERE TO KEEP YOU COMPANY OKAY?-->
                 <Grid VerticalAlignment="Stretch" Grid.Row="1" MinWidth="600" ColumnDefinitions="*,Auto,*" MinHeight="400">
                 <Grid Grid.Column="0" RowDefinitions="*,Auto,*">
                     <Border Grid.Column="0" Background="#DF202020" BorderThickness="2" CornerRadius="0" Padding="1">
@@ -113,7 +111,7 @@
                     <Border VerticalAlignment="Stretch" Grid.Row="0" Background="#DF252525" BorderThickness="2" CornerRadius="0" Padding="1">
                         <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
                             
-                            <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search" BorderBrush="red"/>
+                            <TextBox Grid.Row="0" Text="{Binding SearchBoxFilter}" Watermark="Search"/>
                             <ListBox Background="#DF202020" Initialized="PakItems_OnInit" Grid.Row="1" SelectionChanged="FileView_OnSelectionChanged" VerticalAlignment="Stretch" Items="{Binding VisibleFiles}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>

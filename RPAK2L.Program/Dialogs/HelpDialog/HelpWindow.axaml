@@ -10,7 +10,12 @@
     <Design.DataContext>
         <helpDialog:HelpContext/>
     </Design.DataContext>
-    <Grid RowDefinitions="*">
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Background" Value="#00000000"></Setter>
+        </Style>
+    </Window.Styles>
+        <Grid RowDefinitions="*">
         <TabControl Grid.Row="0" TabStripPlacement="Left" Margin="0 0 0 0">
             <TabItem Classes="helptab" Header="Quick Start">
                 <avalonia:MarkdownScrollViewer
